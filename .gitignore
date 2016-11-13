@@ -1,0 +1,20 @@
+# Python
+*.pyc
+envs
+
+# PyCharm
+.idea
+
+# Eclipse
+.project
+.pydevproject
+.settings
+
+# OS files
+.DS_Store
+*.swp
+*.test
+
+# Sphinx
+user-guide/_build/
+user-guide/_locale/

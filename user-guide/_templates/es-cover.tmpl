@@ -1,0 +1,45 @@
+.. role:: normal
+
+<?py if title: ?>
+
+.. cssclass:: title
+
+#{title}
+
+<?py #end ?>
+
+<?py if subtitle: ?>
+
+.. cssclass:: subtitle
+
+Version 2.3
+
+<?py #end ?>
+
+.. raw:: pdf
+
+   Spacer 0 3cm
+
+
+.. image:: esdc/img/danubecloud-logo.png
+
+
+.. raw:: pdf
+
+   Spacer 0 8cm
+
+
+<?py for author in authors: ?>
+.. cssclass:: author
+
+#{author}
+
+<?py #end ?>
+
+.. cssclass:: date
+
+#{date}
+
+.. raw:: pdf
+
+   PageBreak

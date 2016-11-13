@@ -1,0 +1,117 @@
+fontsAlias:
+    stdBold: SourceSansPro-Bold
+    stdBoldItalic: SourceSansPro-BoldItalic
+    stdFont: SourceSansPro-Regular
+    stdItalic: SourceSansPro-Italic
+    stdSans: SourceSansPro-Regular
+    stdSansBold: SourceSansPro-Bold
+    stdSansBoldItalic: SourceSansPro-BoldItalic
+    stdSansItalic: SourceSansPro-Italic
+    stdSerif: SourceSerifPro-Regular
+    stdMono: SourceCodePro
+    stdMonoBold: SourceCodePro
+    stdMonoBoldItalic: SourceCodePro-Italic
+    stdMonoItalic: SourceCodePro-Italic
+
+linkColor: #3c60c3
+
+styles:
+    title:
+        backColor: null
+        borderWidth: null
+        textColor: #395bba
+
+    subtitle:
+        backColor: null
+        borderWidth: null
+        textColor: #395bba
+
+    title-reference:
+        textColor: #3c60c3
+        underline: true
+
+    heading:
+        backColor: null
+        borderWidth: null
+        textColor: #395bba
+
+    heading1:
+        backColor: null
+        borderWidth: null
+        textColor: #395bba
+
+    heading2:
+        backColor: null
+        borderWidth: null
+        textColor: #395bba
+
+    heading3:
+        backColor: null
+        borderWidth: null
+        textColor: #395bba
+
+    heading4:
+        backColor: null
+        borderWidth: null
+        textColor: #395bba
+
+    heading5:
+        backColor: null
+        borderWidth: null
+        textColor: #395bba
+
+    heading6:
+        backColor: null
+        borderWidth: null
+        textColor: #395bba
+
+    admonition-heading:
+        fontSize: 85%
+        textColor: black
+
+    admonition-title:
+        fontSize: 85%
+        textColor: black
+
+    seealso-heading:
+        parent: admonition-heading
+
+    date:
+        alignment: TA_CENTER
+        fontName: stdSans
+        fontSize: 100%
+        parent: bodytext
+
+    literal:
+        fontSize: 90%
+
+    code:
+        parent: literal
+        leftIndent: 0
+        spaceBefore: 8
+        spaceAfter: 8
+        fontSize: 90%
+
+    note:
+        backColor: #EAFFE6
+        borderColor: #C2DDBC
+        parent: admonition
+
+    warning:
+        backColor: #FFFBC6
+        borderColor: #DDD9A4
+        parent: admonition
+
+    seealso:
+        backColor: #FEFEFE
+        borderColor: #CCCCCC
+        parent: admonition
+
+pageTemplates:
+    erigones:
+        frames: []
+            [0%, 0%, 100%, 100%]
+        showHeader: true
+        showFooter: true
+        defaultFooter: ###Page###
+        defaultHeader: ###Section###

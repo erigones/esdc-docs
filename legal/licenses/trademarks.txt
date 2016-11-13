@@ -1,0 +1,19 @@
+
+Trademarks
+##########
+
+BSD is a registered trademark of UUnet Technologies, Inc.
+CentOS is a trademark of Red Hat, Inc. (http://www.redhat.com).
+Dell is a trademark of Dell Inc. (http://www.dell.com)
+HP is a trademark of Hewlett-Packard Company (http://www.hp.com).
+IBM is a registered trademark of International Business Machines Corporation (http://www.ibm.com).
+Linux is a registered trademark of Linus Torvalds (http://www.linuxfoundation.org).
+Microsoft, MS, MS Windows and Microsoft Windows are registered trademarks of Microsoft Corp (http://www.microsoft.com). 
+Oracle, Sun, Solaris and ZFS are trademarks or registered trademarks of Oracle and/or its affiliates (http://www.oracle.com).
+QEMU is a trademark of Fabrice Bellard (http://qemu.org).
+Zabbix is a registered trademark of Zabbix LLC (http://www.zabbix.com).
+
+
+Licenses
+########
+

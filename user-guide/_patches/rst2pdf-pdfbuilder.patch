@@ -1,0 +1,17 @@
+diff -Naur rst2pdf.old/pdfbuilder.py rst2pdf/pdfbuilder.py
+--- rst2pdf.old/pdfbuilder.py	2016-03-28 22:57:07.000000000 +0200
++++ rst2pdf/pdfbuilder.py	2016-03-28 22:54:25.000000000 +0200
+@@ -768,6 +768,13 @@
+     def depart_OddEvenNode(self, node):
+         pass
+ 
++    def visit_admonition(self, node, name=''):
++        if name:
++            node.insert(0, nodes.title(name, admonitionlabels[name]))
++
++    def visit_seealso(self, node):
++        self.visit_admonition(node, 'seealso')
++
+ # This is copied from sphinx.highlighting
+ def lang_for_block(source,lang):
+     if lang in ('py', 'python'):
