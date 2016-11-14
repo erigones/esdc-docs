@@ -1,8 +1,6 @@
 ------------------------------------------------------------
 Zabbix <http://www.zabbix.org>
 GPL 2 
-With following patches:
- - Support of trends.get method for API - https://support.zabbix.com/secure/attachment/24569/0001-Initial-support-for-Trends-API.patch from: https://support.zabbix.com/browse/ZBXNEXT-1193
 ----------
                     GNU GENERAL PUBLIC LICENSE
                        Version 2, June 1991

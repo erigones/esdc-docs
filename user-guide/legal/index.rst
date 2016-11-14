@@ -128,6 +128,7 @@ Used Software Components
 * `SystemRescueCd <https://www.system-rescue-cd.org>`__ - `GPL 2 <http://www.opensource.org/licenses/gpl-license.html>`__. Pre-installed ISO image.
 * `ZooKeeper <https://zookeeper.apache.org/>`__ - `Apache License 2.0 <https://github.com/apache/zookeeper/blob/master/LICENSE.txt>`__
 * `zookeepercli <https://github.com/outbrain/zookeepercli>`__ - `Apache License 2.0 <https://github.com/outbrain/zookeepercli/blob/master/LICENSE>`__
+* `mbuffer <http://www.maier-komor.de/mbuffer.html>`__ - `GPL 3 <http://www.maier-komor.de/gpl3.html>`__
 
 
 Trademarks
