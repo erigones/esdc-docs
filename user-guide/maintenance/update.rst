@@ -16,7 +16,7 @@ In the examples below the parameters have following meaning:
 .. note:: If you are using Danube Cloud Enterprise Edition, you should have received the update.key/update.crt files with your :ref:`compute node license <node_license>`.
     In case you haven't received the update key and certificate please contact ``license@erigones.com``.
 
-.. note:: If you are using Danube Cloud Community Edition -key and -cert parameters can be omitted from the 
+.. note:: If you are using Danube Cloud Community Edition, -key and -cert parameters can be omitted from the command line.
 
 
 Updating Compute Nodes
