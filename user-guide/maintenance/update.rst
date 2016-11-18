@@ -19,10 +19,24 @@ In the examples below the parameters have following meaning:
 .. note:: If you are using Danube Cloud Community Edition, -key and -cert parameters can be omitted from the command line.
 
 
+Updating Management Server
+==========================
+
+When updating Danube Cloud first the management server should be updated.
+
+.. note:: *file::* prefix must be used when passing files to *-key*/*-cert* parameters, otherwise the **es** will not parse them correctly.
+
+.. code-block:: bash
+
+    user@laptop:~ es login -username admin -password $PW
+
+    user@laptop:~ es set /system/update -version (version) -key file::/full/path/to/update.key -cert file::/full/path/to/update.crt
+
+
 Updating Compute Nodes
 ======================
 
-For compute node one additional parameter needs to be provided:
+For a compute node one additional parameter needs to be provided:
 
 * ``(hostname)`` - name of the node which you are updating.
 
@@ -30,14 +44,4 @@ For compute node one additional parameter needs to be provided:
 
     user@laptop:~ es login -username admin -password $PW
 
-    user@laptop:~ es set /system/node/(hostname)/update -version (version) -key update.crt -cert update.crt
-
-
-Updating Management Server
-==========================
-
-.. code-block:: bash
-
-    user@laptop:~ es login -username admin -password $PW
-
-    user@laptop:~ es set /system/update -version (version) -key update.key -cert update.crt
+    user@laptop:~ es set /system/node/(hostname)/update -version (version) -key file::/full/path/to/update.crt -cert file::/full/path/to/update.crt
