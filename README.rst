@@ -8,6 +8,7 @@ Links
 =====
 
 - Homepage: https://danubecloud.org
+- User guide: https://docs.danubecloud.org
 - Wiki: https://github.com/erigones/esdc-ce/wiki
 - Bug Tracker: https://github.com/erigones/esdc-docs/issues
 - Twitter: https://twitter.com/danubecloud
