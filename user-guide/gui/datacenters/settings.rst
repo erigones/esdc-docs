@@ -120,7 +120,7 @@ Virtual Server Settings
 .. image:: img/settings_server-2.png
 
 * **VMS_ZONE_ENABLED** - Whether to enable support for SunOS zones in this virtual data center.
-* **VMS_VM_OSTYPE_DEFAULT** - Default operating system type. One of: *Linux*, *Windows*, *BSD*, *SunOS*, *SunOS Zone*.
+* **VMS_VM_OSTYPE_DEFAULT** - Default operating system type. One of: *Linux VM*, *Windows VM*, *BSD VM*, *SunOS VM*, *SunOS Zone*.
 * **VMS_VM_MONITORED_DEFAULT** - Controls whether server synchronization with the monitoring system is enabled by default.
 * **VMS_VM_CPU_SHARES_DEFAULT** - Default value of the server's CPU shares, relative to other servers. A higher value indicates a higher priority for allocation of CPU time. The default value for all virtual servers is 100.
 * **VMS_VM_ZFS_IO_PRIORITY_DEFAULT** - Default value of the server's IO throttling priority, relative to other servers. A higher value indicates a higher priority for allocation of IO resources. The default value for all virtual servers is 100.

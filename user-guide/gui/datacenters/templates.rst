@@ -33,10 +33,10 @@ Template Parameters
 * **DC-bound?** - Whether a server template is bound to a specific virtual data center.
 * **OS Type** - Operating system type. One of:
 
-    * *Linux*
-    * *Windows*
-    * *BSD*
-    * *SunOS*
+    * *Linux VM*
+    * *Windows VM*
+    * *BSD VM*
+    * *SunOS VM*
     * *SunOS Zone*
 * **Description**
 

@@ -32,7 +32,7 @@ Dynamic Assignment of Monitoring Templates and Host Groups
 
 * **MON_ZABBIX_HOSTGROUPS_VM** - List of other existing Zabbix host groups, which will be used for all monitored servers in a virtual data center. Available placeholders are:
 
-    * ``{ostype}`` - ID type of the operating system (1 - *Linux*, 2 - *SunOS*, 3 - *BSD*, 4 - *Windows*, 5 - *SunOS Zone*).
+    * ``{ostype}`` - ID type of the operating system (1 - *Linux VM*, 2 - *SunOS VM*, 3 - *BSD VM*, 4 - *Windows VM*, 5 - *SunOS Zone*).
     * ``{ostype_text}`` - The type of the operating system with lowercase letters and spaces replaced with underscores (*linux*, *sunos*, *bsd*, *windows*, *sunos_zone*).
     * ``{disk_image}`` - The name of the disk image or an empty string.
     * ``{disk_image_abbr}`` - The name of the disk image, which is automatically changed in a way that version is removed (everything after the first comma, including comma) or an empty string.
@@ -42,7 +42,7 @@ Dynamic Assignment of Monitoring Templates and Host Groups
 
 * **MON_ZABBIX_TEMPLATES_VM** - List of existing Zabbix templates, which will be used for all monitored servers in a virtual data center. Available placeholders are:
 
-    * ``{ostype}`` - ID type of the operating system (1 - *Linux*, 2 - *SunOS*, 3 - *BSD*, 4 - *Windows*, 5 - *SunOS Zone*).
+    * ``{ostype}`` - ID type of the operating system (1 - *Linux VM*, 2 - *SunOS VM*, 3 - *BSD VM*, 4 - *Windows VM*, 5 - *SunOS Zone*).
     * ``{ostype_text}`` - The type of the operating system with lowercase letters and spaces replaced with underscores (*linux*, *sunos*, *bsd*, *windows*, *sunos_zone*).
     * ``{disk_image}`` - The name of the disk image or an empty string.
     * ``{disk_image_abbr}`` - The name of the disk image, which is automatically changed in a way that version is removed (everything after first comma, including comma) or an empty string.
