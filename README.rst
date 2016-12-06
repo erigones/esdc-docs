@@ -15,6 +15,10 @@ Links
 - Mailing list: `danubecloud@googlegroups.com <danubecloud+subscribe@googlegroups.com>`__
 - IRC: `irc.freenode.net#danubecloud <https://webchat.freenode.net/#danubecloud>`__
 
+More info
+=========
+
+Information regarding generation of the documentation may be found `here <user-guide/README.rst>`_
 
 License
 =======
@@ -34,8 +38,3 @@ License
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
-
-More info
-=========
-
-Information regarding generation of the documentation may be found `here <user-guide/README.rst>`
