@@ -4,6 +4,11 @@ Danube Cloud :: Documentation
 Danube Cloud user guide available at https://docs.danubecloud.org
 
 
+More info
+=========
+
+Information regarding generation of the documentation may be found `here <user-guide/README.rst>`_
+
 Links
 =====
 
@@ -14,11 +19,6 @@ Links
 - Twitter: https://twitter.com/danubecloud
 - Mailing list: `danubecloud@googlegroups.com <danubecloud+subscribe@googlegroups.com>`__
 - IRC: `irc.freenode.net#danubecloud <https://webchat.freenode.net/#danubecloud>`__
-
-More info
-=========
-
-Information regarding generation of the documentation may be found `here <user-guide/README.rst>`_
 
 License
 =======
