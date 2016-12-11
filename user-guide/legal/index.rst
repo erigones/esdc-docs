@@ -129,6 +129,7 @@ Used Software Components
 * `ZooKeeper <https://zookeeper.apache.org/>`__ - `Apache License 2.0 <https://github.com/apache/zookeeper/blob/master/LICENSE.txt>`__
 * `zookeepercli <https://github.com/outbrain/zookeepercli>`__ - `Apache License 2.0 <https://github.com/outbrain/zookeepercli/blob/master/LICENSE>`__
 * `mbuffer <http://www.maier-komor.de/mbuffer.html>`__ - `GPL 3 <http://www.maier-komor.de/gpl3.html>`__
+* `Ansible <https://www.ansible.com>`__ - `GPL 3 <https://raw.githubusercontent.com/ansible/ansible/devel/COPYING>`__
 
 
 Trademarks
