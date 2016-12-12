@@ -33,10 +33,10 @@ ISO Image Parameters
 * **OS Type** - Operating system type. One of:
 
     * *(none)* - ISO image can be used by any KVM virtual server.
-    * *Linux*
-    * *Windows*
-    * *BSD*
-    * *SunOS*
+    * *Linux VM*
+    * *Windows VM*
+    * *BSD VM*
+    * *SunOS VM*
 * **Description**
 
 

@@ -38,10 +38,10 @@ Image Parameters
 * **Size** - Minimal virtual disk size required by a disk image (read-only).
 * **OS Type** - Operating system type (read-only). One of:
 
-    * *Linux*
-    * *Windows*
-    * *BSD*
-    * *SunOS*
+    * *Linux VM*
+    * *Windows VM*
+    * *BSD VM*
+    * *SunOS VM*
     * *SunOS Zone*
 * **Status** - Current state of a disk image (read-only). One of:
 

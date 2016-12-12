@@ -28,10 +28,10 @@ Virtual Server Parameters
 * **Template** - Template. 
 * **OS Type** - Operating system type. One of:
 
-    * *Linux*
-    * *Windows*
-    * *BSD*
-    * *SunOS*
+    * *Linux VM*
+    * *Windows VM*
+    * *BSD VM*
+    * *SunOS VM*
     * *SunOS Zone*
 * **vCPUs** - Number of virtual CPUs assigned to the virtual server.
 * **RAM** - The amount of RAM (MB) assigned to the virtual server.
