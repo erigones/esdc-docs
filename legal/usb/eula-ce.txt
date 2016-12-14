@@ -1,4 +1,4 @@
-﻿Danube Cloud Community Edition (CE)
+Danube Cloud Community Edition (CE)
 --------------------------------------------------------------------------------
 Copyright (c) 2016 Erigones, s. r. o.
 
