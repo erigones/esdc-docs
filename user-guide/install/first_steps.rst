@@ -25,5 +25,5 @@ You, the *Danube Cloud* administrator, should make yourself familiar with the :r
 
 - :ref:`Updating Danube Cloud <update_esdc>`.
 
-- :ref:`Changing the SSL certificate <change_ssl>` for the *Danube Cloud* web management services.
+- :ref:`Changing SSL certificate <change_ssl>` for the *Danube Cloud* web management services.
 
