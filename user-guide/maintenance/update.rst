@@ -3,11 +3,11 @@
 Updating Danube Cloud
 #####################
 
-At the moment, Danube Cloud can be updated only using the :ref:`API<API>`. **es** command line tool is used to perform API calls.
+At the moment, *Danube Cloud* can be updated only using the :ref:`API<API>`. The **es** command line tool is used to perform API calls.
 
 In the examples below the parameters have following meaning:
 
-* ``(version)`` - version of the Danube Cloud software to which system should be updated. This can be either git tag or SHA1 of the git commit.
+* ``(version)`` - version of the *Danube Cloud* software to which system should be updated. This can be either git tag or SHA1 of the git commit.
 
 * ``update.key`` - X509 private key file in PEM format used for authentication against EE git server.
 
@@ -22,7 +22,7 @@ In the examples below the parameters have following meaning:
 Updating Management Server
 ==========================
 
-When updating Danube Cloud first the management server should be updated.
+When updating *Danube Cloud* first the management server should be updated.
 
 .. note:: *file::* prefix must be used when passing files to *-key*/*-cert* parameters, otherwise the **es** will not parse them correctly.
 
