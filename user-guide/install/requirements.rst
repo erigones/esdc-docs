@@ -31,7 +31,7 @@ Servers using *Danube Cloud* are required to have at least **one network interfa
 Network
 #######
 
-.. note:: The installation procedure requires **Internet access** and at least one **DNS server** accessible from the *admin* network, which is used for compute nodes and central web management intercommunication purposes.
+The installation procedure and run-time of *Danube Cloud* requires **Internet access**. A **DNS server** and a **NTP server** must be accessible from the *admin* network, which is used for compute nodes and central web management intercommunication purposes.
 
 Switch
 ======
@@ -43,6 +43,8 @@ Switch
 
 Router / Firewall / VPN
 =======================
+
+A router may be required to fully leverage all network capabilities of *Danube Cloud* and effectively use networking inside :ref:`virtual data centers <datacenters>`. A router is **not required** for the installation procedure and can be deployed later as one of following options:
 
 * **Access Zone** - software router (Solaris zone).
     * IPFILTER (IPF)
@@ -64,6 +66,9 @@ Router / Firewall / VPN
 
 Data Storage
 ############
+
+Every compute node must have a local (direct-attached) storage available.
+The head node requires a local storage with at least **100 GB** of size and the compute node should have at least **10 GB** of storage available.
 
 Local or Direct-attached Storage (DAS)
 ======================================
@@ -108,7 +113,7 @@ Disk Arrays (RAID)
 Unsupported Hardware
 ********************
 
-.. warning:: Currently, USB version 3 is not supported, and you may have to disable USB 3.0 support in the BIOS configuration.
+This section lists some of the currently unsupported hardware.
 
-.. warning:: Some Intel® processors, which are using the C-States feature, can cause an error that may seriously endanger the run of a working compute node. The error is treated in the system, but you are advised to disable C-States in the BIOS configuration.
+.. seealso:: Some hardware compatibility issues may be overcomed by adjusting the :ref:`BIOS configuration settings<bios>` of the server.
 

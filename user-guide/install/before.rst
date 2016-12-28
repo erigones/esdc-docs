@@ -85,6 +85,8 @@ Before you start any re-installation of a head node, please make sure that the `
 
 .. warning:: If you don't remove the ``config`` file from the USB flash drive, the head node installation will fail.
 
+.. warning:: The root of the USB flash drive also contains a directory named ``config.inc``. Do not remove this directory.
+
 There are several ways how to reinstall a node. Reinstall requires the *zones* zpool to be removed from local disks before proceeding. This can be done in one of the following ways:
 
 * Add a boot parameter ``,destroy_zpools=true`` into the Grub boot loader. You can edit boot parameters in Grub menu by selecting an apropriate boot option and pressing ``e`` two times on your keyboard. Confirm your changes by pressing ``Enter`` and ``b``. The compute node will continue to boot up and the *zones* zpool will be destroyed before new clean install. On the *head node*, please don't forget to to manually delete the ``config`` configuration file before any reinstall.
@@ -118,6 +120,32 @@ Below is an example port map for interconnection of two *Danube Cloud* nodes (on
 .. image:: img/portmap.png
 
 :download:`Example port map in XLSX format (Excel spreadsheet) <portmap.xlsx>`.
+
+
+.. _bios:
+
+BIOS Configuration
+##################
+
+The following settings should be configured in BIOS configuration of your compute node (if available):
+
+- Enable hardware virtualization (KVM) support.
+
+    .. warning:: Hardware virtualization (KVM) support must enabled at least on the head node.
+
+- Enable ACPI SRAT. If ACPI SRAT is not available in your BIOS configuration, disable NUMA/Node interleaving. Otherwise the following message may appear during boot time:
+
+    .. code-block:: text
+
+        WARNING: Couldn't read ACPI SRAT table from BIOS. lgrp support will be limited to one group.
+
+- Disable CPU C-States.
+
+    .. note:: Some Intel® processors, which are using the C-States feature can cause an error that may seriously endanger correct functioning of a compute node. The error is treated in the system, but you are advised to disable C-States in the BIOS configuration.
+
+- Disable USB 3 support.
+
+    .. warning:: Currently, USB version 3 is not supported and must be disabled, otherwise the operating system initialization may fail.
 
 
 .. _ipmi_over_lan:

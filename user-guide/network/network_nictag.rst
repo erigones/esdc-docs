@@ -3,7 +3,7 @@
 NIC Tags
 ********
 
-NIC tags serve for mapping :ref:`logical networks <network_logical>` to physical network interfaces. *Danube Cloud* comes with the **admin** NIC tag preconfigured, which is used for the **admin** network.
+NIC tags serve for mapping :ref:`virtual networks <network_virtual>` to physical network interfaces. *Danube Cloud* comes with the **admin** NIC tag preconfigured, which is used for the **admin** network.
 
 For other use cases, it is possible to add following NIC tags:
 
@@ -11,9 +11,9 @@ For other use cases, it is possible to add following NIC tags:
 - internal
 - storage
 
-.. note:: **external**, **internal**, **storage** logical networks are preconfigured in the *Danube Cloud* system. However, it is up to the data center administrator to do the proper configuration on the compute nodes.
+.. note:: **external**, **internal**, **storage** NIC tags are preconfigured in the *Danube Cloud* system. However, it is up to the data center administrator to do the proper configuration on the compute nodes.
 
-.. note:: After installing *Danube Cloud*, it is recommended to configure the **external** NIC tag. (Even if it points to the same physical network interface/link aggregation as the **admin** NIC tag. If new network interfaces are added to the compute node in the future, it will be easier to just modify the NIC tag mapping, and not the configuration of every logical network).
+.. note:: After installing *Danube Cloud*, it is recommended to configure the **external** NIC tag. (Even if it points to the same physical network interface/link aggregation as the **admin** NIC tag. If new network interfaces are added to the compute node in the future, it will be easier to just modify the NIC tag mapping, and not the configuration of every virtual network).
 
 
 Managing NIC Tags

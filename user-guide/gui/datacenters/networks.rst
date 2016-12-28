@@ -18,7 +18,7 @@ A virtual Network is essentially an IPv4 subnet used for physical and logical se
 
 .. note:: In the upper right corner is a button labeled ``Show All``, which can be used to display all networks, including networks that are not associated with the current working virtual data center.
 
-.. seealso:: More information about logical networks and their connection to the physical network can be found in a :ref:`separate chapter about networking <network_logical>`.
+.. seealso:: More information about virtual networks and their connection to the physical network can be found in a :ref:`separate chapter about networking <network_virtual>`.
 
 
 Network Parameters
@@ -45,14 +45,18 @@ Managing a Network
 
 A network can be created, updated and deleted by a *SuperAdmin* or by a *NetworkAdmin* (DC-bound network only). A network used by at least one virtual machine cannot be deleted. However, its *Access* attribute can be changed to *Deleted*, thus the network will be hidden and unusable for new virtual servers.
 
+
     .. image:: img/add_network.png
+
+
+.. note:: A virtual network is connected to the physical network interfaces on compute nodes via NIC tags. :ref:`NIC tags must be configured on every compute node in advance <network>`.
 
 Advanced Network Settings
 -------------------------
 
     .. image:: img/add_network_details.png
 
-* **NIC Tag** - NIC tag or device name configured on a compute node. One of: *admin*, *internal*, *external* and *storage*.
+* **NIC Tag** - :ref:`NIC tag <network_nictag>` configured on a compute node. One of: *admin*, *internal*, *external* and *storage*.
 * **Resolvers** - Comma-separated list of IPv4 addresses that can be used as DNS resolvers by virtual servers using this network.
 * **PTR domain** - Existing in-addr.arpa domain name used for creating PTR associations with virtual servers.
 * **DHCP passthrough** - When true, IP addresses for this network are managed by an external DHCP service.

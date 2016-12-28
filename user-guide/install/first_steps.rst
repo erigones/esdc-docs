@@ -14,8 +14,12 @@ After you have successfully installed your first head node, you should log in in
 - Update :ref:`virtual data center settings <dc_settings>` for the *main* virtual data center.
     - Go to *Datacenter* in the Main menu and select *Settings* item in the *Datacenter* menu, to start editing settings.
 
-- You may also want to :ref:`import some server images <images>` and :ref:`create some networks and IP addresses <networks>` before you create your first virtual server.
-    - *Images* and *Networks* can be found under *Datacenter* item in the Main menu.
+- Configure at least one other :ref:`NIC tag on your compute node <network>` and :ref:`create some networks and IP addresses <networks>`.
+    - NIC tags must be :ref:`configured manually on the compute node <network_nictag>`.
+    - *Networks* can be found under the *Datacenter* item in the Main menu.
+
+- You may also want to :ref:`import some server images <images>` before you create your first virtual server.
+    - *Images* can be found under the *Datacenter* item in the Main menu.
 
 - Virtual servers should be logically grouped into virtual data centers so you should :ref:`create a virtual data center <dcs>` for each project, customer, etc.
     - Go to *Datacenter* -> *Datacenters* and start creating/managing virtual data centers.
