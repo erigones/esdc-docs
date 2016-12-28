@@ -131,9 +131,9 @@ The following settings should be configured in BIOS configuration of your comput
 
 - Enable hardware virtualization (KVM) support.
 
-    .. warning:: Hardware virtualization (KVM) support must enabled on the head node.
+    .. warning:: Hardware virtualization (KVM) support must enabled at least on the head node.
 
-- Disable NUMA/Node interleaving. If not disabled the follow message may appear during boot time:
+- Enable ACPI SRAT. If ACPI SRAT is not available in your BIOS configuration disable NUMA/Node interleaving. Otherwise the following message may appear during boot time:
 
     .. code-block:: text
 
@@ -141,7 +141,7 @@ The following settings should be configured in BIOS configuration of your comput
 
 - Disable CPU C-States.
 
-    .. note:: Some Intel® processors, which are using the C-States feature, can cause an error that may seriously endanger the run of a working compute node. The error is treated in the system, but you are advised to disable C-States in the BIOS configuration.
+    .. note:: Some Intel® processors, which are using the C-States feature can cause an error that may seriously endanger correct functioning of a compute node. The error is treated in the system, but you are advised to disable C-States in the BIOS configuration.
 
 - Disable USB 3 support.
 

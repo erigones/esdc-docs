@@ -56,7 +56,7 @@ Advanced Network Settings
 
     .. image:: img/add_network_details.png
 
-* **NIC Tag** - :ref:`NIC tag <network_nictag>` or device name configured on a compute node. One of: *admin*, *internal*, *external* and *storage*.
+* **NIC Tag** - :ref:`NIC tag <network_nictag>` configured on a compute node. One of: *admin*, *internal*, *external* and *storage*.
 * **Resolvers** - Comma-separated list of IPv4 addresses that can be used as DNS resolvers by virtual servers using this network.
 * **PTR domain** - Existing in-addr.arpa domain name used for creating PTR associations with virtual servers.
 * **DHCP passthrough** - When true, IP addresses for this network are managed by an external DHCP service.
