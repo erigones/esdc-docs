@@ -86,7 +86,7 @@ Advanced Compute Node Settings
 
 * **CPUs coefficient** - Coefficient used to calculate the total number of compute node's virtual CPUs usable for virtual servers by multiplying with the number of physical CPU cores.
 
-    .. warning:: A CPU coefficient larger than **1** may cause an unexpected slowdown of virtual servers and it is necessary to actively monitor the overall CPU load of affected compute nodes. If necessary, it is required to lower the CPU coefficient and move some virtual servers to another compute node.
+    .. warning:: A CPU coefficient larger than **1** may cause an unexpected slowdown of virtual servers in case the compute node is over-provisioned with large number of CPU intensive virtual servers. It is recommended to actively monitor the overall CPU load of affected compute nodes. If necessary, it is required to lower the CPU coefficient and move some virtual servers to another compute node.
 
 * **RAM coefficient** - Coefficient used to calculate the total amount of compute node's RAM usable for virtual servers by multiplying with the actual physical RAM size. The coefficient must be lower than 1 because the compute node's RAM is also used by the operating system of the hypervisor, KVM overhead and file system read cache (ARC).
 
