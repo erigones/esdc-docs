@@ -133,7 +133,7 @@ The following settings should be configured in BIOS configuration of your comput
 
     .. warning:: Hardware virtualization (KVM) support must enabled at least on the head node.
 
-- Enable ACPI SRAT. If ACPI SRAT is not available in your BIOS configuration disable NUMA/Node interleaving. Otherwise the following message may appear during boot time:
+- Enable ACPI SRAT. If ACPI SRAT is not available in your BIOS configuration, disable NUMA/Node interleaving. Otherwise the following message may appear during boot time:
 
     .. code-block:: text
 
