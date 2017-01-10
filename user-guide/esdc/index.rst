@@ -20,9 +20,7 @@ Links
 
 - Danube Cloud User Guide (for both Enterprise Edition and Community Edition): https://docs.danubecloud.org
 
-- Danube Cloud User Guide source: https://github.com/erigones/esdc-docs
-
-- Danube Cloud Community Edition development: https://github.com/erigones/esdc-ce/wiki
+- Danube Cloud Development and Contributing: https://developer.danubecloud.org
 
     .. note:: If you have found a bug, please don't hesitate and report it in the main bug tracker: https://github.com/erigones/esdc-ce/issues.
 
