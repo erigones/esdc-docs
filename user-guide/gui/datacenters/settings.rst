@@ -30,6 +30,7 @@ Danube Cloud Modules
 * **VMS_VM_BACKUP_ENABLED** - :ref:`Backups <vm_backups>`.
 * **VMS_VM_REPLICATION_ENABLED** - :ref:`Replication <vm_replication>`.
 * **MON_ZABBIX_ENABLED** - :ref:`Monitoring <monitoring>`.
+* **DNS_ENABLED** - :ref:`FAQ <dns>` .
 * **SUPPORT_ENABLED** - :ref:`Support <add_ticket>`.
 * **REGISTRATION_ENABLED** - Registration.
 * **PAYMENTS_ENABLED** - Payments and billing.
@@ -180,6 +181,8 @@ Global Disk Image Settings
 ==========================
 
 * **VMS_IMAGE_REPOSITORIES** - Object (key=name, value=URL) with remote disk image repositories available in every virtual data center.
+* **VMS_IMAGE_SOURCES** - List of additional IMGAPI sources that will be set on all compute nodes.
+* **VMS_IMAGE_VM** - Global image server - primary IMGAPI source on all compute nodes. Empty value means that most of the image-related operations will be performed only in the DB.
 
 
 .. _dc_iso_image_settings:

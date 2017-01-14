@@ -57,6 +57,8 @@ Managing an Image
 
 A disk image can be created, updated or deleted by a *SuperAdmin* or by a *ImageAdmin* (DC-bound image only). A disk image can be created from a snapshot of a virtual server or can be imported from a remote location. The import operation can be performed only by a *SuperAdmin* or a *DCAdmin* user with *ImageAdmin* **and** *ImageImportAdmin* permissions. An image used by at least one virtual machine cannot be deleted. However, its *Access* attribute can be changed to *Deleted*, thus the image will be hidden and unusable for new virtual servers.
 
+.. note:: Management of server images is related to the :ref:`VMS_IMAGE_VM <dc_image_settings>` global setting. With no image server configured all operations will be performed at database level only.
+
 .. seealso:: Creating an image from a server snapshot is thoroughly explained in a :ref:`separate chapter <image_create>` dedicated to virtual server :ref:`snapshots <snapshot>`.
 
 .. image:: img/images_update1.png
