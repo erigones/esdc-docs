@@ -16,7 +16,7 @@ Virtual data centers and the *Danube Cloud* system itself can be configured via 
 
 .. note:: A newly created virtual data center inherits all settings from the default *main* data center.
 
-.. note:: In the upper right corner is a button labeled ``Show All``, which can be used to display all active settings, including global options.
+.. note:: In the upper right corner is a button labeled ``Show All``, which can be used to display all settings, including global options.
 
 
 .. _dc_modules:
