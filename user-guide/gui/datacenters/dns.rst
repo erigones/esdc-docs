@@ -13,7 +13,7 @@ The DNS feature included in *Danube Cloud* enables a simple management of DNS do
 ------------------------------- ----------------
 *SuperAdmin*                    read-write
 *DCAdmin*                       read-only
-*DnsAdmin*                      read-write (DC-bound domains only)
+*DnsAdmin*                      read-write on DNS records (DC-bound domains only)
 =============================== ================
 
 .. note:: In the upper right corner is a button labeled ``Show All``, which can be used to display all domains, including domains that are not associated with the current working virtual data center.
@@ -36,7 +36,7 @@ DNS Domain Parameters
 Managing a DNS Domain
 =====================
 
-A DNS domain can be created, updated and deleted by a *SuperAdmin* or by a *DnsAdmin* (DC-bound domain only).
+A DNS domain can be created, updated and deleted only by a *SuperAdmin*.
 
 .. image:: img/domain_update.png
 
