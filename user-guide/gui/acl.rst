@@ -42,5 +42,5 @@ A Permission represents an authorization for using a certain feature of the *Dan
 * **TemplateAdmin** - Authorization to manage :ref:`templates <templates>` in a virtual data center. *DCAdmin* role is required.
 * **IsoAdmin** -  Authorization to manage :ref:`ISO images <iso_images>` in a virtual data center. *DCAdmin* role is required.
 * **UserAdmin** - Authorization to manage :ref:`users <users>` in a virtual data center. *DCAdmin* role is required.
-* **DnsAdmin** - Authorization to manage :ref:`DNS domains and records <dns>` in a virtual data center. *DCAdmin* role is required.
+* **DnsAdmin** - Authorization to manage :ref:`DNS records <dns>` in a virtual data center. *DCAdmin* role is required.
 
