@@ -24,6 +24,7 @@ Compute Node Installation
     * Primary DNS server.
     * Secondary DNS server.
     * Domain name.
+    * System hostname - fully qualified domain name.
     * DNS search domain.
 
     .. image:: img/cn-06-dns.png
