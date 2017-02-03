@@ -64,7 +64,7 @@ master_doc = 'index'
 
 # General substitutions.
 project = u'Danube Cloud'
-copyright = u'2013-2016, Erigones, s. r. o.'
+copyright = u'2013-2017, Erigones, s. r. o.'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
