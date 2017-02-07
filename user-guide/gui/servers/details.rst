@@ -114,7 +114,7 @@ Virtual Server Actions
 
     .. note:: It is possible to perform the migration only between node storages (zpools) with the same name. Migration between node storages with different names can be performed via the :ref:`API <api>`.
 * **Replication** - :ref:`Create or manage replicas of this virtual server <vm_replication>`. The virtual server must be in a *running* or *stopped* state (*Danube Cloud Enterprise Edition*).
-* **Boot CD** - Start the virtual server from an ISO image (KVM only). The virtual server must be in a *stopped* state.
+* **Boot CD** - Start the virtual server from an ISO image (KVM only). The virtual server must be in a *stopped* state. For instructions on how to add/manage ISO images see :ref:`Managing an ISO Image <managing_iso_image>`.
 
     .. image:: img/vm_boot_cd.png
 * **Factory reset** - Destroy and recreate the virtual server on compute node. The virtual server must be in a *stopped* state.
