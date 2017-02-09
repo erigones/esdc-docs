@@ -16,7 +16,7 @@ What to do
 
 * If possible, use dedicated device for hosting *ZFS intent log*. This will boost the performance of synchronous writes and virtual machines in *Danube Cloud* will benefit.
 
-* When not sure which RAID type to use, go for **stripped mirror**, which makes a good compromise between speed and redundancy. If more capacity is needed, **RAIDZ2** provides excellent compromise between capacity and redundancy.
+* When not sure which RAID type to use, go for **stripped mirror**, which makes a good trade-off between speed and redundancy. If more capacity is needed, **RAIDZ2** provides an excellent trade-off between capacity and redundancy.
 
 * When using RAIDZ, choose stripe width based on your IOPS needs and the amount of space you are willing to use for parity information.
 
