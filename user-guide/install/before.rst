@@ -147,6 +147,10 @@ The following settings should be configured in BIOS configuration of your comput
 
     .. warning:: Currently, USB version 3 is not supported and must be disabled, otherwise the operating system initialization may fail.
 
+- Enable legacy boot support.
+
+    .. warning:: UEFI boot is not supported at the moment.
+
 
 .. _ipmi_over_lan:
 
