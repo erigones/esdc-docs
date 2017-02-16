@@ -44,4 +44,6 @@ For a compute node one additional parameter needs to be provided:
 
     user@laptop:~ es login -username admin -password $PW
 
+    user@laptop:~ es set /node/(hostname)/define -status 1  # First set the node to offline state
     user@laptop:~ es set /system/node/(hostname)/update -version (version) -key file::/full/path/to/update.crt -cert file::/full/path/to/update.crt
+    user@laptop:~ es set /node/(hostname)/define -status 2  # Set the node's status back to online state
