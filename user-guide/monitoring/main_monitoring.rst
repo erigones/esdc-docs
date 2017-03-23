@@ -69,7 +69,7 @@ The following host groups are required for the correct functioning of the monito
 Templates
 +++++++++
 
-The following Zabbix monitoring templates are required for the correct functioning of the monitoring and it is forbidden to use them:
+The following Zabbix monitoring templates are required for the correct functioning of the monitoring system and it is forbidden to modify them:
 
 * t_icmp
 * t_zabbix-agent
@@ -124,16 +124,6 @@ The following Zabbix monitoring templates are required for the correct functioni
 * t_role-mgmt
 * t_role-mon
 * t_role-compute
-
-The following Zabbix templates can be used for other monitoring purposes, but cannot be changed:
-
-* t_icmp
-* t_zabbix-agent
-* t_erigones-zone
-* t_linux
-* t_linux-disk
-* t_zabbix-proxy
-* t_zabbix-server
 
 .. note:: Upon request, `Erigones <http://www.erigones.com>`__ is able to create monitoring templates for monitoring of specific hardware configuration.
 
