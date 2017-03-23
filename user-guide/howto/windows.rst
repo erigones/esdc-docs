@@ -90,7 +90,7 @@ Before creating a snapshot with *Freeze filesystem* attribute enabled, a "file s
 
         .. image:: img/dcomcnfg_properties.png
 
-* Download and install QEMU Guest Agent from http://download.stratus.com/ee/eetools/qemu-ga-stratus.exe.
+* Download and install QEMU Guest Agent from https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-qemu-ga/ or from http://download.stratus.com/ee/eetools/qemu-ga-stratus.exe.
 
 * Restart the virtual server.
 
