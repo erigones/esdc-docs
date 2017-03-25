@@ -151,10 +151,13 @@ Replication Settings
 ~~~~~~~~~~~~~~~~~~~~
 
 * **Hostname** - Hostname of the master VM (read-only).
-* **Replica name** - Name of the replication configuration.
+* **Replica Name** - Name of the replication configuration.
 * **Target Node** - Destination compute node.
 * **Sleep Time** - Number of seconds to pause between two replication operations.
 * **Enabled** - Whether the replication is enabled.
+* **Reserve Resources** - Whether to reserve the virtual machine's vCPU and RAM resources on target compute node. The default is to reserve the VM's resources unless changed in the :ref:`virtual server DC settings <dc_vm_settings>`.
+
+    .. note::  When disabled, the resources must be available (and will be reserved) before the failover action.
 
 Replication Actions
 ~~~~~~~~~~~~~~~~~~~
