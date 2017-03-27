@@ -13,7 +13,7 @@ A Compute Node is a set of computing resources (CPU, RAM, HDD), which are tied t
 *SuperAdmin*                    read-write
 =============================== ================
 
-.. warning:: A compute node must be switched to the *offline* state before initiating its shutdown or restart procedure.
+.. warning:: A compute node must be switched to the *maintenance* state before initiating its shutdown or restart procedure.
 
 .. note:: Shutdown or restart of a compute node initiates a shutdown of all virtual servers running on the compute node (virtual servers must have a functional ACPI daemon running). After booting the compute node, the virtual servers will return to the same state as they were before the shutdown or restart of the compute node.
 
@@ -62,7 +62,7 @@ Compute Node Parameters
 * **Status** - One of:
 
     * *online*
-    * *offline*
+    * *maintenance*
     * *unreachable*
     * *unlicensed*
 
