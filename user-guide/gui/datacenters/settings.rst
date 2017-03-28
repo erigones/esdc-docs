@@ -151,12 +151,12 @@ Virtual Server Settings
 * **VMS_VM_SNAPSHOT_LIMIT_AUTO** - Maximum number of automatic snapshots per server.
 * **VMS_VM_SNAPSHOT_LIMIT_MANUAL** - Maximum number of manual snapshots per server.
 * **VMS_VM_SNAPSHOT_LIMIT_MANUAL_DEFAULT** - Predefined manual snapshot limit for new servers.
-* **VMS_VM_SNAPSHOT_SIZE_LIMIT** - Maximum size of all snapshots per server.
-* **VMS_VM_SNAPSHOT_SIZE_LIMIT_DEFAULT** - Predefined snapshot size limit for new servers.
-* **VMS_VM_SNAPSHOT_DC_SIZE_LIMIT** - Maximum size of all snapshots in this virtual data center.
+* **VMS_VM_SNAPSHOT_SIZE_LIMIT** - Maximum size (MB) of all snapshots per server.
+* **VMS_VM_SNAPSHOT_SIZE_LIMIT_DEFAULT** - Predefined snapshot size limit (MB) for new servers.
+* **VMS_VM_SNAPSHOT_DC_SIZE_LIMIT** - Maximum size (MB) of all snapshots in this virtual data center.
 * **VMS_VM_BACKUP_DEFINE_LIMIT** - Maximum number of backup definitions per server.
 * **VMS_VM_BACKUP_LIMIT** - Upper retention limit used for new backup definitions.
-* **VMS_VM_BACKUP_DC_SIZE_LIMIT** - Maximum size of all backups in this virtual data center.
+* **VMS_VM_BACKUP_DC_SIZE_LIMIT** - Maximum size (MB) of all backups in this virtual data center.
 * **VMS_VM_BACKUP_COMPRESSION_DEFAULT** - Predefined compression algorithm for new file backups. One of: *off* (no compression), *gzip* (fast compression), *bzip2* (more effective compression).
 
 
