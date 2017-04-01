@@ -16,7 +16,7 @@ Virtual Server Monitoring Synchronization with the Monitoring Server
 
     .. code-block:: bash
 
-      [user@laptop ~] es set /vm/www.test.tld/define -dc mydc -monitored_internal true
+      user@laptop:~ $ es set /vm/www.test.tld/define -dc mydc -monitored_internal true
 
 
 .. _dc_vm_monitoring_advanced:
