@@ -10,5 +10,5 @@ Installation
     head-node
     compute-node
     licenses
-    first_steps
-    admin_dc
+    first-steps
+    admin-dc

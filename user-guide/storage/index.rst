@@ -9,9 +9,9 @@ Storage Pools
 .. toctree::
    :maxdepth: 1
 
-   storage_redundancy
-   storage_accelerate
-   storage_zfs_best_practices
-   storage_newpool
-   storage_backup
+   redundancy
+   acceleration
+   zfs-best-practices
+   newpool
+   backup
 

@@ -12,7 +12,7 @@ Virtual Data Centers
     networks
     images
     templates
-    iso_images
+    iso-images
     users
     groups
     dns

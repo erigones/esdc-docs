@@ -8,5 +8,5 @@ Support
 
     docs
     faq
-    add_ticket
+    add-ticket
 

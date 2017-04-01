@@ -8,4 +8,4 @@ This chapter lists some common administrative tasks required to keep your *Danub
     :maxdepth: 2
 
     update
-    change_ssl
+    change-ssl
