@@ -7,5 +7,5 @@ HOWTOs
 
    windows
    import
-   access_zone
+   access-zone
    mdata
