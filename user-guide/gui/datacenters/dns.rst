@@ -27,6 +27,10 @@ DNS Domain Parameters
 
     * *Public* - DNS domain is usable by all users in this virtual data center.
     * *Private* - DNS domain is usable by *SuperAdmins*, *DCAdmins*, and owners of this domain.
+* **Type** - PowerDNS domain type which determines how records are replicated. One of:
+
+    * *MASTER* - PowerDNS will use DNS protocol messages to communicate changes with slaves.
+    * *NATIVE* - PowerDNS will use database replication between master DNS server and slave DNS servers.
 * **Owner** - DNS domain owner.
 * **DC-bound?** - Whether a DNS domain is bound to a specific virtual data center.
 * **Records** - Number of DNS records within a DNS domain and a link to DNS record management (read-only).
