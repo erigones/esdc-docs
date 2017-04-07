@@ -146,12 +146,10 @@ OpenVPN Installation and Configuration
 * Create PKI certificates for the OpenVPN server.
 
     .. code-block:: bash
-
-        [root@demo-access ~] source vars
-        [root@demo-access ~] ./clean-all
-        [root@demo-access ~] ./build-ca
-        [root@demo-access ~] ./build-key-server server
-        [root@demo-access ~] ./build-dh
+        [root@demo-access ~] ./easyrsa init-pki
+        [root@demo-access ~] ./easyrsa build-ca
+        [root@demo-access ~] ./easyrsa build-server-full server
+        [root@demo-access ~] ./easyrsa gen-dh
         [root@demo-access ~] ln -snf \
         /opt/local/etc/openvpn/easy-rsa/keys /opt/local/etc/openvpn/keys
 
@@ -177,10 +175,11 @@ OpenVPN Installation and Configuration
         verb 3
         tls-server
         log-append /var/log/openvpn.log
-        dh /opt/local/etc/openvpn/keys/dh2048.pem
-        ca /opt/local/etc/openvpn/keys/ca.crt
-        cert /opt/local/etc/openvpn/keys/server.crt
-        key /opt/local/etc/openvpn/keys/server.key
+
+        dh /opt/local/etc/openvpn/keys/pki/dh.pem
+        ca /opt/local/etc/openvpn/keys/pki/ca.crt
+        cert /opt/local/etc/openvpn/keys/pki/issued/server.crt
+        key /opt/local/etc/openvpn/keys/pki/private/server.key
 
         push "route 172.16.0.0 255.255.255.0"
 
@@ -199,8 +198,9 @@ Creating a VPN Client Certificate and Configuring a VPN Client
     .. code-block:: bash
     
         [root@demo-access ~] cd /opt/local/etc/openvpn/easy-rsa
-        [root@demo-access ~] source ./vars
-        [root@demo-access ~] ./build-key firstname.lastname
+        [root@demo-access ~] ./easyrsa gen-req firstname.lastname
+        [root@demo-access ~] ./easyrsa sign-req firstname.lastname
+
 
 * Create a VPN client configuration. Please add the content of client's certificate and key to the configuration.
 
@@ -215,15 +215,15 @@ Creating a VPN Client Certificate and Configuring a VPN Client
         nobind
         comp-lzo
         <ca>
-        — Contents of ca.crt from /opt/local/etc/openvpn/keys/ca.crt
+        — Contents of ca.crt from /opt/local/etc/openvpn/keys/pki/ca.crt
         </ca>
         <cert>
         - Contents of firstname.lastname.crt \
-        from /opt/local/etc/openvpn/keys/firstname.lastname.crt
+        from /opt/local/etc/openvpn/keys/pki/issued/firstname.lastname.crt
         </cert>
         <key>
         - Contents of firstname.lastname.key \
-        from /opt/local/etc/openvpn/keys/firstname.lastname.key
+        from /opt/local/etc/openvpn/keys/pki/private/firstname.lastname.key
         </key>
 
 .. note:: OpenVPN client applications may require to be run with administrator privileges, since they need to modify the operating system's routing table.
