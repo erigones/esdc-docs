@@ -8,7 +8,7 @@ How to display storage pool status
 
 .. code-block:: bash
 
-    [root@headnode (mydc) ~] zpool status
+    [root@node01 ~] zpool status
       pool: zones
      state: ONLINE
       scan: none requested
@@ -31,7 +31,7 @@ How to display ``RAW`` capacity of a storage pool
 
 .. code-block:: bash
 
-    [root@headnode (mydc) ~] zpool list
+    [root@node01 ~] zpool list
     NAME    SIZE  ALLOC   FREE   FRAG  EXPANDSZ    CAP  DEDUP  HEALTH  ALTROOT
     zones  2.17T  26.5G  2.15T     0%         -     1%  1.00x  ONLINE  -
 
@@ -46,7 +46,7 @@ How to display the amount of free space on a ZFS dataset/volume
 
 .. code-block:: bash
 
-    [root@headnode (mydc) ~] zfs list zones
+    [root@node01 ~] zfs list zones
     NAME    USED  AVAIL  REFER  MOUNTPOINT
     zones   132G  1.44T   643K  /zones
 
@@ -55,7 +55,7 @@ How to display the amount of used space on a ZFS dataset/volume
 
 .. code-block:: bash
 
-    [root@headnode (mydc) ~] zfs list -o space zones/...-disk0
+    [root@node01 ~] zfs list -o space zones/...-disk0
     NAME             AVAIL   USED  USEDSNAP  USEDDS  USEDREFRESERV  USEDCHILD
     zones/...-disk0  1.46T  22.2G      162M   2.14G          19.9G          0
 
@@ -65,7 +65,7 @@ How to display compression effectiveness
 
 .. code-block:: bash
 
-    [root@headnode (mydc) ~] zfs get compressratio zones/...-disk0
+    [root@node01 ~] zfs get compressratio zones/...-disk0
     NAME             PROPERTY         VALUE  SOURCE
     zones/...-disk0  compressratio    3.64x     -
 
@@ -75,7 +75,7 @@ How to display I/O operations in the storage pool by device
 
 .. code-block:: bash
 
-    [root@headnode (mydc) ~] zpool iostat -v zones 5
+    [root@node01 ~] zpool iostat -v zones 5
                    capacity     operations    bandwidth
     pool        alloc   free   read  write   read  write
     ----------  -----  -----  -----  -----  -----  -----
@@ -92,7 +92,7 @@ How to display device utilization
 
 .. code-block:: bash
 
-    [root@headnode (mydc) ~] iostat -xzn 1
+    [root@node01 ~] iostat -xzn 1
                         extended device statistics
         r/s    w/s   kr/s   kw/s wait actv wsvc_t asvc_t  %w  %b device
        12.9    0.0   61.7    0.0  0.0  0.0    0.2    0.7   0   1 lofi1

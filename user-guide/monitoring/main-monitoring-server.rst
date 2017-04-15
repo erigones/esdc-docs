@@ -3,7 +3,7 @@
 Central Monitoring Server
 *************************
 
-The Central (Main) Monitoring Server is a part of *Danube Cloud* :ref:`head node installation <admin_dc>`.
+The Central (Main) Monitoring Server is a part of *Danube Cloud's* :ref:`first compute node <admin_dc>`.
 
 .. note:: In the default *Danube Cloud* setup, each virtual data center uses the central (main) monitoring server.
 
@@ -21,13 +21,13 @@ First Login into Zabbix
 =======================
 
 The Zabbix web interface is available at http://zabbix_ip.
-The default username is ``Admin`` and the password was auto-generated and displayed upon successful :ref:`installation of the head node <installation_hn>`. The *Admin* password may be also visible as a metadata (``zabbix_admin_password``) of the **mon01** virtual server  in the :ref:`Admin virtual data center <admin_dc>`.
+The default username is ``Admin`` and the password was auto-generated and displayed upon successful :ref:`installation of the first compute node <installation_cn>`. The *Admin* password may be also visible as a metadata (``zabbix_admin_password``) of the **mon01** virtual server  in the :ref:`Admin virtual data center <admin_dc>`.
 
 
 Default Users
 =============
 
-The monitoring server has two preconfigured Zabbix users and one system user. Their passwords were auto-generated during head node installation or during the build process of *Danube Cloud*.
+The monitoring server has two preconfigured Zabbix users and one system user. Their passwords were auto-generated during the compute node installation or during the build process of *Danube Cloud*.
 
 * **Admin** - A Zabbix account, which is used for monitoring system configuration.
 
@@ -35,7 +35,7 @@ The monitoring server has two preconfigured Zabbix users and one system user. Th
 
     .. warning:: Changing *provisioner*'s password in Zabbix also requires changing the *MON_ZABBIX_PASSWORD* in all affected :ref:`virtual data centers <dc_monitoring_settings>` (``Datacenter -> Datacenter -> default -> Edit more settings -> Show advanced settings -> MON_ZABBIX_PASSWORD``).
 
-* **root** - A system superuser account, which can be used for remote administration over SSH. The password for the **root** user was auto-generated during the build process of the installation image. The **root** account should have the head node's public SSH key set and therefore should be accessible from the head node via SSH.
+* **root** - A system superuser account, which can be used for remote administration over SSH. The password for the **root** user was auto-generated during the build process of the installation image. The **root** account should have the first compute node's public SSH key set and therefore should be accessible from the first compute node via SSH.
 
 
 Monitoring Server Factory Settings

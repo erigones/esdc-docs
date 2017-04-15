@@ -1,24 +1,30 @@
 Prerequisites and Pre-installation Tasks
 ****************************************
 
-
-.. _hn_image:
-
-Head Node Installation Media
-############################
-
-The installation media is a USB flash drive with a minimum capacity of 8 GB carrying a bootable installer image. It is used to install the main *head compute node*. The installer image file ``esdc-<edition>-hn-x.y.z.img.gz`` also includes an installation program for the web management server, monitoring server and other *Danube Cloud* components. The current version is available at https://danubecloud.com/download (**Enterprise Edition**; customer credentials are issued by Erigones upon request) or at https://danubecloud.org/download (**Community Edition**).
-
-
 .. _cn_image:
 
-Compute Node Boot Media
-#######################
+Compute Node Installation and Boot Media
+########################################
 
-The boot media is a lightweight version of the installation media used to start *compute nodes* including the *head node*. The boot media image file ``esdc-<edition>-cn-x.y.z.img.gz`` must be copied to a USB flash drive with a minimum capacity of 2 GB. It is recommended to use two identical USB flash drives simultaneously in case one of them would fail. The current version is available at https://danubecloud.com/download (**Enterprise Edition**; customer credentials are issued by Erigones upon request) or at https://danubecloud.org/download (**Community Edition**).
+The installation and boot media is a USB flash drive. There are two types of USB images:
 
+======================================    ============   ================
+**Image name**                            **USB size**   **Description**
+--------------------------------------    ------------   ----------------
+``esdc-<edition>-hn-<version>.img.gz``    4 GB           Used for installation of the first compute node.
+``esdc-<edition>-cn-<version>.img.gz``    2 GB           Used for installation of any other compute node.
+======================================    ============   ================
 
-.. note:: In the file ``notes-x.y.z.txt``, you can find SHA1 checksums of both images and an automatically generated **root** password needed for recovery purposes and single user mode, respectively.
+.. note:: The first compute node image is just a reqular compute node that includes *Danube Cloud* :ref:`service virtual machines <admin_dc>`.
+
+The current version of both media can be downloaded from:
+
+- **Community Edition**: https://danubecloud.org/download
+- **Enterprise Edition**: https://danubecloud.com/download (customer credentials are issued by Erigones upon request) 
+
+In the file ``notes-x.y.z.txt``, you can find SHA1 checksums of both images and an automatically generated **root** password needed for recovery purposes and single user mode, respectively.
+
+It is recommended to use two identical USB flash drives simultaneously in case one of them would fail.
 
 
 .. _usb_key_howto:
@@ -78,26 +84,14 @@ Creating a Bootable USB Flash Drive
 
 .. _factory_reset:
 
-Head or Compute Node Factory Reset
-##################################
+Compute Node Factory Reset
+##########################
 
-Before you start any re-installation of a head node, please make sure that the ``config`` file (located in the root of the USB flash drive) is removed.
+A reinstall requires the *zones* zpool to be removed from local disks before proceeding. This can be done in one of the following ways:
 
-.. warning:: If you don't remove the ``config`` file from the USB flash drive, the head node installation will fail.
-
-.. warning:: The root of the USB flash drive also contains a directory named ``config.inc``. Do not remove this directory.
-
-There are several ways how to reinstall a node. Reinstall requires the *zones* zpool to be removed from local disks before proceeding. This can be done in one of the following ways:
-
-* Add a boot parameter ``,destroy_zpools=true`` into the Grub boot loader. You can edit boot parameters in Grub menu by selecting an apropriate boot option and pressing ``e`` two times on your keyboard. Confirm your changes by pressing ``Enter`` and ``b``. The compute node will continue to boot up and the *zones* zpool will be destroyed before new clean install. On the *head node*, please don't forget to to manually delete the ``config`` configuration file before any reinstall.
+* Add a boot parameter ``,destroy_zpools=true`` into the Grub boot loader. You can edit boot parameters in Grub menu by selecting an appropriate boot option and pressing ``e`` two times on your keyboard. Confirm your changes by pressing ``Enter`` and ``b``. The compute node will continue to boot up and the *zones* zpool will be destroyed before new clean install.
 
 * Manually formatting the hard drives which are used for the *zones* zpool. This can be done directly through the embedded RAID management of the server which is available when the server boots up.
-
-* By logging into the compute node using ssh and running the command:
-
-    .. code-block:: bash
-
-        factoryreset
 
 
 .. _portmap:
@@ -107,7 +101,7 @@ Preparing your Network Infrastructure
 
 *Danube Cloud* utilizes a concept of virtual networks. A virtual network is a logically separated subnet that allows virtual machines to connect to the external networks (e.g. internet) or to communicate internally within the *Danube Cloud* data center.
 
-There is one special virtual network called *admin* that is used for internal purposes. During the installation of the first head node, you will be asked for information about this network. The *admin* network requires access to the internet. It should be a full /24 subnet (256 IP addresses) at least and cannot be smaller than a /26 subnet (64 IP addresses). Also, it cannot be a tagged VLAN connected to the physical node using a trunk port. 
+There is one special virtual network called *admin* that is used for internal purposes. During the installation of the first compute node, you will be asked for information about this network. The *admin* network requires access to the internet. It should be a full /24 subnet (256 IP addresses) at least and cannot be smaller than a /26 subnet (64 IP addresses). Also, it cannot be a tagged VLAN connected to the physical node using a trunk port.
 
 Aside from the *admin* network, using of VLAN tags for other virtual networks is recommended as it ensures virtual network separation. You can either use a separate physical interface (:ref:`or interfaces aggregated with LACP<network_aggregation>`) for the *admin* network and the rest of physical interface(s) for other virtual networks, or you can :ref:`aggregate<network_aggregation>` all physical interfaces together, setup a native (untagged) VLAN as a *admin* virtual network and forward all other networks as trunk VLAN to the physical *Danube Cloud* nodes (recommended).
 
@@ -115,7 +109,7 @@ Aside from the *admin* network, using of VLAN tags for other virtual networks is
 
 If you don't have an appropriate hardware router or firewall, you can create one virtual server inside *Danube Cloud* (e.g. SunOS Zone) with two network interfaces - internal and external - and setup it to serve as a network router for your internal subnets (virtual networks).
 
-Below is an example port map for interconnection of two *Danube Cloud* nodes (one head node and one compute node) using two stacked switches, VLANs for virtual networks, link aggregations for speed and redundancy and with the *admin* virtual network as a native VLAN.
+Below is an example port map for interconnection of two *Danube Cloud* compute nodes using two stacked switches, VLANs for virtual networks, link aggregations for speed and redundancy and with the *admin* virtual network as a native VLAN.
 
 .. image:: img/portmap.png
 
@@ -131,7 +125,7 @@ The following settings should be configured in BIOS configuration of your comput
 
 - Enable hardware virtualization (KVM) support.
 
-    .. warning:: Hardware virtualization (KVM) support must enabled at least on the head node.
+    .. warning:: Hardware virtualization (KVM) support must enabled at least on the first compute node.
 
 - Enable ACPI SRAT. If ACPI SRAT is not available in your BIOS configuration, disable NUMA/Node interleaving. Otherwise the following message may appear during boot time:
 

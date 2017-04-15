@@ -13,6 +13,10 @@ Compute Node Installation
 
     .. image:: img/hn-01-welcome.png
 
+* Setting the name of the physical data center.
+
+    .. image:: img/hn-03-dc-name.png
+
 * Hypervisor (**admin**) network setup.
 
     .. image:: img/cn-04-network-ip.png
@@ -30,12 +34,6 @@ Compute Node Installation
     .. image:: img/cn-06-dns.png
 
     .. warning:: The Compute Node hostname cannot be changed after install.
-
-* IP address configuration of the configuration database server (cfgdb) and entering your configuration master password.
-
-    .. note:: You have chosen your configuration master password during :ref:`head node installation <installation_hn>`.
-
-    .. image:: img/cn-07-cfgdb.png
 
 * Choosing compute node's root password.
 
@@ -59,10 +57,37 @@ Compute Node Installation
 
     .. image:: img/hn-10-zpool.png
 
+* IP address configuration of the central web management server and choosing a configuration master password.
+
+      .. note:: Please keep the configuration master password safe and confidential. It will be required during :ref:`compute node installation <installation_cn>`.
+
+       .. image:: img/hn-07-mgmt.png
+
+* IP address configuration of the configuration database server (cfgdb) and entering your configuration master password.
+
+    .. note:: You have chosen your configuration master password during first compute node installation.
+
+    .. image:: img/cn-07-cfgdb.png
+
+* Configuring Administrator's email address.
+
+    .. image:: img/hn-11-admin-email.png
+
 * Final overview of all information required for setting up the compute node.
 
     .. image:: img/cn-12-summary.png
 
-* After a successful installation, the compute node will appear in the web interface of the central web management server.
+* Installation of the *Danube Cloud* software.
 
-.. seealso:: How to change the password used for accessing the compute node is described in the :ref:`root password change <root_password_change>` section.
+    .. note:: During the installation process of *Danube Cloud*, files are being copied from the USB flash drive to the primary data storage which usually takes about 5 to 30 minutes.
+
+* After a successful installation, please log in to the Web Management Server.
+
+   - **First compute node**: Login and password to the web management are **admin** and **changeme**. Please change the password as soon as possible using the *change password* form in the user profile section.
+
+        .. seealso:: Please have a look at the :ref:`post-installation section in this chapter <first_steps>`.
+
+   - **Any other compute node**: The compute node will appear in the web interface of the central web management server automatically.
+
+
+.. seealso:: How to change the password used for accessing the Compute Node is described in the :ref:`root password change <root_password_change>` section.

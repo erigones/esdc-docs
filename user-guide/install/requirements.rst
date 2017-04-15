@@ -25,13 +25,13 @@ A compute node requires a minimum of **4 GB of RAM**. The system memory can be u
 PCI Devices (PCI)
 #################
 
-Servers using *Danube Cloud* are required to have at least **one network interface card** and a **disk controller**.
+Servers using *Danube Cloud* are required to have at least **one network interface card** and a **disk controller**, which ideally allows passing disks directly to the OS (without RAID).
 
 
 Network
 #######
 
-The installation procedure and run-time of *Danube Cloud* requires **Internet access**. A **DNS server** and a **NTP server** must be accessible from the *admin* network, which is used for compute nodes and central web management intercommunication purposes.
+The installation procedure and run-time of *Danube Cloud* requires an **NTP server**. A **DNS server** and an **NTP server** must be accessible from the *admin* network, which is used for compute nodes and central web management intercommunication purposes.
 
 Switch
 ======
@@ -46,7 +46,7 @@ Router / Firewall / VPN
 
 A router may be required to fully leverage all network capabilities of *Danube Cloud* and effectively use networking inside :ref:`virtual data centers <datacenters>`. A router is **not required** for the installation procedure and can be deployed later as one of following options:
 
-* **Access Zone** - software router (Solaris zone).
+* **Access Zone** - software router (Solaris zone), available as an appliance at https://images.erigones.org
     * IPFILTER (IPF)
 
         * Router
@@ -68,7 +68,7 @@ Data Storage
 ############
 
 Every compute node must have a local (direct-attached) storage available.
-The head node requires a local storage with at least **100 GB** of size and the compute node should have at least **10 GB** of storage available.
+The first (main) compute node requires a local storage with at least **100 GB** of size and other compute nodes should have at least **10 GB** of local storage available.
 
 Local or Direct-attached Storage (DAS)
 ======================================

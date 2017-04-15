@@ -6,7 +6,7 @@ How to display the amount of logical processors
 
 .. code-block:: bash
 
-    [root@headnode (mydc) ~] psrinfo -vp
+    [root@node01 ~] psrinfo -vp
     The physical processor has 4 cores and 8 virtual processors (1 3 5 7 9 11 13 15)
         The core has 2 virtual processors (1 9)
         The core has 2 virtual processors (3 11)
@@ -27,7 +27,7 @@ How to display CPU statistics and load distribution among processors
 
 .. code-block:: bash
 
-    [root@headnode (mydc) ~] mpstat 1 5
+    [root@node01 ~] mpstat 1 5
     CPU minf mjf xcal  intr ithr  csw icsw migr smtx  srw syscl  usr sys  wt idl
       0  870   1  274  2440  235  569    2   47   59    0  4709    2   3   0  94
       1  547   1   58   203   63  462    3   19   35    0  4964    2   2   0  95
@@ -64,7 +64,7 @@ How to display the amount of total memory available in the system (MiB)
 
 .. code-block:: bash
 
-    [root@headnode (mydc) ~] prtconf -m
+    [root@node01 ~] prtconf -m
     32758
 
 How to display virtual memory usage
@@ -72,7 +72,7 @@ How to display virtual memory usage
 
 .. code-block:: bash
 
-    [root@headnode (mydc) ~] vmstat
+    [root@node01 ~] vmstat
      kthr      memory            page            disk          faults      cpu
      r b w   swap  free  re  mf pi po fr de sr lf rm s0 s1   in   sy   cs us sy id
      0 0 0 54267716 25895544 366 3131 74 0 0 0 240 6 -268 186 -1 7442 30957 7950 1 1 98
@@ -87,7 +87,7 @@ How to display processes on the system and in the zones
 
 .. code-block:: bash
 
-    [root@headnode (mydc) ~] prstat -Z
+    [root@node01 ~] prstat -Z
        PID USERNAME  SIZE   RSS STATE  PRI NICE      TIME  CPU PROCESS/NLWP
       3538 root     2095M 2083M sleep    1    0   0:03:54 0.4% qemu-system-x86/12
       3421 root     2094M 2082M sleep   59    0   0:01:09 0.1% qemu-system-x86/5
@@ -142,7 +142,7 @@ How to display memory usage of virtual machines
 
 .. code-block:: bash
 
-    [root@headnode (mydc) ~] zonememstat
+    [root@node01 ~] zonememstat
                                      ZONE  RSS(MB)  CAP(MB)    NOVER  POUT(MB)
                                    global        0        -        -         -
      a28faa4d-d0ee-4593-938a-f0d062022b02     2082     3072        0         0
@@ -159,7 +159,7 @@ How to display memory usage by type
 
 .. code-block:: bash
 
-    [root@headnode (mydc) ~] echo ::memstat | mdb -k
+    [root@node01 ~] echo ::memstat | mdb -k
     Page Summary                Pages                MB  %Tot
     ------------     ----------------  ----------------  ----
     Kernel                     462970              1808    6%
@@ -178,7 +178,7 @@ How to display the amount of consumed memory by processes and virtual machines
 
 .. code-block:: bash
 
-    [root@headnode (mydc) ~] prstat -s rss -z 3
+    [root@node01 ~] prstat -s rss -z 3
     PID USERNAME  SIZE   RSS STATE  PRI NICE      TIME  CPU PROCESS/NLWP
     3538 root     2095M 2083M sleep    1    0   0:04:11 0.5% qemu-system-x86/12
     3274 root        0K    0K sleep   60    -   0:00:00 0.0% zsched/1
@@ -190,7 +190,7 @@ Interrupt mapping
 
 .. code-block:: bash
 
-    [root@headnode (mydc) ~] echo ::interrupts | mdb -k
+    [root@node01 ~] echo ::interrupts | mdb -k
     IRQ  Vect IPL Bus    Trg Type   CPU Share APIC/INT# ISR(s)
     3    0xb1 12  ISA    Edg Fixed  10  1     0x0/0x3   asyintr
     4    0xb0 12  ISA    Edg Fixed  9   1     0x0/0x4   asyintr
@@ -220,7 +220,7 @@ Interrupt monitoring
 
 .. code-block:: bash
 
-    [root@headnode (mydc) ~] intrstat
+    [root@node01 ~] intrstat
 
       device |      cpu0 %tim      cpu1 %tim      cpu2 %tim      cpu3 %tim      cpu4 %tim      cpu5 %tim
     -------------+------------------------------------------------------------------------------------------

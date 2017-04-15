@@ -5,7 +5,7 @@ Compute Node Licenses
 
 .. note:: This section describes functionality available only in the *Danube Cloud Enterprise Edition*.
 
-.. note:: *Danube Cloud* products can be used only with valid license keys.
+.. note:: *Danube Cloud Enterprise Edition* can be used only with valid license keys.
 
 The Compute Node License, or Activation Key (AK) is a time-limited certificate. Valid certificate is required so that full functionality of the Compute Node is available within the *Danube Cloud* system. For each Compute Node a Compute Node License must be requested via the *Danube Cloud* user interface (:ref:`API <API>` or :ref:`GUI <GUI>`). A license request can be made only after the Compute Node was installed and registered in the *Danube Cloud* system. The license request (Certificate Signing Request) can be created and saved into a file after pressing the ``Request License`` button in the Compute Node's details section. The license request file (CSR) should be sent via email to the email address specified in the License Agreement (``license@erigones.com``).
 

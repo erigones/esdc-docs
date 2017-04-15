@@ -11,7 +11,7 @@ Requirements
 The backup storage pool has to have the following ZFS datasets:
 
 * ``<pool>/backups/ds`` - Location used for dataset backups.
-* ``<pool>/backups/file`` - Location used for file backups. It can also be a directory or a NFS/SMB mountpoint.
+* ``<pool>/backups/file`` - Location used for file backups. It can also be a directory or a NFS/SMB mount point.
 
 **ZFS dataset creation:**
 

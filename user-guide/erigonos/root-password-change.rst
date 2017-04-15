@@ -7,7 +7,7 @@ For changing the root password on a compute node, please use the **set-root-pass
 
 .. code-block:: bash
 
-    [root@headnode (dc) ~] set-root-password
+    [root@node01 ~] set-root-password
     New Password:
     Re-enter new Password:
     Password successfully changed.

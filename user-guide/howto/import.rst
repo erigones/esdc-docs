@@ -30,7 +30,7 @@ Importing Virtual Server from Linux KVM
 
     .. code-block:: bash
 
-            [root@headnode (mydc) ~] mount -F nfs -o vers=3,proto=tcp,retrans=3,timeo=10 \
+            [root@node01 ~] mount -F nfs -o vers=3,proto=tcp,retrans=3,timeo=10 \
                 172.17.0.13:/storage/local/ /nfs
 
 
@@ -38,14 +38,14 @@ Importing Virtual Server from Linux KVM
 
     .. code-block:: bash
 
-        [root@headnode (mydc) ~] vmadm list | grep demo.lan
+        [root@node01 ~] vmadm list | grep demo.lan
             185da3d2-d7ed-467e-bbf5-f5ec7b8ce21c KVM 512 stopped demo.lan
 
 * Running the actual import process.
 
     .. code-block:: bash
 
-        [root@headnode (mydc) ~] /opt/erigones/bin/qemu-img convert -p -f qcow2 \
+        [root@node01 ~] /opt/erigones/bin/qemu-img convert -p -f qcow2 \
             -O host_device /nfs/vm-100-disk-1.qcow2 \
             /dev/zvol/rdsk/zones/185da3d2-d7ed-467e-bbf5-f5ec7b8ce21c-disk0
 
@@ -71,7 +71,7 @@ Importing Virtual Servers with MS Windows Server OS from VMware
 
     .. code-block:: bash
 
-        [root@headnode (mydc) ~] /opt/erigones/bin/qemu-img convert -p -f vmdk \
+        [root@node01 ~] /opt/erigones/bin/qemu-img convert -p -f vmdk \
             -O host_device /zone/migration/demo.vmdk \
             /dev/zvol/rdsk/zones/185da3d2-d7ed-467e-bbf5-f5ec7b8ce21c-disk0
 

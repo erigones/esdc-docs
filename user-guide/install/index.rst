@@ -7,7 +7,6 @@ Installation
 
     requirements
     before
-    head-node
     compute-node
     licenses
     first-steps

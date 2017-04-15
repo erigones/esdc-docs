@@ -3,7 +3,7 @@
 Post-installation Tasks
 ***********************
 
-After you have successfully installed your first head node, you should log in into the central web management portal and configure at least some settings to customize your *Danube Cloud* installation to your needs:
+After you have successfully installed your first compute node, you should log in into the central web management portal and configure at least some settings to customize your *Danube Cloud* installation to your needs:
 
 - Update the ``admin's`` :ref:`user profile<user_profile>`: add your SSH public key and update other information.
     - To access profile settings for your current user click the *Profile* button at the top of the page.

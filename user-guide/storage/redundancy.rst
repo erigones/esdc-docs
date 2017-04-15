@@ -220,7 +220,7 @@ Nested RAID vdev Types
 Stripped mirror (RAID 10)
 -------------------------
 
-Stripped mirror is a combination a stripping between mirror vdev types. This is a best performing RAID level for small random reads.
+Stripped mirror is a combination a stripping between mirror vdev types. This is the best performing RAID level for small random reads.
 
 ========================== ==============
  Capacity                    G * (1/N * S(min))
@@ -399,7 +399,7 @@ How to remove a disk from a storage pool
     [root@node01 ~] zpool replace storage disk0 disk2
     [root@node01 ~] zpool remove storage disk0
 
-.. note:: Manual disk replacement should be done when disk starts to show S.M.A.R.T errors or for simple replacement for a different model.
+.. note:: Manual disk replacement should be done when the disk starts to show S.M.A.R.T errors or for a simple replacement for a different model.
 
 .. note:: It is required to :ref:`refresh the compute node's system information <node_actions>` after a new storage pool is created. The storage pool will be then available in the *Danube Cloud* web management.
 
