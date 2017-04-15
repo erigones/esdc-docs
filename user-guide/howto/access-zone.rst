@@ -146,6 +146,7 @@ OpenVPN Installation and Configuration
 * Create PKI certificates for the OpenVPN server.
 
     .. code-block:: bash
+
         [root@demo-access ~] ./easyrsa init-pki
         [root@demo-access ~] ./easyrsa build-ca
         [root@demo-access ~] ./easyrsa build-server-full server
