@@ -12,6 +12,7 @@ The backup storage pool has to have the following ZFS datasets:
 
 * ``<pool>/backups/ds`` - Location used for dataset backups.
 * ``<pool>/backups/file`` - Location used for file backups. It can also be a directory or a NFS/SMB mount point.
+* ``<pool>/backups/manifests`` - Location used for storing metadata of virtual machines (VM manifests) along with every backup.
 
 **ZFS dataset creation:**
 
@@ -19,4 +20,5 @@ The backup storage pool has to have the following ZFS datasets:
 
     [root@node01 ~] zfs create -o compression=lz4 <pool>/backups/ds
     [root@node01 ~] zfs create -o compression=lz4 <pool>/backups/file
+    [root@node01 ~] zfs create -o compression=lz4 <pool>/backups/manifests
 
