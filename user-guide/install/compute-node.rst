@@ -3,81 +3,91 @@
 Compute Node Installation
 *************************
 
+.. note:: There are :ref:`two types of installation media<cn_image>` and the installation steps documented below are slightly different for both of them. The first compute node installation media should be used only for the first compute node. All other physical servers should be installed using the smaller compute node USB image.
+
 .. _cn_boot_loader:
 
 * Boot loader.
 
-    .. image:: img/cn-00-grub.png
+    .. image:: img/install-00-grub.png
 
 * Welcome screen.
 
-    .. image:: img/hn-01-welcome.png
+    .. image:: img/install-01-welcome.png
 
-* Setting the name of the physical data center.
+* Setting the name of the physical data center (**first compute node** only).
 
-    .. image:: img/hn-03-dc-name.png
+    .. image:: img/install-02hn-dc-info.png
 
-* Hypervisor (**admin**) network setup.
+* Compute node's networking configuration.
 
-    .. image:: img/cn-04-network-ip.png
+    .. image:: img/install-03-networking-info.png
+
+    .. image:: img/install-04-networking-admin.png
+
+    .. image:: img/install-05-networking-dns.png
 
     * Choosing a network card.
-    * Head node IP address.
-    * Network mask.
-    * Network gateway.
+    * Admin network IP address.
+    * Admin network mask.
+    * Admin network VLAN ID.
+    * Default gateway IP address.
     * Primary DNS server.
     * Secondary DNS server.
-    * Domain name.
-    * System hostname - fully qualified domain name.
     * DNS search domain.
-
-    .. image:: img/cn-06-dns.png
-
-    .. warning:: The Compute Node hostname cannot be changed after install.
-
-* Choosing compute node's root password.
-
-    .. image:: img/hn-08-root-pw.png
+    * NTP server IP address or hostname.
 
 * Choosing the installation type:
 
-    .. image:: img/hn-09-hdd-install.png
+    .. image:: img/install-06-hdd.png
 
-    * *Booting from USB (default).* This is the preferred installation method. The hard drives are only used for storing virtual machines and other user data. The hypervisor is loaded into RAM from the USB flash drive. The hypervisor (kernel) can be upgraded by swapping the USB media and rebooting the system. The USB media is required for every boot for this installation method.
+    * *Booting from USB (default).* This is the preferred installation method. The hard drives are only used for storing virtual machines and other user data. The hypervisor is loaded into RAM from the USB flash drive. The hypervisor (kernel) can be upgraded by swapping the USB media and rebooting the system. The USB media is required for every boot of the compute node.
 
     * *Installation to hard drive.* This installation type is required when using advanced storage components connected via fiber channel or iSCSI. The contents of the USB flash drive are copied to the hard drives. The USB media should be removed after the installation is finished and before the first reboot.
 
-        .. note:: In case the USB drive was not removed before the first reboot, the machine needs to be rebooted again without the USB drive plugged in.
+* Creating the primary data storage (*zones* pool).
 
-* Creating a primary data storage (*zones* pool).
+    .. image:: img/install-07-zpool.png
 
-    .. note:: An optimal disk array profile is chosen automatically based on the information gathered about available local disks. The storage can be configured manually, however, this method is only recommended for more experienced users.
+    * An optimal disk array profile is chosen automatically based on the information gathered about available local disks. The storage can be configured manually, however, this method is only recommended for more experienced users.
 
     .. seealso:: A more detailed explanation of :ref:`disk arrays <storage>` and :ref:`disk redundancy <storage_redundancy>` can be found in a separate chapter.
 
-    .. image:: img/hn-10-zpool.png
+* Compute node OS configuration.
 
-* IP address configuration of the central web management server and choosing a configuration master password.
+    .. image:: img/install-08-system.png
 
-      .. note:: Please keep the configuration master password safe and confidential. It will be required during :ref:`compute node installation <installation_cn>`.
+    * Choosing compute node's root password.
+    * System hostname - fully qualified domain name.
 
-       .. image:: img/hn-07-mgmt.png
+    .. warning:: The Compute Node hostname cannot be changed after install.
 
-* IP address configuration of the configuration database server (cfgdb) and entering your configuration master password.
+* Configuration of Danube Cloud management services:
 
-    .. note:: You have chosen your configuration master password during first compute node installation.
+   - **First compute node**
 
-    .. image:: img/cn-07-cfgdb.png
+        .. image:: img/install-09hn-dc-mgmt.png
 
-* Configuring Administrator's email address.
+        * IP address configuration of the central web management server.
+        * Choosing a configuration master password.
 
-    .. image:: img/hn-11-admin-email.png
+
+   - **Any other compute node**
+
+        .. image:: img/install-09cn-dc-mgmt.png
+
+        * IP address configuration of the configuration database server (cfgdb).
+        * Entering your configuration master password.
+
+* Configuring Administrator's email address (**first compute node** only).
+
+    .. image:: img/install-10hn-admin-email.png
 
 * Final overview of all information required for setting up the compute node.
 
-    .. image:: img/cn-12-summary.png
+    .. image:: img/install-11-summary.png
 
-* Installation of the *Danube Cloud* software.
+* Installation of the *Danube Cloud* compute node and management software.
 
     .. note:: During the installation process of *Danube Cloud*, files are being copied from the USB flash drive to the primary data storage which usually takes about 5 to 30 minutes.
 
