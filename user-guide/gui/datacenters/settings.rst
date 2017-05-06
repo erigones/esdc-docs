@@ -209,6 +209,7 @@ Global DNS Settings
 
 .. image:: img/settings_dns_global.png
 
+* **DNS_DOMAIN_TYPE_DEFAULT** - Default PowerDNS replication type of newly created domain.
 * **DNS_HOSTMASTER** - Default hostmaster email address used for SOA records of newly created domains.
 * **DNS_NAMESERVERS** - List of DNS servers used for NS records of newly created domains. Set to an empty list to disable automatic creation of NS records.
 * **DNS_SOA_DEFAULT** - Default value for the SOA record of newly created domains. Available placeholders are: ``{nameserver}`` (replaced by first nameserver in *DNS_NAMESERVERS*) and ``{hostmaster}`` (replaced by *DNS_HOSTMASTER*). Set to an empty value to disable automatic creation of SOA records.
