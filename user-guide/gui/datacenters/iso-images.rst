@@ -59,7 +59,7 @@ Adding an ISO Image
 
     .. code-block:: bash
 
-        [root@laptop ~]# scp ubuntu-14.04.1-server-amd64.iso root@node01:/iso/
+        user@laptop:~ $ scp ubuntu-14.04.1-server-amd64.iso root@node01:/iso/
 
 * Alternatively, they can be download directly to the ``/iso`` folder on each compute node:
 

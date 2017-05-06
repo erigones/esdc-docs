@@ -27,7 +27,7 @@ Virtual Data Center Parameters
 
 * **Name** - Unique identifier of a data center (usually  used in the :ref:`API <api>`).
 * **Alias** - User-defined name of a data center (usually displayed in the :ref:`GUI <gui>`).
-* **Site** - Hostname determine the current working data center for a anonymous user (non-logged in user).
+* **Site** - Hostname part of the browsing URL that determines the current working data center for an anonymous user (non-logged in user). You will need a working DNS record with the same hostname pointing to your Danube Cloud management portal.
 * **Access** - Data center visibility. One of:
 
     * *Public* - Data center is accessible by any active user.

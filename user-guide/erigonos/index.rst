@@ -9,8 +9,8 @@ Compute Node (CN)
 .. toctree::
    :maxdepth: 2
 
-   cpu_ram_usage_diagnostic
-   storage_diagnostic
-   nt_diagnostic
+   cpu-ram-usage-diagnostic
+   storage-diagnostic
+   network-diagnostic
 
-   root_password_change
+   root-password-change

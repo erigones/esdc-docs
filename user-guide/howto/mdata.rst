@@ -27,12 +27,12 @@ Managing Virtual Server Metadata via the API
 
 .. code-block:: bash
 
-    user@mylaptop:~ es login -username admin -password $PW
+    user@laptop:~ $ es login -username admin -password $PW
 
-    user@mylaptop:~ es set /vm/vm01.erigones.com/define \
+    user@laptop:~ $ es set /vm/vm01.erigones.com/define \
         -mdata parameter1:value1,parameter2:value2,parameter3:value3
 
-    user@mylaptop:~ es set /vm/vm01.erigones.com
+    user@laptop:~ $ es set /vm/vm01.erigones.com
 
 
 Retrieving and Manipulating Metadata on a Running Virtual Server
@@ -73,5 +73,5 @@ Updating Metadata on a Running Virtual Server
 
     [root@myserver ~] mdata-delete parameter3
 
-    user@mylaptop:~ es set /vm/vm01.erigones.com -force  # Update VM configuration to see the changed metadata in Danube Cloud
+    user@laptop:~ $ es set /vm/vm01.erigones.com -force  # Update VM configuration to see the changed metadata in Danube Cloud
 

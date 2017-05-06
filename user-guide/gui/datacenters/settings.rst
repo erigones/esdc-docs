@@ -151,12 +151,12 @@ Virtual Server Settings
 * **VMS_VM_SNAPSHOT_LIMIT_AUTO** - Maximum number of automatic snapshots per server.
 * **VMS_VM_SNAPSHOT_LIMIT_MANUAL** - Maximum number of manual snapshots per server.
 * **VMS_VM_SNAPSHOT_LIMIT_MANUAL_DEFAULT** - Predefined manual snapshot limit for new servers.
-* **VMS_VM_SNAPSHOT_SIZE_LIMIT** - Maximum size of all snapshots per server.
-* **VMS_VM_SNAPSHOT_SIZE_LIMIT_DEFAULT** - Predefined snapshot size limit for new servers.
-* **VMS_VM_SNAPSHOT_DC_SIZE_LIMIT** - Maximum size of all snapshots in this virtual data center.
+* **VMS_VM_SNAPSHOT_SIZE_LIMIT** - Maximum size (MB) of all snapshots per server.
+* **VMS_VM_SNAPSHOT_SIZE_LIMIT_DEFAULT** - Predefined snapshot size limit (MB) for new servers.
+* **VMS_VM_SNAPSHOT_DC_SIZE_LIMIT** - Maximum size (MB) of all snapshots in this virtual data center.
 * **VMS_VM_BACKUP_DEFINE_LIMIT** - Maximum number of backup definitions per server.
 * **VMS_VM_BACKUP_LIMIT** - Upper retention limit used for new backup definitions.
-* **VMS_VM_BACKUP_DC_SIZE_LIMIT** - Maximum size of all backups in this virtual data center.
+* **VMS_VM_BACKUP_DC_SIZE_LIMIT** - Maximum size (MB) of all backups in this virtual data center.
 * **VMS_VM_BACKUP_COMPRESSION_DEFAULT** - Predefined compression algorithm for new file backups. One of: *off* (no compression), *gzip* (fast compression), *bzip2* (more effective compression).
 * **VMS_VM_REPLICA_RESERVATION_DEFAULT** - Default status of VM replica\'s resource (vCPU, RAM) reservation setting. By default, the resource reservation is enabled in order to have the vCPU and RAM available for future failover operation.
 
@@ -210,6 +210,7 @@ Global DNS Settings
 
 .. image:: img/settings_dns_global.png
 
+* **DNS_DOMAIN_TYPE_DEFAULT** - Default PowerDNS replication type of newly created domain.
 * **DNS_HOSTMASTER** - Default hostmaster email address used for SOA records of newly created domains.
 * **DNS_NAMESERVERS** - List of DNS servers used for NS records of newly created domains. Set to an empty list to disable automatic creation of NS records.
 * **DNS_SOA_DEFAULT** - Default value for the SOA record of newly created domains. Available placeholders are: ``{nameserver}`` (replaced by first nameserver in *DNS_NAMESERVERS*) and ``{hostmaster}`` (replaced by *DNS_HOSTMASTER*). Set to an empty value to disable automatic creation of SOA records.

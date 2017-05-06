@@ -22,7 +22,7 @@ Compute Node List Item Parameters
 * **Status** - One of:
 
     * *online*
-    * *offline*
+    * *maintenance*
     * *unreachable*
     * *unlicensed*
 * **CPUs** - Total number of compute node's virtual CPUs usable for virtual servers.

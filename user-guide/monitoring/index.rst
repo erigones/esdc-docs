@@ -23,9 +23,9 @@ For monitoring and alerting purposes, *Danube Cloud* uses the Zabbix monitoring 
 .. toctree::
    :maxdepth: 1
 
-   main_monitoring
-   dc_monitoring
-   vm_monitoring
+   main-monitoring-server
+   dc-monitoring-server
+   server-monitoring
    alerting
 
 
