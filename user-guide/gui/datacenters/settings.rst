@@ -6,7 +6,7 @@ Settings
 Virtual data centers and the *Danube Cloud* system itself can be configured via virtual data center settings. There are two kinds of settings:
 
 * *Global DC settings* - Global settings have an impact on the behavior of all virtual data centers and the *Danube Cloud* system, including objects that cannot be associated with a virtual data center (compute nodes). These settings can be modified in the default *main* virtual data center.
-* *Local DC settings* - Local DC settings affect an actual virtual center and can be modified in every virtual data center.
+* *Local DC settings* - Local DC settings affect an actual virtual data center and can be modified in every virtual data center.
 
 =============================== ================
 :ref:`Access Permissions <acl>`
