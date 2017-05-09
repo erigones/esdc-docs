@@ -1,3 +1,5 @@
+.. _node_backup_define:
+
 Virtual Server Backup Definitions on Compute Node
 #################################################
 

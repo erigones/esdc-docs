@@ -56,7 +56,7 @@ Backup Actions
 
     .. warning:: A backup restore results in all data loss on the target virtual server and disk, including all virtual server's snapshots.
 
-.. warning:: Backing up many virtual servers at the same time can have a high impact on the I/O load of the affected compute and backup nodes, potentially causing short or even long-term unavailability of services. A fair distribution of backup schedules in time can easily eliminate this problem. A backup definition overview of a particular virtual data center or backup node can be obtained via the :ref:`API <api>`.
+.. warning:: Backing up many virtual servers at the same time can have a high impact on the I/O load of the affected compute and backup nodes, potentially causing short or even long-term unavailability of services. A fair distribution of backup schedules in time can easily eliminate this problem. A backup definition overview of a particular virtual data center or backup node can be obtained via the :ref:`compute node backup definition view <node_backup_define>` or :ref:`API <api>`:
 
     .. code-block:: bash
 
