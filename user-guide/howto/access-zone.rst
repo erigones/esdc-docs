@@ -157,7 +157,7 @@ OpenVPN Installation and Configuration
 
         [root@demo-access easy-rsa] ./easyrsa init-pki
         [root@demo-access easy-rsa] ./easyrsa build-ca
-        [root@demo-access easy-rsa] ./easyrsa build-server-full <server-name>
+        [root@demo-access easy-rsa] ./easyrsa build-server-full <server-name> nopass
         [root@demo-access easy-rsa] ./easyrsa gen-dh
 
 * Configure the OpenVPN server. Some important configuration settings:
@@ -208,6 +208,7 @@ Creating a VPN Client Certificate and Configuring a VPN Client
         [root@demo-access easy-rsa] ./easyrsa gen-req firstname.lastname
         [root@demo-access easy-rsa] ./easyrsa sign-req client firstname.lastname
 
+    .. note:: You can optionally append a ``nopass`` parameter to the ``./easyrsa gen-req firstname.lastname`` command in order to create a client's private key without a passphrase. This may be suitable for a server-to-server VPN connection and you should protect the private key by other means.
 
 * Create a VPN client configuration. Please add the content of client's certificate and key to the configuration.
 
