@@ -35,10 +35,10 @@ Basic Firewall Configuration
             lo0: flags=2001000849<UP,LOOPBACK,RUNNING,MULTICAST,IPv4,VIRTUAL> mtu 8232 index 1
                 inet 127.0.0.1 netmask ff000000 
             net0: flags=201000843<UP,BROADCAST,RUNNING,MULTICAST,IPv4,CoS> mtu 1500 index 2
-                inet 46.229.234.132 netmask ffffff00 broadcast 46.229.234.255
+                inet 111.222.222.234 netmask ffffff00 broadcast 111.222.222.255
                 ether e2:19:55:d6:39:da 
             net1: flags=201000843<UP,BROADCAST,RUNNING,MULTICAST,IPv4,CoS> mtu 1500 index 3
-                inet 172.16.0.64 netmask ffffff00 broadcast 172.16.0.255
+                inet 10.0.0.50 netmask ffffff00 broadcast 10.0.0.255
                 ether 52:b1:7:3c:e9:2f 
             lo0: flags=2002000849<UP,LOOPBACK,RUNNING,MULTICAST,IPv6,VIRTUAL> mtu 8252 index 1
             inet6 ::1/128 
@@ -65,10 +65,10 @@ Basic Firewall Configuration
         block in on net0 
 
         # Allow ssh and openvpn service.
-        pass in quick proto udp from any to  46.229.234.132/32 port=1194 keep state
-        pass in quick proto tcp from any to  46.229.234.132/32 port=22 keep state
+        pass in quick proto udp from any to  111.222.222.234/32 port=1194 keep state
+        pass in quick proto tcp from any to  111.222.222.234/32 port=22 keep state
 
-        pass in quick proto icmp from any to  46.229.234.132/32 keep state
+        pass in quick proto icmp from any to  111.222.222.234/32 keep state
 
         # Allow everything out to the internet.
         pass out quick on net0 keep state
@@ -97,7 +97,7 @@ Basic Firewall Configuration
 
         [root@demo-access ~] vim /etc/ipf/ipnat.conf
 
-        map net0 172.16.0.0/24 -> 46.229.234.132/32 portmap tcp/udp auto
+        map net0 10.0.0.0/24 -> 111.222.222.234/32 portmap tcp/udp auto
 
 * Validate the syntax of NAT configuration.
 
@@ -126,16 +126,17 @@ OpenVPN Installation and Configuration
     .. code-block:: bash
 
         [root@demo-access ~] cd /opt/local/etc/openvpn
-        [root@demo-access ~] curl -OL \
+        [root@demo-access openvpn] curl -OL \
         https://github.com/OpenVPN/easy-rsa/releases/download/3.0.1/EasyRSA-3.0.1.tgz
-        [root@demo-access ~] gtar xf EasyRSA-3.0.1.tgz
-        [root@demo-access ~] mv EasyRSA-3.0.1 easy-rsa
+        [root@demo-access openvpn] gtar xf EasyRSA-3.0.1.tgz
+        [root@demo-access openvpn] mv EasyRSA-3.0.1 easy-rsa
 
 * Optional ``EasyRSA`` configuration.
 
     .. code-block:: bash
 
-        [root@demo-access ~] cd easy-rsa && vim vars
+        [root@demo-access openvpn] cd easy-rsa
+        [root@demo-access easy-rsa] vim vars
         export KEY_COUNTRY="SK" 
         export KEY_PROVINCE="Slovakia" 
         export KEY_CITY="Bratislava" 
@@ -143,16 +144,21 @@ OpenVPN Installation and Configuration
         export KEY_EMAIL="ssl@example.com" 
         export KEY_OU="Erigones VPN Administration" 
 
+* **Fix shell in the easyrsa script**. Change the first line in the ``easyrsa`` file to ``#!/bin/bash``. This is because of a `bug in easy-rsa <https://github.com/OpenVPN/easy-rsa/issues/86>`__.
+
+    .. code-block:: bash
+
+        [root@demo-access easy-rsa] vim easyrsa
+        #!/bin/bash
+
 * Create PKI certificates for the OpenVPN server.
 
     .. code-block:: bash
 
-        [root@demo-access ~] ./easyrsa init-pki
-        [root@demo-access ~] ./easyrsa build-ca
-        [root@demo-access ~] ./easyrsa build-server-full server
-        [root@demo-access ~] ./easyrsa gen-dh
-        [root@demo-access ~] ln -snf \
-        /opt/local/etc/openvpn/easy-rsa/keys /opt/local/etc/openvpn/keys
+        [root@demo-access easy-rsa] ./easyrsa init-pki
+        [root@demo-access easy-rsa] ./easyrsa build-ca
+        [root@demo-access easy-rsa] ./easyrsa build-server-full <server-name>
+        [root@demo-access easy-rsa] ./easyrsa gen-dh
 
 * Configure the OpenVPN server. Some important configuration settings:
 
@@ -165,7 +171,7 @@ OpenVPN Installation and Configuration
         [root@demo-access ~] vim /opt/local/etc/openvpn/openvpn.conf
         proto udp
         dev tun
-        local 46.229.234.132
+        local 111.222.222.234
         port 1194
         server 10.100.200.0 255.255.255.0
         ifconfig-pool-persist /opt/local/etc/openvpn/ipp.txt
@@ -177,12 +183,12 @@ OpenVPN Installation and Configuration
         tls-server
         log-append /var/log/openvpn.log
 
-        dh /opt/local/etc/openvpn/keys/pki/dh.pem
-        ca /opt/local/etc/openvpn/keys/pki/ca.crt
-        cert /opt/local/etc/openvpn/keys/pki/issued/server.crt
-        key /opt/local/etc/openvpn/keys/pki/private/server.key
+        dh /opt/local/etc/openvpn/easy-rsa/pki/dh.pem
+        ca /opt/local/etc/openvpn/easy-rsa/pki/ca.crt
+        cert /opt/local/etc/openvpn/easy-rsa/pki/issued/<server-name>.crt
+        key /opt/local/etc/openvpn/easy-rsa/pki/private/<server-name>.key
 
-        push "route 172.16.0.0 255.255.255.0"
+        push "route 10.0.0.0 255.255.255.0"
 
 * Enable the ``openvpn`` (VPN) service.
 
@@ -199,8 +205,8 @@ Creating a VPN Client Certificate and Configuring a VPN Client
     .. code-block:: bash
     
         [root@demo-access ~] cd /opt/local/etc/openvpn/easy-rsa
-        [root@demo-access ~] ./easyrsa gen-req firstname.lastname
-        [root@demo-access ~] ./easyrsa sign-req firstname.lastname
+        [root@demo-access easy-rsa] ./easyrsa gen-req firstname.lastname
+        [root@demo-access easy-rsa] ./easyrsa sign-req client firstname.lastname
 
 
 * Create a VPN client configuration. Please add the content of client's certificate and key to the configuration.
@@ -216,15 +222,15 @@ Creating a VPN Client Certificate and Configuring a VPN Client
         nobind
         comp-lzo
         <ca>
-        — Contents of ca.crt from /opt/local/etc/openvpn/keys/pki/ca.crt
+        — Contents of ca.crt from /opt/local/etc/openvpn/easy-rsa/pki/ca.crt
         </ca>
         <cert>
         - Contents of firstname.lastname.crt \
-        from /opt/local/etc/openvpn/keys/pki/issued/firstname.lastname.crt
+        from /opt/local/etc/openvpn/easy-rsa/pki/issued/firstname.lastname.crt
         </cert>
         <key>
         - Contents of firstname.lastname.key \
-        from /opt/local/etc/openvpn/keys/pki/private/firstname.lastname.key
+        from /opt/local/etc/openvpn/easy-rsa/pki/private/firstname.lastname.key
         </key>
 
 .. note:: OpenVPN client applications may require to be run with administrator privileges, since they need to modify the operating system's routing table.
