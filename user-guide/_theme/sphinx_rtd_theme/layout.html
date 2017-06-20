@@ -163,8 +163,8 @@
       <div id="esdc-nav">
         <div id="esdc-nav-wrapper">
           <ul>
-            <li><a href="https://danubecloud.com">Enterprise Edition</a></li>
-            <li><a href="https://danubecloud.org">Community Edition</a></li>
+            <li><a href="https://danubecloud.com" class="external">Enterprise Edition</a></li>
+            <li><a href="https://danubecloud.org" class="external">Community Edition</a></li>
             <li class="active"><a href="https://docs.danubecloud.org/user-guide">User Guide</a></li>
             <li><a href="https://docs.danubecloud.org/api-reference">API Reference</a></li>
           </ul>
@@ -199,29 +199,15 @@
   {% if not READTHEDOCS %}
     <script type="text/javascript" src="{{ pathto('_static/js/theme.js', 1) }}"></script>
   {% endif %}
-
   {# STICKY NAVIGATION #}
   {% if theme_sticky_navigation %}
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
-      });
-  </script>
+    <script type="text/javascript" src="{{ pathto('_static/js/sticky_nav.js', 1) }}"></script>
   {% endif %}
 
   {%- block footer %} {% endblock %}
 
   {% if theme_analytics_id %}
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', '{{ theme_analytics_id }}', 'auto');
-  ga('send', 'pageview');
-
-</script>
+    <script type="text/javascript" src="{{ pathto('_static/js/ga.js', 1) }}"></script>
   {% endif %}
 
 </body>
