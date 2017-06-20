@@ -12,4 +12,5 @@ Compute Nodes
     images
     servers
     backups
+    backup-definitions
     tasklog
