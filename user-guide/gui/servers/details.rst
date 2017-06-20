@@ -155,9 +155,9 @@ Replication Settings
 * **Target Node** - Destination compute node.
 * **Sleep Time** - Number of seconds to pause between two replication operations.
 * **Enabled** - Whether the replication is enabled.
-* **Reserve Resources** - Whether to reserve the virtual machine's vCPU and RAM resources on target compute node. The default is to reserve the VM's resources unless changed in the :ref:`virtual server DC settings <dc_vm_settings>`.
+* **Reserve Resources** - Whether to reserve the virtual machine's vCPU and RAM resources on target compute node. The default is to reserve the VM's resources unless changed in the :ref:`virtual server DC settings <dc_vm_settings>`. Since the replicated virtual server is not running on the target node, the resources are not immediately needed by the slave VM. When disabled, vCPU and RAM resources are not subtracted from available compute node resources and can be used for other virtual servers.
 
-    .. note::  When disabled, the resources must be available (and will be reserved) before the failover action.
+    .. note::  When disabled, the resources must be available (and will be reserved) before the failover action. The user is responsible for ensuring that enough resources are available for the failver operation.
 
 Replication Actions
 ~~~~~~~~~~~~~~~~~~~
