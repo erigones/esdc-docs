@@ -150,11 +150,14 @@ Replication is a process by which all disks of a virtual server are periodically
 Replication Settings
 ~~~~~~~~~~~~~~~~~~~~
 
-* **Hostname** - Hostname of the master VM (read-only).
-* **Replica name** - Name of the replication configuration.
+* **Hostname** - Hostname of the master virtual server (read-only).
+* **Replica Name** - Name of the replication configuration.
 * **Target Node** - Destination compute node.
 * **Sleep Time** - Number of seconds to pause between two replication operations.
 * **Enabled** - Whether the replication is enabled.
+* **Reserve Resources** - Whether to reserve the virtual machine's vCPU and RAM resources on target compute node. The default is to reserve the virtual server's resources unless changed in the :ref:`virtual server DC settings <dc_vm_settings>`. Since the replicated virtual server is not running on the target node, the resources are not immediately needed by the slave virtual server. When disabled, vCPU and RAM resources are not subtracted from available compute node resources and can be used for other virtual servers.
+
+    .. note::  When disabled, the resources must be available (and will be reserved) before the failover action. The user is responsible for ensuring that enough resources are available for the failver operation.
 
 Replication Actions
 ~~~~~~~~~~~~~~~~~~~
@@ -162,8 +165,8 @@ Replication Actions
 * **Create Replica** - Create the replica and replication service on the target compute node and perform an initial sync.
 * **Update** - Update replication service parameters on the target compute node.
 * **Delete Replica** - Destroy the replica and replication service on the target compute node.
-* **Fail over to Replica** - The server replica will be promoted to master VM and current master VM will be stopped.
-* **Reinitialize Replica** - Degrade old master VM to replica and reinitialize replication after successful failover.
+* **Fail over to Replica** - The server replica will be promoted to master virtual server and current master virtual server will be stopped.
+* **Reinitialize Replica** - Degrade old master virtual server to replica and reinitialize replication after successful failover.
 
 
 .. _vm_nics:

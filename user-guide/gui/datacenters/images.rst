@@ -97,3 +97,5 @@ Image Repositories
 ------------------
 
 A disk Image Repository (a.k.a. ImageStore) is a remote server location with :ref:`disk images <images>` available for download. It has to implement the `IMGAPI <https://images.joyent.com/docs/>`__ endpoints for listing and downloading image manifests and files. Disk image repositories can be configured by modifying the :ref:`VMS_IMAGE_REPOSITORIES <dc_image_settings>` global setting. After the image repository is properly configured and loaded, one can browse through all available images and import them onto the internal image server.
+
+If a global image server (:ref:`VMS_IMAGE_VM <dc_image_settings>`) is configured in the system, the image repository list will automatically include a local repository named after the image server. This functionality is available only to a *SuperAdmin* and can be used to import manually created images (i.e. images converted from other virtualization platforms), which were placed onto the image server by hand.

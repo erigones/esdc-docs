@@ -158,6 +158,7 @@ Virtual Server Settings
 * **VMS_VM_BACKUP_LIMIT** - Upper retention limit used for new backup definitions.
 * **VMS_VM_BACKUP_DC_SIZE_LIMIT** - Maximum size (MB) of all backups in this virtual data center.
 * **VMS_VM_BACKUP_COMPRESSION_DEFAULT** - Predefined compression algorithm for new file backups. One of: *off* (no compression), *gzip* (fast compression), *bzip2* (more effective compression).
+* **VMS_VM_REPLICA_RESERVATION_DEFAULT** - Default status of VM replica\'s resource (vCPU, RAM) reservation setting. By default, the resource reservation is enabled in order to have the vCPU and RAM available for future failover operation.
 
 
 .. _dc_network_settings:
