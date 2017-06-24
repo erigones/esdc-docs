@@ -8,4 +8,5 @@ HOWTOs
    windows
    import
    access-zone
+   pxe-zone
    mdata
