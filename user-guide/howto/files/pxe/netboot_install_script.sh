@@ -59,7 +59,7 @@ sed "$x,\$d" "${USBMOUNT}/scripts/prompt-config.sh" > "${PROMPT_CONFIG}"
 chmod +x "${PROMPT_CONFIG}"
 
 echo "=> Shutting down network (${NIC_UP})"
-[[ -n "${NIC_UP}" ]] && /sbin/ifconfig "${NIC_UP}" unplumb
+[[ -n "${NIC_UP}" ]] && /sbin/ifconfig "${NIC_UP}" inet down unplumb
 
 echo "=> Running prompt-config.sh"
 /smartdc/lib/sdc-on-tty -d /dev/console "${PROMPT_CONFIG}" "${USBMOUNT}"
