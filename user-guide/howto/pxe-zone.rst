@@ -49,7 +49,7 @@ Install and Configure Required Services
 
         .. code-block:: bash
 
-            [root@pxe-boot ~] mkdir /data/tftpboot
+            [root@pxe-boot ~] mkdir -p /data/tftpboot
 
 * Configure nginx (HTTP).
 
