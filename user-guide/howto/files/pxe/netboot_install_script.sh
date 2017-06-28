@@ -4,11 +4,7 @@
 #  1. Download and extract USB image into /tmp/usbkey
 #  2. Run prompt-config.sh, which will create /usbkey on the zones pool
 #  3. Copy contents of /tmp/usbkey into /usbkey
-#
-# There is one little problem:
-#   The original prompt-config.sh does a reboot before it finishes =>
-#   => we need to change that before running the script.
-# 
+#####
 
 # Adjust this: download URL of the compute node USB image
 USB_URL="http://10.10.0.33/esdc-ce-cn-2.6.0.img"
@@ -24,8 +20,8 @@ USB_PATH="/$(svcprop -p "joyentfs/usb_copy_path" svc:/system/filesystem/smartdc:
 USBMOUNT="/mnt/$(svcprop -p "joyentfs/usb_mountpoint" svc:/system/filesystem/smartdc:default)"
 # Download USB image into /tmp
 USBIMAGE="/tmp/usbkey.iso"
-# Custom prompt-config.sh
-PROMPT_CONFIG="/tmp/prompt-config.sh"
+# Danube Cloud prompt-config.sh
+PROMPT_CONFIG="${USBMOUNT}/scripts/prompt-config.sh"
 
 echo "=> Running netboot_install_script"
 
@@ -51,12 +47,6 @@ if [[ ! -f "${USBMOUNT}/scripts/prompt-config.sh" ]]; then
 	echo "ERROR: \"${USBMOUNT}/scripts/prompt-config.sh\" does not exist" >&2
 	exit 2
 fi
-
-# FIXME: It might be better to distribute a custom prompt-config.sh along with this script
-# Remove last 5 lines from prompt-config.sh
-x=$(($(wc -l < "${USBMOUNT}/scripts/prompt-config.sh" )-5))
-sed "$x,\$d" "${USBMOUNT}/scripts/prompt-config.sh" > "${PROMPT_CONFIG}"
-chmod +x "${PROMPT_CONFIG}"
 
 echo "=> Shutting down network (${NIC_UP})"
 [[ -n "${NIC_UP}" ]] && /sbin/ifconfig "${NIC_UP}" inet down unplumb
