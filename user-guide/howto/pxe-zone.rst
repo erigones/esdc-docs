@@ -3,13 +3,15 @@
 PXE Zone providing Network Booting for Compute Nodes
 ****************************************************
 
-The PXE zone is a SunOS Zone :ref:`server <vm>`, which acts as a DHCP and TFTP server and is used for booting and installing compute nodes on the *admin* network.
+The PXE zone is a :ref:`SunOS Zone <vm>`, which acts as a DHCP and TFTP server and is used for booting and installing compute nodes on the *admin* network.
+
+.. note:: The network boot install script functionality is available from *Danube Cloud* version 2.6.
 
 
 Creating a Zone with admin NIC
 ##############################
 
-* Create an PXE zone. The disk should be large enough for storing one or two *Danube Cloud* USB images.
+* Create an PXE zone. The disk should be large enough for storing one or two :ref:`compute node USB images <cn_image>` (at least 10 GB).
 
     .. image:: img/create_pxe_zone.png
 
@@ -77,20 +79,28 @@ Install and Configure Required Services
         [root@pxe-boot ~] svcadm enable nginx
 
 
+.. _netboot_pxe_configuration:
+
 Preparing TFTP and iPXE Boot Files
 ##################################
+
+The iPXE client, iPXE scripts and ErigonOS (SmartOS) platform archive files must be properly placed into the TFTP root directory and are required for:
+
+- Booting a compute node from the network;
+- Installing a new compute node from the network. **Note:** installation of new compute nodes also requires additional files and configuration, which is explained in the :ref:`next section <netboot_install_configuration>`.
+
+----
 
 * The following files iPXE files should be placed into the TFTP root directory:
 
     - iPXE client: :download:`undionly.kpxe <files/pxe/IPXE-100612_undionly.kpxe>`
-    - iPXE scripts: :download:`menu.ipxe <files/pxe/menu.ipxe>` and/or :download:`esdc-latest.ipxe<files/pxe/esdc-latest.ipxe>`
+    - iPXE scripts: :download:`menu.ipxe <files/pxe/menu.ipxe>` or more simpler variant :download:`esdc-latest.ipxe<files/pxe/esdc-latest.ipxe>`
 
     .. code-block:: bash
 
         [root@pxe-boot ~] cd /data/tftpboot
         [root@pxe-boot tftpboot] curl -o undionly.kpxe https://docs.danubecloud.org/user-guide/_downloads/IPXE-100612_undionly.kpxe
         [root@pxe-boot tftpboot] curl -O https://docs.danubecloud.org/user-guide/_downloads/menu.ipxe
-        [root@pxe-boot tftpboot] curl -O https://docs.danubecloud.org/user-guide/_downloads/esdc-latest.ipxe
 
 * Download and unpack a *Danube Cloud* ErigonOS (SmartOS) platform archive.
 
@@ -118,8 +128,14 @@ Preparing TFTP and iPXE Boot Files
             set install-host <pxe-boot-host-IP-address>
 
 
+.. _netboot_install_configuration:
+
 Preparing HTTP Install Files
 ############################
+
+This section describes additional steps required for installation of new compute nodes from the network. A working PXE boot environment including an ErigonOS (SmartOS) platform archive available via TFTP are necessary requirements for any network installation of *Danube Cloud* - this is described in the :ref:`previous section <netboot_pxe_configuration>`.
+
+.. note:: When installing a new compute node, please make sure that you always install the :ref:`latest stable version <cn_image>`.
 
 * Download and unpack a *Danube Cloud* compute node :ref:`USB image <cn_image>`.
 
@@ -128,8 +144,9 @@ Preparing HTTP Install Files
         [root@pxe-boot ~] cd /data/tftpboot/install
         [root@pxe-boot install] curl -O https://download.erigones.org/esdc/usb/stable/esdc-ce-cn-<version>.img.gz 
         [root@pxe-boot install] gzip -d esdc-ce-cn-<version>.img.gz 
+        [root@pxe-boot install] ln -s esdc-ce-cn-<version>.img esdc-ce-cn-latest.img
 
-* Download a sample install script.
+* Download a sample :download:`install script <files/pxe/netboot_install_script.sh>`.
 
     .. code-block:: bash
 
@@ -141,7 +158,16 @@ Preparing HTTP Install Files
 
         [root@pxe-boot install] vim netboot_install_script.sh
 
-            USB_URL="http://<pxe-boot-host-IP-address>/esdc-ce-cn-<esdc-version>.img"
+            USB_URL="http://<pxe-boot-host-IP-address>/esdc-ce-cn-latest.img"
 
 
-.. note:: The network boot install script functionality is available from *Danube Cloud* version 2.6.
+
+Upgrading Network-booted Compute Nodes
+######################################
+
+When upgrading an already installed compute node, which is booted via PXE, two steps should be performed:
+
+1. :ref:`Update of the Danube Cloud software on both, the management server and all compute nodes <update_esdc>`.
+2. :ref:`Update of the ErigonOS (SmartOS) platform archive and relevant iPXE script <netboot_pxe_configuration>`.
+
+In addition to regular upgrades of compute nodes, do not forget to check and update the *Danube Cloud* USB image used for installation of new compute nodes mentioned in the :ref:`HTTP install files section <netboot_install_configuration>`.

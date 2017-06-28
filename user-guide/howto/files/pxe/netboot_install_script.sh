@@ -7,7 +7,7 @@
 #####
 
 # Adjust this: download URL of the compute node USB image
-USB_URL="http://10.10.0.33/esdc-ce-cn-2.6.0.img"
+USB_URL="http://10.10.0.33/esdc-ce-cn-latest.img"
 ###########################################################
 
 export PATH="/usr/sbin:/sbin:/usr/bin:/bin"
