@@ -33,6 +33,7 @@ Virtual Server Parameters
     * *BSD VM*
     * *SunOS VM*
     * *SunOS Zone*
+    * *Linux Zone*
 * **vCPUs** - Number of virtual CPUs assigned to the virtual server.
 * **RAM** - The amount of RAM (MB) assigned to the virtual server.
 * **SLA** - Monthly SLA (read-only). Can be enabled/disabled via :ref:`monitoring DC settings <dc_monitoring_settings>`.
