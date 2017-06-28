@@ -16,7 +16,7 @@ item shell      Enter iPXE shell
 item reboot     Reboot
 item
 item exit       Exit (boot local disk)
-choose --default esdc_b1 --timeout 30000 target && goto ${target}
+choose --default esdc_b1 --timeout 10000 target && goto ${target}
 
 
 ########## UTILITY ITEMS ####################
