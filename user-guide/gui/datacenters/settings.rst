@@ -121,6 +121,8 @@ Virtual Server Settings
 .. image:: img/settings_server-2.png
 
 * **VMS_ZONE_ENABLED** - Whether to enable support for SunOS zones in this virtual data center.
+* **VMS_VM_STOP_TIMEOUT_DEFAULT** - Default time period (in seconds) for a graceful  stop or 'reboot, after which a force stop/reboot is send to the VM.
+* **VMS_VM_STOP_WIN_TIMEOUT_DEFAULT** - This is the same setting as *VMS_VM_STOP_TIMEOUT_DEFAUL* ' but for a VM with Windows OS type, which usually takes longer to shut down.
 * **VMS_VM_OSTYPE_DEFAULT** - Default operating system type. One of: *Linux VM*, *Windows VM*, *BSD VM*, *SunOS VM*, *SunOS Zone*.
 * **VMS_VM_MONITORED_DEFAULT** - Controls whether server synchronization with the monitoring system is enabled by default.
 * **VMS_VM_CPU_SHARES_DEFAULT** - Default value of the server's CPU shares, relative to other servers. A higher value indicates a higher priority for allocation of CPU time. The default value for all virtual servers is 100.
