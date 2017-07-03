@@ -137,6 +137,7 @@ Virtual Server Settings
 
 * **VMS_DISK_IMAGE_DEFAULT** - Name of the default disk image used for newly created server disks.
 * **VMS_DISK_IMAGE_ZONE_DEFAULT** - Name of the default disk image used for newly created SunOS zone virtual servers.
+* **VMS_DISK_IMAGE_LX_ZONE_DEFAULT** - Name of the default disk image used for newly created Linux zone virtual servers.
 * **VMS_NIC_MODEL_DEFAULT** - Default virtual NIC model of newly created server NICs. One of: *virtio*, *e1000*, *rtl8139*.
 
     .. note:: It is recommended to use the *virtio* driver, which provides the highest performance and reduces consumption of CPU time. Some operating systems require additional installation of the *virtio* driver.
