@@ -44,7 +44,7 @@ clean:
 	-rm -rf $(BUILDDIR)/*
 
 html:
-	$(SPHINXBUILD) -b djangohtml $(ALLSPHINXOPTS) $(BUILDDIR)/html
+	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
@@ -167,6 +167,6 @@ esdc-clean: esdc-check clean
 	-rm -rf $(ESDOCDIR)/*
 
 esdc: esdc-check
-	$(SPHINXBUILD) -b djangohtml -D html_theme=erigones $(ALLSPHINXOPTS) $(ESDOCDIR)
+	$(SPHINXBUILD) -b html -D html_theme=erigones $(ALLSPHINXOPTS) $(ESDOCDIR)
 	@echo
 	@echo "Build finished. The HTML pages are in $(ESDOCDIR)."
