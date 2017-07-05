@@ -412,7 +412,7 @@ pdf_default_dpi = 112
 pdf_page_template = 'erigones'
 
 # Show Table Of Contents at the beginning?
-pdf_use_toc = True
+#pdf_use_toc = True
 
 # How many levels deep should the table of contents be?
 pdf_toc_depth = 9999
