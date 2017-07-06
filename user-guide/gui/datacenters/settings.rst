@@ -120,10 +120,10 @@ Virtual Server Settings
 
 .. image:: img/settings_server-2.png
 
-* **VMS_ZONE_ENABLED** - Whether to enable support for SunOS zones in this virtual data center.
+* **VMS_ZONE_ENABLED** - Whether to enable support for SunOS and Linux zones in this virtual data center.
 * **VMS_VM_STOP_TIMEOUT_DEFAULT** - Default time period (in seconds) for a graceful stop or reboot, after which a force stop/reboot is send to the VM (KVM only).
-* **VMS_VM_STOP_WIN_TIMEOUT_DEFAULT** - This is the same setting as *VMS_VM_STOP_TIMEOUT_DEFAUL*, but for a VM with Windows OS type, which usually takes longer to shut down.
-* **VMS_VM_OSTYPE_DEFAULT** - Default operating system type. One of: *Linux VM*, *Windows VM*, *BSD VM*, *SunOS VM*, *SunOS Zone*.
+* **VMS_VM_STOP_WIN_TIMEOUT_DEFAULT** - This is the same setting as *VMS_VM_STOP_TIMEOUT_DEFAULT*, but for a VM with Windows OS type, which usually takes longer to shut down.
+* **VMS_VM_OSTYPE_DEFAULT** - Default operating system type. One of: *Linux VM*, *Windows VM*, *BSD VM*, *SunOS VM*, *SunOS Zone*, *Linux Zone*.
 * **VMS_VM_MONITORED_DEFAULT** - Controls whether server synchronization with the monitoring system is enabled by default.
 * **VMS_VM_CPU_SHARES_DEFAULT** - Default value of the server's CPU shares, relative to other servers. A higher value indicates a higher priority for allocation of CPU time. The default value for all virtual servers is 100.
 * **VMS_VM_ZFS_IO_PRIORITY_DEFAULT** - Default value of the server's IO throttling priority, relative to other servers. A higher value indicates a higher priority for allocation of IO resources. The default value for all virtual servers is 100.
@@ -139,6 +139,7 @@ Virtual Server Settings
 
 * **VMS_DISK_IMAGE_DEFAULT** - Name of the default disk image used for newly created server disks.
 * **VMS_DISK_IMAGE_ZONE_DEFAULT** - Name of the default disk image used for newly created SunOS zone virtual servers.
+* **VMS_DISK_IMAGE_LX_ZONE_DEFAULT** - Name of the default disk image used for newly created Linux zone virtual servers.
 * **VMS_NIC_MODEL_DEFAULT** - Default virtual NIC model of newly created server NICs. One of: *virtio*, *e1000*, *rtl8139*.
 
     .. note:: It is recommended to use the *virtio* driver, which provides the highest performance and reduces consumption of CPU time. Some operating systems require additional installation of the *virtio* driver.

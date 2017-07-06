@@ -43,6 +43,7 @@ Image Parameters
     * *BSD VM*
     * *SunOS VM*
     * *SunOS Zone*
+    * *Linux Zone*
 * **Status** - Current state of a disk image (read-only). One of:
 
     * *ok* - Image is ready to use.
