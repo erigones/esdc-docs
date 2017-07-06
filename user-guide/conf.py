@@ -37,7 +37,6 @@ needs_sphinx = '1.0'
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 extensions = [
-    "djangodocs",
     "sphinx.ext.intersphinx",
     "sphinx.ext.viewcode",
     "extarget",
@@ -163,10 +162,10 @@ html_logo = 'esdc/img/danubecloud-logo-white.png'
 
 # If true, SmartyPants will be used to convert quotes and dashes to
 # typographically correct entities.
-html_use_smartypants = True
+#html_use_smartypants = True
 
 # HTML translator class for the builder
-html_translator_class = "djangodocs.DjangoHTMLTranslator"
+#html_translator_class = "djangodocs.DjangoHTMLTranslator"
 
 # Content template for the index page.
 #html_index = ''
@@ -285,7 +284,7 @@ epub_copyright = copyright
 # for small screen space, using the same theme for HTML and epub output is
 # usually not wise. This defaults to 'epub', a theme designed to save visual
 # space.
-epub_theme = 'djangodocs-epub'
+#epub_theme = 'djangodocs-epub'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.
@@ -413,7 +412,7 @@ pdf_default_dpi = 112
 pdf_page_template = 'erigones'
 
 # Show Table Of Contents at the beginning?
-pdf_use_toc = True
+#pdf_use_toc = True
 
 # How many levels deep should the table of contents be?
 pdf_toc_depth = 9999

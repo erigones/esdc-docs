@@ -11,9 +11,6 @@ Danube Cloud
 **Danube Cloud is a cloud management software used for deploying, maintaining and automating cloud data centers and their processes.**
 
 
-Links
-=====
-
 - Danube Cloud Enterprise Edition and general information: https://danubecloud.com
 
 - Danube Cloud Community Edition homepage: https://danubecloud.org
@@ -25,20 +22,8 @@ Links
     .. note:: If you have found a bug, please don't hesitate and report it in the main bug tracker: https://github.com/erigones/esdc-ce/issues.
 
 
-Architecture Overview
-=====================
+.. toctree::
+    :maxdepth: 2
 
-Danube Cloud Enterprise Edition
--------------------------------
-
-.. image:: img/esdc-ee-architecture.png
-    :align: center
-    :alt: Danube Cloud Enterprise Edition: Compute Nodes
-
-Danube Cloud Community Edition
-------------------------------
-
-.. image:: img/esdc-ce-architecture.png
-    :align: center
-    :alt: Danube Cloud Community Edition: Compute Nodes
-
+    features
+    overview

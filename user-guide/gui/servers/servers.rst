@@ -64,7 +64,7 @@ Virtual Server Actions
 
     .. warning:: The ACPI restart and shutdown actions require the virtual server(s) to have a functional ACPI daemon running.
 
-    .. warning:: Unless a virtual server is not stopped within 3 minutes, the virtual server will be automatically shut down by using the *force* method.
+    .. warning:: Unless a KVM virtual server is not stopped or rebooted within the time period specified by the :ref:`VMS_VM_STOP_TIMEOUT_DEFAULT <dc_vm_settings>` setting (3 minutes by default), the virtual server will be automatically shut down or rebooted by using the *force* method.
 
 * **Update** - Push the current configuration changes of selected virtual servers onto their respective compute nodes. The selected servers must be in a *running* or *stopped* state. Some updates (i.e. adding or removing virtual server disks and NICs) will take effect only after stopping and starting the affected virtual servers.
 * **Undo** - Restore configuration of selected servers to a state that is identical with the state on the compute node.

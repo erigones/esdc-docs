@@ -37,6 +37,7 @@ Management and Que (Task Queue) Python Software Components
 * `django-redis-cache <https://pypi.python.org/pypi/django-redis-cache>`__ - `BSD 3-Clause License <https://raw.githubusercontent.com/sebleier/django-redis-cache/master/LICENSE>`__
 * `django-taggit <https://pypi.python.org/pypi/django-taggit>`__ - `BSD 3-Clause License <https://raw.githubusercontent.com/alex/django-taggit/master/LICENSE>`__
 * `django-timezone-field <https://pypi.python.org/pypi/django-timezone-field>`__ - `BSD 2-Clause License <https://raw.githubusercontent.com/mfogel/django-timezone-field/develop/LICENSE.txt>`__
+* `django-transaction-hooks <https://pypi.python.org/pypi/django-transaction-hooks>`__ - `BSD 3-Clause License <https://raw.githubusercontent.com/carljm/django-transaction-hooks/master/LICENSE.txt>`__
 * `djangorestframework <https://pypi.python.org/pypi/djangorestframework>`__ - `BSD 2-Clause License <https://raw.githubusercontent.com/tomchristie/django-rest-framework/master/LICENSE.md>`__
 * `dnspython <https://pypi.python.org/pypi/dnspython>`__ - `BSD-like, Freeware <https://raw.githubusercontent.com/rthalley/dnspython/master/LICENSE>`__
 * `docutils <https://pypi.python.org/pypi/docutils>`__ - `Public Domain with exceptions <https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/COPYING.txt?format=raw>`__
