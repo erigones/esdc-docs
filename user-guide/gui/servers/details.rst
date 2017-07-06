@@ -107,7 +107,7 @@ Virtual Server Actions
 
     .. warning:: The ACPI restart and shutdown actions require the virtual server to have a functional ACPI daemon running.
 
-    .. warning:: Unless a virtual server is not stopped within 3 minutes, the virtual server will be automatically shut down by using the *force* method.
+    .. warning:: Unless a KVM virtual server is not stopped or rebooted within the time period specified by the :ref:`VMS_VM_STOP_TIMEOUT_DEFAULT <dc_vm_settings>` setting (3 minutes by default), the virtual server will be automatically shut down or rebooted by using the *force* method.
 * **Migrate** - Migrate the virtual server into an another compute node.
 
     .. image:: img/vm_migrate.png
