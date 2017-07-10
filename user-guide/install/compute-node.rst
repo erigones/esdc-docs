@@ -15,6 +15,19 @@ Compute Node Installation
 
     .. image:: img/install-01-welcome.png
 
+* Installation type.
+
+    .. image:: img/install-02-advanced-install.png
+
+    * The following settings can be configured only when the **advanced installation** option is enabled:
+
+        - Admin network VLAN ID.
+        - IP address on other network tags.
+        - Primary DNS server.
+        - Secondary DNS server.
+        - DNS search domain.
+        - NTP server IP address or hostname.
+
 * Setting the name of the physical data center (**first compute node** only).
 
     .. image:: img/install-02hn-dc-info.png
@@ -23,19 +36,38 @@ Compute Node Installation
 
     .. image:: img/install-03-networking-info.png
 
+    |
+
     .. image:: img/install-04-networking-admin.png
 
+    |
+
+    .. image:: img/install-04-networking-nictags.png
+
+    |
+
+    * Configuration of other networks (NIC tags):
+
+    |
+
     .. image:: img/install-05-networking-dns.png
+
+    |
 
     * Choosing a network card.
     * Admin network IP address.
     * Admin network mask.
-    * Admin network VLAN ID.
+    * Admin network VLAN ID (*advanced installation*, default: ``none``).
+    * Configuration of other networks (NIC tags):
+
+        - *external*
+        - *internal*
+        - *storage*
     * Default gateway IP address.
-    * Primary DNS server.
-    * Secondary DNS server.
-    * DNS search domain.
-    * NTP server IP address or hostname.
+    * Primary DNS server (*advanced installation*, default: ``8.8.8.8``).
+    * Secondary DNS server (*advanced installation*, default: ``8.8.4.4``).
+    * DNS search domain (*advanced installation*, default: ``local``).
+    * NTP server IP address or hostname (*advanced installation*, default: ``0.smartos.pool.ntp.org``).
 
 * Choosing the installation type:
 
@@ -51,6 +83,8 @@ Compute Node Installation
 
     * An optimal disk array profile is chosen automatically based on the information gathered about available local disks. The storage can be configured manually, however, this method is only recommended for more experienced users.
 
+    |
+
     .. seealso:: A more detailed explanation of :ref:`disk arrays <storage>` and :ref:`disk redundancy <storage_redundancy>` can be found in a separate chapter.
 
 * Compute node OS configuration.
@@ -59,6 +93,8 @@ Compute Node Installation
 
     * Choosing compute node's root password.
     * System hostname - fully qualified domain name.
+
+    |
 
     .. warning:: The Compute Node hostname cannot be changed after install.
 
