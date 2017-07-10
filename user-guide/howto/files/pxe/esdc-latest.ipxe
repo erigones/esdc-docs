@@ -1,0 +1,9 @@
+#!ipxe
+
+set platform-version 20170624T192838Z
+set install-host 10.10.0.33
+
+kernel /erigonos/${platform-version}/platform/i86pc/kernel/amd64/unix -B smartos=true,computenode=true,netboot=true,netboot_install_script=http://${install-host}/netboot_install_script.sh
+initrd /erigonos/${platform-version}/platform/i86pc/amd64/boot_archive
+
+boot
