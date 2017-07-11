@@ -46,10 +46,6 @@ Compute Node Installation
 
     |
 
-    * Configuration of other networks (NIC tags):
-
-    |
-
     .. image:: img/install-05-networking-dns.png
 
     |
