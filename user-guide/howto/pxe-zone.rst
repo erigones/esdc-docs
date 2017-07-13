@@ -93,7 +93,7 @@ The iPXE client, iPXE scripts and ErigonOS (SmartOS) platform archive files must
 
 * The following files iPXE files should be placed into the TFTP root directory:
 
-    - iPXE client: :download:`undionly.kpxe <files/pxe/IPXE-100612_undionly.kpxe>`
+    - iPXE client: :download:`undionly.kpxe <files/pxe/undionly.kpxe>` or :download:`undionly.kkpxe <files/pxe/undionly.kkpxe>` (alternative iPXE client that does not unload the PXE base code)
     - iPXE scripts: :download:`menu.ipxe <files/pxe/menu.ipxe>` or more simpler variant :download:`esdc-latest.ipxe<files/pxe/esdc-latest.ipxe>`
 
     .. code-block:: bash
