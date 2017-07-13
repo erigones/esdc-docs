@@ -101,9 +101,9 @@ Preparing your Network Infrastructure
 
 *Danube Cloud* utilizes a concept of virtual networks. A virtual network is a logically separated subnet that allows virtual machines to connect to the external networks (e.g. internet) or to communicate internally within the *Danube Cloud* data center.
 
-There is one special virtual network called *admin* that is used for internal purposes. During the installation of the first compute node, you will be asked for information about this network. The *admin* network requires access to the internet. It should be a full /24 subnet (256 IP addresses) at least and cannot be smaller than a /26 subnet (64 IP addresses).
+There is one special virtual network called *admin* that is used for internal purposes. During the installation of the compute node, you will be asked for information about this network. The *admin* network requires access to the internet. It should be a full /24 subnet (256 IP addresses) and cannot be smaller than a /26 subnet (64 IP addresses).
 
-Using of VLAN tags for virtual networks is recommended as it ensures virtual networks separation. You can either use a separate physical interface (:ref:`or interfaces aggregated with LACP<network_aggregation>`) for the *admin* network and the rest of physical interface(s) for other virtual networks, or you can :ref:`aggregate<network_aggregation>` all physical interfaces together, setup a native (untagged) VLAN as a *admin* virtual network and forward all other networks as trunk VLAN to the physical *Danube Cloud* nodes (recommended).
+Using of VLANs for virtual networks is recommended as it ensures virtual networks separation. You can either use a separate physical interface (:ref:`or interfaces aggregated with LACP<network_aggregation>`) for the *admin* network, or you can use VLANs to separate the networks on the same physical link. This also allows you to create a lot more virtual networks in the *Danube Cloud* installation.
 
 .. seealso:: For more information on how to setup virtual networks and their connection to the physical interfaces please see a :ref:`separate chapter about networking <network_interface>`
 
@@ -137,13 +137,13 @@ The following settings should be configured in BIOS configuration of your comput
 
     .. note:: Some Intel® processors, which are using the C-States feature can cause an error that may seriously endanger correct functioning of a compute node. The error is treated in the system, but you are advised to disable C-States in the BIOS configuration.
 
-- Disable USB 3 support.
+- Disable USB 3 support if you cannot boot from the USB stick.
 
-    .. warning:: Currently, USB version 3 is not supported and must be disabled, otherwise the operating system initialization may fail.
+    .. warning:: USB version 3 is supported but on some hardware it may cause the operating system initialization to fail.
 
 - Enable legacy boot support.
 
-    .. warning:: UEFI boot is not supported at the moment.
+    .. warning:: UEFI boot is not currently supported.
 
 
 .. _ipmi_over_lan:
