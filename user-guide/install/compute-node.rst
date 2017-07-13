@@ -52,6 +52,7 @@ Compute Node Installation
     |
 
 * The above pictures show:
+
     * Choosing a network card.
     * Admin network IP address.
     * Admin network mask.
