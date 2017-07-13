@@ -36,7 +36,7 @@ Adding a NIC Tag
     external       78:24:af:9c:3b:53  rge0           normal
     admin          78:24:af:9c:3b:53  rge0           normal
 
-.. note:: For mapping a NIC tag to a link aggregation interface, it is necessary to the physical link aggregation name (e.g. *aggr0*) instead of the MAC address.
+.. note:: For mapping a NIC tag to a link aggregation interface, it is necessary to use the physical link aggregation name (e.g. *aggr0*) instead of the MAC address.
 
     .. code-block:: bash
 

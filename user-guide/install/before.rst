@@ -107,7 +107,7 @@ Using of VLAN tags for virtual networks is recommended as it ensures virtual net
 
 .. seealso:: For more information on how to setup virtual networks and their connection to the physical interfaces please see a :ref:`separate chapter about networking <network_interface>`
 
-If you don't have an appropriate hardware router or firewall, you can create one virtual server inside *Danube Cloud* (e.g. SunOS Zone) with two network interfaces - internal and external - and setup it to serve as a network router for your internal subnets (virtual networks).
+If you don't have an appropriate hardware router or firewall, you can create one virtual server inside *Danube Cloud* (e.g. SunOS Zone) with two network interfaces - internal and external - and setup it to serve as a network router for your internal subnets (virtual networks). You can follow our guide how to create an :ref:`access zone <access_zone>`.
 
 Below is an example port map for interconnection of two *Danube Cloud* compute nodes using two stacked switches, VLANs for virtual networks, link aggregations for speed and redundancy and with the *admin* virtual network as a native VLAN.
 
