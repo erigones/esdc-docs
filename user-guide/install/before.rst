@@ -103,7 +103,7 @@ Preparing your Network Infrastructure
 
 There is one special virtual network called *admin* that is used for internal purposes. During the installation of the compute node, you will be asked for information about this network. The *admin* network requires access to the internet. It should be a full /24 subnet (256 IP addresses) and cannot be smaller than a /26 subnet (64 IP addresses).
 
-Using of VLANs for virtual networks is recommended as it ensures virtual networks separation. You can either use a separate physical interface (:ref:`or interfaces aggregated with LACP<network_aggregation>`) for the *admin* network, or you can use VLANs to separate the networks on the same physical link. This also allows you to create much more virtual networks in the *Danube Cloud* installation.
+Using of VLANs for virtual networks is recommended as it ensures virtual networks separation. You can either use a separate physical interface (:ref:`or interfaces aggregated with LACP<network_aggregation>`) for the *admin* network, or you can use VLANs to separate the networks on the same physical link. This also allows you to create a lot more virtual networks in the *Danube Cloud* installation.
 
 .. seealso:: For more information on how to setup virtual networks and their connection to the physical interfaces please see a :ref:`separate chapter about networking <network_interface>`
 
