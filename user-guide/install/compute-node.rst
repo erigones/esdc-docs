@@ -3,7 +3,7 @@
 Compute Node Installation
 *************************
 
-.. note:: There are :ref:`two types of installation media<cn_image>` and the installation steps documented below are slightly different for both of them. The first compute node installation media should be used only for the first compute node. All other physical servers should be installed using the smaller compute node USB image.
+.. note:: There are :ref:`two types of installation media<cn_image>` and the installation steps documented below are simillar for both of them. The first compute node installation media should be used only for the first compute node. All other physical servers should be installed using the smaller compute node USB image.
 
 .. _cn_boot_loader:
 
@@ -23,10 +23,11 @@ Compute Node Installation
 
         - Admin network VLAN ID.
         - IP address on other network tags.
-        - Primary DNS server.
-        - Secondary DNS server.
+        - Primary and secondary DNS servers.
         - DNS search domain.
-        - NTP server IP address or hostname.
+        - NTP synchronization host
+
+    * In the **basic installation**, the above options are configured automatically from their default values.
 
 * Setting the name of the physical data center (**first compute node** only).
 
@@ -50,6 +51,7 @@ Compute Node Installation
 
     |
 
+    The above pictures show:
     * Choosing a network card.
     * Admin network IP address.
     * Admin network mask.
@@ -121,7 +123,7 @@ Compute Node Installation
 
 * Installation of the *Danube Cloud* compute node and management software.
 
-    .. note:: During the installation process of *Danube Cloud*, files are being copied from the USB flash drive to the primary data storage which usually takes about 5 to 30 minutes.
+    .. note:: During the installation process of *Danube Cloud*, files are being copied from the USB flash drive to the primary data storage which usually takes about 5 to 20 minutes.
 
 * After a successful installation, please log in to the Web Management Server.
 

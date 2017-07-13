@@ -14,8 +14,8 @@ After you have successfully installed your first compute node, you should log in
 - Update :ref:`virtual data center settings <dc_settings>` for the *main* virtual data center.
     - Go to *Datacenter* in the Main menu and select *Settings* item in the *Datacenter* menu, to start editing settings.
 
-- Configure at least one other :ref:`NIC tag on your compute node <network>` and :ref:`create some networks and IP addresses <networks>`.
-    - NIC tags must be :ref:`configured manually on the compute node <network_nictag>`.
+- Check and/or :ref:`create some networks and IP addresses <networks>`.
+    - NIC tags can be :ref:`configured or changed manually on the compute node <network_nictag>`.
     - *Networks* can be found under the *Datacenter* item in the Main menu.
 
 - You may also want to :ref:`import some server images <images>` before you create your first virtual server.
