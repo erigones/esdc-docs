@@ -9,7 +9,7 @@ Upon initial configuration of the monitoring system, it is advised to configure 
 Notification Delivery Configuration
 ###################################
 
-Individual notifications are sent to users or group of users. These have to be preconfigured in Zabbix configuration `Administration -> Users <https://www.zabbix.com/documentation/3.0/manual/config/users_and_usergroups/user>`_. It is possible to configure different media for every user or group of users through which the notification shall be delivered. This is configurable in `Administration -> Media types <https://www.zabbix.com/documentation/3.0/manual/web_interface/frontend_sections/administration/mediatypes>`_. *Danube Cloud* comes preconfigured with following media types:
+Individual notifications are sent to users or group of users. Users and user groups are reflected from *Danube Cloud* to Zabbix by default. It is possible to configure different media for every user or group of users through which the notification shall be delivered. This is configurable in `Administration -> Media types <https://www.zabbix.com/documentation/3.0/manual/web_interface/frontend_sections/administration/mediatypes>`_. *Danube Cloud* comes preconfigured with following media types:
 
 * **Email** media type sends notifications via email. Emails are delivered via local mail server on the monitoring server. The destination email address can be configured in user's media type settings (Send to).
 
