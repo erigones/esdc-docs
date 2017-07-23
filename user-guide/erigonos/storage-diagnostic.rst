@@ -190,3 +190,71 @@ How to display information about local disks
 - SIZE - The device's storage capacity.
 - RMV - A field indicating whether the device is removable.
 - SSD - A field indicating whether the device is solid-state.
+
+
+How to observe I/O activity per virtual machine
+###############################################
+
+* ``vfsstat`` - VFS read and write activity; includes reads and writes which may use the filesystem´s cache.
+
+    .. code-block:: bash
+
+        [root@node01 ~] # vfsstat -M -Z 5
+        r/s   w/s  Mr/s  Mw/s ractv wactv read_t writ_t  %r  %w   d/s  del_t zone
+        1425.6   6.2   0.4   0.0   0.0   0.0    2.2    9.4   0   0   0.0    0.0 global (0)
+        0.0   0.0   0.0   0.0   0.0   0.0    0.0    0.0   0   0   0.0    0.0 3bb67ec6 (4)
+        0.0   0.0   0.0   0.0   0.0   0.0    0.0    0.0   0   0   0.0    0.0 3cc5ac84 (3)
+        0.2   7.8   0.0   0.0   0.0   0.1 23982.7 15663.6   0   3   1.4   10.0 e1273324 (20)
+        0.0   1.4   0.0   0.0   0.0   0.0    0.0 22972.0   0   1   0.0    0.0 ec4e28bb (22)
+        2412.3  13.5   0.5   0.4   0.0   0.0    2.4   40.0   0   0   0.0    0.0 c006ad9f (5)
+        9.2   2.8   0.0   0.0   0.0   0.0    3.9   25.6   0   0   0.0    0.0 11a6bfd7 (8)
+        6.6   1.2   0.0   0.0   0.0   0.0    3.7   38.2   0   0   0.0    0.0 4aa8ad96 (36)
+        0.2   0.0   0.0   0.0   0.0   0.0   15.4    0.0   0   0   0.0    0.0 d7ba84c1 (16)
+        5.4   1.8   0.1   0.0   0.0   0.0    9.3   60.3   0   0   0.0    0.0 06308cc6 (110)
+        0.0   2.2   0.0   0.0   0.0   0.0    0.0 10571.3   0   1   0.0    0.0 8517ad37 (101)
+        0.0   0.0   0.0   0.0   0.0   0.0    0.0    0.0   0   0   0.0    0.0 db2c8319 (31)
+        0.0   0.0   0.0   0.0   0.0   0.0    0.0    0.0   0   0   0.0    0.0 f7f81a9b (45)
+        3.2   7.8   0.1   0.2   0.0   0.1 1656.5 18943.7   0   3  11.4   13.3 a28faa4d (59)
+        0.2   0.0   0.0   0.0   0.0   0.0   29.4    0.0   0   0   0.0    0.0 2490a976 (103)
+
+    * r/s - reads per second.
+    * w/s - writes per second.
+    * kr/s - kilobytes read per second.
+    * kw/s - kilobytes written per second.
+    * ractv - average number of read operations actively being serviced by the VFS layer.
+    * wactv - average number of write operations actively being serviced by the VFS layer.
+    * read_t - average VFS read latency, in microseconds.
+    * writ_t - average VFS write latency, in microseconds.
+    * %r - percent of time there is a VFS read operation pending.
+    * %w - percent of time there is a VFS write operation pending.
+    * d/s - VFS operations per second delayed by the ZFS I/O throttle.
+    * del_t - average ZFS I/O throttle delay, in microseconds.
+
+* ``ziostat`` - ZFS read I/O activity; displays latency of I/O operations happening on the physical disk layer.
+
+    .. code-block:: bash
+
+        [root@node01 ~] # ziostat -M -Z 5
+        0.8    0.0    0.0   17.0   19.6   0 global (0)
+        0.0    0.0    0.0    0.0    0.0   0 3bb67ec6 (4)
+        0.0    0.0    0.0    0.0    0.0   0 3cc5ac84 (3)
+        0.0    0.0    0.0    0.0    0.0   0 e1273324 (20)
+        0.0    0.0    0.0    0.0    0.0   0 ec4e28bb (22)
+        0.0    0.0    0.0    0.0    0.0   0 c006ad9f (5)
+        0.0    0.0    0.0    0.0    0.0   0 11a6bfd7 (8)
+        0.0    0.0    0.0    0.0    0.0   0 4aa8ad96 (36)
+        0.0    0.0    0.0    0.0    0.0   0 d7ba84c1 (16)
+        0.0    0.0    0.0    0.0    0.0   0 06308cc6 (110)
+        0.0    0.0    0.0    0.0    0.0   0 8517ad37 (101)
+        0.0    0.0    0.0    0.0    0.0   0 db2c8319 (31)
+        0.0    0.0    0.0    0.0    0.0   0 f7f81a9b (45)
+        5.4    0.0    0.1    0.0   13.8   0 a28faa4d (59)
+        0.0    0.0    0.0    0.0    0.0   0 2490a976 (103)
+
+    * r/s - reads per second.
+    * kr/s - kilobytes read per second.
+    * actv - average number of ZFS read I/O operations being handled by the disk.
+    * wsvc_t - average wait time per I/O, in milliseconds.
+    * asvc_t - average disk service time per I/O, in milliseconds.
+    * %b - percent of time there is  an I/O operation pending.
+
