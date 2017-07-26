@@ -68,7 +68,7 @@ Data Storage
 ############
 
 Every compute node must have a local (direct-attached) storage available.
-The first (main) compute node requires a local storage with at least **100 GB** of size and other compute nodes should have at least **20 GB** of local storage available.
+The first (main) compute node requires a local storage with at least **80 GB + <RAM size>** of disk size and other compute nodes should have at least **20 GB + <RAM size>** of local storage available.
 
 Local or Direct-attached Storage (DAS)
 ======================================
