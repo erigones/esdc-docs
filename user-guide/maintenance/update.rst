@@ -22,7 +22,7 @@ In the examples below the parameters have following meaning:
 Updating Management Server
 ==========================
 
-When updating *Danube Cloud* first the management server should be updated.
+When updating *Danube Cloud*, the management server must be updated first.
 
 .. note:: ``file::`` prefix must be used when passing files to ``-key``/``-cert`` parameters, otherwise the **es** command will not parse them correctly.
 
@@ -33,6 +33,15 @@ When updating *Danube Cloud* first the management server should be updated.
     user@laptop:~ $ es login -username admin -password $PW
 
     user@laptop:~ $ es set /system/update -version (version) -key file::/full/path/to/update.key -cert file::/full/path/to/update.crt
+
+If - for some reason - your connection to the server gets interrupted during the update procedure, the update itself continues in the background. Just wait 5 to 15 minutes and check the system version by following ``es`` command:
+
+.. code-block:: bash
+
+    user@laptop:~ $ es get /system/version
+
+If you see the new version number, the update has finished succesfully.
+If you see the old version even after waiting some time, the upgrade has probably failed. You might try to re-run the update to see the error.
 
 
 Updating Compute Nodes
