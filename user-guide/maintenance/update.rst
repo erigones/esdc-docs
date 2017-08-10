@@ -26,6 +26,8 @@ When updating *Danube Cloud* first the management server should be updated.
 
 .. note:: ``file::`` prefix must be used when passing files to ``-key``/``-cert`` parameters, otherwise the **es** command will not parse them correctly.
 
+.. note:: You can set API_KEY variable in the ``es`` tool, so you don't have to use login command. For more info see: https://docs.danubecloud.org/api-reference/es.html
+
 .. code-block:: bash
 
     user@laptop:~ $ es login -username admin -password $PW
