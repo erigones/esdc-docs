@@ -56,14 +56,14 @@ Compute Node Parameters
 * **Datacenters** - List of :ref:`virtual data centers <dcs>` the compute node is attached to.
 * **Servers** - Total number of virtual servers and replicas defined on the compute node. The number displayed in parentheses represents the amount of actual virtual servers excluding replicas (read-only).
 * **SLA** - Monthly SLA (read-only). Can be enabled/disabled via :ref:`global monitoring DC settings <dc_monitoring_settings>`.
-* **License** - License ID and expiration time (read-only).
 * **Status** - One of:
 
     * *online*
     * *maintenance*
     * *unreachable*
     * *unlicensed*
-
+* **Note** - Custom text information about compute node, with `markdown <https://daringfireball.net/projects/markdown/syntax>`_ support.
+* **License** - License ID and expiration time (read-only).
 
 .. _compute_node_settings:
 

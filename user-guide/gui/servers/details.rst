@@ -48,6 +48,7 @@ Virtual Server Parameters
     * *frozen* - stopped and cannot be managed.
     * *notcreated* - defined only in the DB
     * *error* - unknown status
+* **Note** - User editable text with `markdown <https://daringfireball.net/projects/markdown/syntax>`_ support, visible to every user with access to this server.
 
     .. note:: A ``-`` (minus) character appended to the status name means that the virtual server status is currently changing.
 
