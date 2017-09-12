@@ -84,6 +84,8 @@ Compute Node Installation
 
     |
 
+    .. warning:: Using a SLOG (ZIL) device is not supported when *installing to a hard drive.*
+
     .. seealso:: A more detailed explanation of :ref:`disk arrays <storage>` and :ref:`disk redundancy <storage_redundancy>` can be found in a separate chapter.
 
 * Compute node OS configuration.
