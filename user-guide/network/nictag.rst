@@ -66,7 +66,7 @@ Adding etherstub NIC tag
 ------------------------
 
 Etherstubs are created with the command shown below. Please make sure that etherstub name ends with a number, otherwise you will end up with an error.
-Etherstubs created this way will be written to ``/usbkey/config``, and this makes them persistent over the reboots.
+Etherstubs created this way will be written to ``/usbkey/config``, and this makes them persistent over reboots.
 
 .. code-block:: bash
 
