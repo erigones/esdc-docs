@@ -11,12 +11,12 @@ For other use cases, it is possible to add following NIC tags:
 - internal
 - storage
 
-Administrator can also add new NIC tags with custom name or type (normal, overlay or etherstub). These new NIC tags are then collected from the node when Refresh button in node's Details view is pressed.
-The new NIC tags will be present in the *NIC tag* dropdown menu when creating new network.
+After manually configuring NIC tags directly on the compute node, the :ref:`compute node's system information must be refreshed<node_actions>` in the *Danube Cloud* web management.
+The new NIC tags will be present in the *NIC tag* dropdown menu when creating new :ref:`network<networks>`.
 
 .. warning:: Overlay and etherstub NIC tags are created manually and it is the administrator's job to make sure that different nodes don't have NIC tags with the same name but different type. Removing one of the NIC tags with different type or setting the same type on NIC tag on all nodes will solve this issue.
 
-.. note:: **external**, **internal**, **storage** NIC tags are preconfigured in the *Danube Cloud* install script. However, it is up to the data center administrator to do the proper configuration on the compute nodes.
+.. note:: **external**, **internal**, **storage** NIC tags are preconfigured in the *Danube Cloud* install script. However, it is up to the data center administrator to do the proper configuration on all compute nodes.
 
 .. note:: After installing *Danube Cloud*, it is recommended to configure the **external** NIC tag. (Even if it points to the same physical network interface/link aggregation as the **admin** NIC tag. If new network interfaces are added to the compute node in the future, it will be easier to just modify the NIC tag mapping and not the configuration of every virtual network).
 
@@ -35,7 +35,7 @@ There are 4 types of NIC tags available:
 
 .. warning:: Normal, aggregation, and etherstub NIC tags should only be managed using ``nictagadm``; if you use ``dladm`` to create and/or delete these NIC tags, unexpected behavior might occur.
 
-.. note:: Overlay NIC tags are special because they are created based on ``overlay_rules.json``. Once the first VM that uses overlay is created, overlay spawns into life.
+.. note:: Overlay NIC tags are special because they are created based on the ``overlay_rules.json`` file. Once the first VM that uses overlay is created, overlay spawns into life.
 
 Adding normal/aggr NIC Tag
 --------------------------
@@ -80,7 +80,7 @@ Adding overlay NIC tag
 
 As opposed to other NIC tag types, overlays are not created using ``nictagadm`` command. They are created by adding ``/var/run/smartdc/networking/overlay_rules.json`` and ``/var/run/smartdc/networking/my_overlay1.json`` files.
 
-``overlay_rules.json`` provides information to the operating system about properties of the overlays. Here is the example of how this file might look like:
+``overlay_rules.json`` provides information to the operating system about properties of the overlays. Here is an example of how this file might look like:
 
 .. code-block:: bash
 
@@ -103,12 +103,23 @@ The ``nictagadm delete`` command should be used to delete NIC tags.
     NAME           MACADDRESS         LINK           TYPE
     admin          78:24:af:9c:3b:53  rge0           normal
 
-Overlays can be deleted by using both ``dladm`` or ``nictagadm``, though ``nictagadm`` is prefered due to the consistency.
-To delete overlay, you need to use **name/vnetid** to identify overlay to be deleted, without vnetid the nictagadm will not be able to identify and delete overlay.
+Overlays must be deleted using ``dladm``.
 
 .. code-block:: bash
 
-    [root@node01 ~] nictagadm delete my_overlay/2234
+    [root@node01 ~] dladm show-overlay
+    LINK               PROPERTY           PERM REQ VALUE      DEFAULT   POSSIBLE
+    my_overlay2233    mtu                rw   -   1400       1400      576-8900
+    my_overlay2233    vnetid             rw   -   2234       --        --
+    my_overlay2233    encap              r-   -   vxlan      --        vxlan
+    my_overlay2233    varpd/id           r-   -   1          --        --
+    my_overlay2233    vxlan/listen_ip    rw   y   0.0.0.0    --        --
+    my_overlay2233    vxlan/listen_port  rw   y   4700       4700      1-65535
+    my_overlay2233    search             r-   -   files      --        direct,
+                                                                        files,svp
+    my_overlay2233    files/config       rw   y   /var/run/smartdc/networking/fileoverlay.json -- --
+
+    [root@node01 ~] dladm delete-overlay my_overlay2234
     [root@node01 ~] nictagadm list
     NAME           MACADDRESS         LINK           TYPE
     admin          78:24:af:9c:3b:53  rge0           normal
