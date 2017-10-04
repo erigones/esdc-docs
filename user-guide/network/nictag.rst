@@ -103,7 +103,7 @@ The ``nictagadm delete`` command should be used to delete NIC tags.
     NAME           MACADDRESS         LINK           TYPE
     admin          78:24:af:9c:3b:53  rge0           normal
 
-Overlays must be deleted using ``dladm``.
+Overlays must be deleted using both ``dladm`` command and removed manually from ``/var/run/smartdc/networking/overlay_rules.json``.
 
 .. code-block:: bash
 
@@ -117,7 +117,7 @@ Overlays must be deleted using ``dladm``.
     my_overlay2233    vxlan/listen_port  rw   y   4700       4700      1-65535
     my_overlay2233    search             r-   -   files      --        direct,
                                                                         files,svp
-    my_overlay2233    files/config       rw   y   /var/run/smartdc/networking/fileoverlay.json -- --
+    my_overlay2233    files/config       rw   y   /var/run/smartdc/networking/my_overlay1.json -- --
 
     [root@node01 ~] dladm delete-overlay my_overlay2234
     [root@node01 ~] nictagadm list
