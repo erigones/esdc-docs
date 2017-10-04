@@ -108,7 +108,6 @@ Global Compute Nodes Settings
 
 * **VMS_NODE_SSH_KEYS_SYNC** - **WARNING: Do not disable this unless you know what you are doing!**
 * **VMS_NODE_SSH_KEYS_DEFAULT** - List of public SSH keys added to every compute node.
-* **VMS_NET_NIC_TAGS** - List of aliases of network devices configured on compute nodes.
 
 
 .. _dc_vm_settings:
