@@ -44,6 +44,17 @@ Loading the disk and NIC VIRTIO drivers from the secondary CD-ROM drive (``E:\WI
 
 .. image:: img/windows_load_driver.png
 
+You can download the latest VIRTIO drivers here:
+    https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso
+
+Driver locations on the iso image:
+    * Hard disk: ``viostor\<win_version>\amd64``
+
+    * Ethernet Adapter: ``NetKVM\<win_version>\amd64``
+
+You can click ``Load driver`` multiple times and add also the driver for the ethernet adapter during this Windows install phase.
+
+.. seealso:: For instructions on how to add/manage ISO images see :ref:`Managing an ISO Image <managing_iso_image>`.
 
 Configuring VM Shutdown from Danube Cloud
 #########################################
