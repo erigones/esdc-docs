@@ -120,6 +120,7 @@ Virtual Server Settings
 .. image:: img/settings_server-2.png
 
 * **VMS_ZONE_ENABLED** - Whether to enable support for SunOS and Linux zones in this virtual data center.
+* **VMS_VM_DEFINE_LIMIT** - Maximum number of virtual servers that can be defined in this virtual data center.
 * **VMS_VM_STOP_TIMEOUT_DEFAULT** - Default time period (in seconds) for a graceful stop or reboot, after which a force stop/reboot is send to the VM (KVM only).
 * **VMS_VM_STOP_WIN_TIMEOUT_DEFAULT** - This is the same setting as *VMS_VM_STOP_TIMEOUT_DEFAULT*, but for a VM with Windows OS type, which usually takes longer to shut down.
 * **VMS_VM_OSTYPE_DEFAULT** - Default operating system type. One of: *Linux VM*, *Windows VM*, *BSD VM*, *SunOS VM*, *SunOS Zone*, *Linux Zone*.
