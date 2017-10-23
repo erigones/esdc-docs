@@ -171,6 +171,8 @@ Network Settings
 * **VMS_NET_LIMIT** - Maximum number of DC-bound networks that can be created in this virtual data center.
 * **VMS_NET_VLAN_RESTRICT** - Whether to restrict VLAN IDs to the *VMS_NET_VLAN_ALLOWED* list.
 * **VMS_NET_VLAN_ALLOWED** - List of VLAN IDs available for newly created DC-bound networks in this virtual data center.
+* **VMS_NET_VXLAN_RESTRICT** - Whether to restrict VXLAN IDs to the *VMS_NET_VXLAN_ALLOWED* list.
+* **VMS_NET_VXLAN_ALLOWED** - List of VXLAN IDs available for newly created DC-bound overlay networks in this virtual data center.
 
 
 .. _dc_image_settings:

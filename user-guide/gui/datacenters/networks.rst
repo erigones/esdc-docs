@@ -36,6 +36,8 @@ Network Parameters
 * **Subnet** - IPv4 network prefix and subnet mask.
 * **Gateway** - IPv4 gateway.
 * **VLAN** - 802.1Q virtual LAN ID (0 = none).
+* **NIC Tag** - :ref:`NIC tag <network_nictag>` configured on a compute node.
+* **VXLAN** - VXLAN ID required for overlay NIC tags (1 - 16777215).
 * **Free IPs** - The current amount of usable free IP addresses (read-only).
 * **Description**
 
@@ -56,7 +58,6 @@ Advanced Network Settings
 
     .. image:: img/add_network_details.png
 
-* **NIC Tag** - :ref:`NIC tag <network_nictag>` configured on a compute node.
 * **Resolvers** - Comma-separated list of IPv4 addresses that can be used as DNS resolvers by virtual servers using this network.
 * **PTR domain** - Existing in-addr.arpa domain name used for creating PTR associations with virtual servers.
 * **DHCP passthrough** - When true, IP addresses for this network are managed by an external DHCP service.

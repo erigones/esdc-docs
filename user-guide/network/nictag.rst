@@ -37,6 +37,8 @@ There are 4 types of NIC tags available:
 
 .. note:: Overlay NIC tags are special because they are created based on the ``overlay_rules.json`` file. Once the first VM that uses overlay is created, overlay spawns into life.
 
+.. seealso:: Overlays NIC tags are related to VXLAN configuration in :ref:`virtual networks <networks>`.
+
 Adding normal/aggr NIC Tag
 --------------------------
 
