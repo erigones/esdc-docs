@@ -80,7 +80,7 @@ Etherstubs created this way will be written to ``/usbkey/config``, and this make
 Adding overlay NIC tag
 ----------------------
 
-As opposed to other NIC tag types, overlays are not created using ``nictagadm`` command. They are created by adding ``/var/run/smartdc/networking/overlay_rules.json`` and ``/var/run/smartdc/networking/my_overlay1.json`` files.
+As opposed to other NIC tag types, overlays are not created using ``nictagadm`` command. They are created by adding ``/var/run/smartdc/networking/overlay_rules.json`` and ``/opt/custom/networking/my_overlay1.json`` files.
 
 ``overlay_rules.json`` provides information to the operating system about properties of the overlays. Here is an example of how this file might look like:
 
@@ -88,9 +88,9 @@ As opposed to other NIC tag types, overlays are not created using ``nictagadm`` 
 
         [root@node01 ~] cat /var/run/smartdc/networking/overlay_rules.json
         {
-        "my_overlay1": "-e vxlan -p vxlan/listen_ip=192.168.100.100,vxlan/listen_port=4790 -s files -p files/config=/var/run/smartdc/networking/my_overlay1.json -p mtu=1400",
-        "my_overlay2": "-e vxlan -p vxlan/listen_ip=192.168.200.200,vxlan/listen_port=4791 -s files -p files/config=/var/run/smartdc/networking/my_overlay2.json -p mtu=1400",
-        "my_overlay3": "-e vxlan -p vxlan/listen_ip=0.0.0.0,vxlan/listen_port=4790 -s files -p files/config=/var/run/smartdc/networking/my_overlay3.json -p mtu=1400"
+        "my_overlay1": "-e vxlan -p vxlan/listen_ip=192.168.100.100,vxlan/listen_port=4790 -s files -p files/config=/opt/custom/networking/my_overlay1.json -p mtu=1400",
+        "my_overlay2": "-e vxlan -p vxlan/listen_ip=192.168.200.200,vxlan/listen_port=4791 -s files -p files/config=/opt/custom/networking/my_overlay2.json -p mtu=1400",
+        "my_overlay3": "-e vxlan -p vxlan/listen_ip=0.0.0.0,vxlan/listen_port=4790 -s files -p files/config=/opt/custom/networking/my_overlay3.json -p mtu=1400"
         }
 
 Deleting a NIC Tag
@@ -119,7 +119,7 @@ Overlays must be deleted using both ``dladm`` command and removed manually from 
     my_overlay2233    vxlan/listen_port  rw   y   4700       4700      1-65535
     my_overlay2233    search             r-   -   files      --        direct,
                                                                         files,svp
-    my_overlay2233    files/config       rw   y   /var/run/smartdc/networking/my_overlay1.json -- --
+    my_overlay2233    files/config       rw   y   /opt/custom/networking/my_overlay1.json -- --
 
     [root@node01 ~] dladm delete-overlay my_overlay2234
     [root@node01 ~] nictagadm list

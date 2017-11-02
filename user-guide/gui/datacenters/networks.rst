@@ -38,6 +38,7 @@ Network Parameters
 * **VLAN** - 802.1Q virtual LAN ID (0 = none).
 * **NIC Tag** - :ref:`NIC tag <network_nictag>` configured on a compute node.
 * **VXLAN** - VXLAN ID required for overlay NIC tags (1 - 16777215).
+* **MTU** - MTU for the network vNIC (576 - 9000)
 * **Free IPs** - The current amount of usable free IP addresses (read-only).
 * **Description**
 
