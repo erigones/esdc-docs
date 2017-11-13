@@ -66,6 +66,8 @@ Snapshot Actions
 * **Rollback snapshot** - Restore server disk data from the snapshot.
 
     .. warning:: A snapshot rollback will lead to deletion of all data including every newer snapshot created after the restored snapshot.
+
+    .. note:: It is also possible to restore a snapshot into another virtual server. This functionality is currently available only in the :ref:`API <api>` (``PUT /vm/(hostname_or_uuid)/snapshot/(snapname)``) . 
   
 
 .. _snapshot_definition:
