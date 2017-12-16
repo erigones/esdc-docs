@@ -3,7 +3,7 @@
 Virtual Server Metadata
 ***********************
 
-The metadata of a :ref:`virtual server <vm>` can be used to send arbitrary information from the *Danube Cloud* :ref:`GUI <gui>` or :ref:`API <api>` into the guest operating system. Bidirectional communication between the :ref:`hypervisor <erigonos>` and the virtual server is provided through an emulated serial link. The metadata is stored as key=value string pairs. Each key can be maximum 128 characters long and the total size of all values cannot exceed 8 MB.
+The metadata of a :ref:`virtual server <vm>` can be used to send arbitrary information from the *Danube Cloud* :ref:`GUI <gui>` or :ref:`API <api>` into the guest operating system. Bidirectional communication between the :ref:`hypervisor <erigonos>` and the virtual server is provided through an emulated serial link. The metadata is stored as key=value string pairs. Each key can be maximum 128 characters long and the total size of all values cannot exceed 2 MB.
 
 .. seealso:: Metadata of a virtual server can be modified via the :ref:`virtual server's setting page in the GUI <vm-manage>`.
 
