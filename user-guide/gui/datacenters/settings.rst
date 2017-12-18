@@ -189,6 +189,7 @@ Global Disk Image Settings
 * **VMS_IMAGE_REPOSITORIES** - Object (key=name, value=URL) with remote disk image repositories available in every virtual data center.
 * **VMS_IMAGE_SOURCES** - List of additional IMGAPI sources that will be set on all compute nodes.
 * **VMS_IMAGE_VM** - Global image server - primary IMGAPI source on all compute nodes. Empty value means that most of the image-related operations will be performed only in the DB.
+* **VMS_IMAGE_VM_NIC** - NIC ID of global image server, which will be used to determine the IP address for constructing the IMGAPI source set on all compute nodes.
 
 
 .. _dc_iso_image_settings:
