@@ -104,6 +104,9 @@ Virtual Server Actions
 
     * *Reboot* - Send an ACPI reboot signal to the virtual server.
     * *Force Reboot* - Immediately reboot the virtual server.
+
+    .. note:: If there is a pending configuration update, the server will be stopped first, then the server configuration on compute node will be updated, and finally the server will start.
+
 * **Stop** - Stop the virtual server. The virtual server must be in a *running* or *stopping* state. A subsequent modal window with following options will pop up:
 
     * Shutdown - Send an ACPI shutdown signal to the virtual server.

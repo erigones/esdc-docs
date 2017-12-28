@@ -38,6 +38,7 @@ User Group Parameters
     * *IsoAdmin*
     * *DnsAdmin*
     * *UserAdmin*
+    * *MonitoringAdmin*
 
 
 Managing a User Group
