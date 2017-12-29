@@ -291,25 +291,17 @@ API Settings
 Global Text Messaging (SMS) Settings
 ====================================
 
-.. image:: img/settings_sms_global.png
+* **SMS_PREFERRED_SERVICE** - Currently used SMS provider. Available providers:
 
-* **SMS_PREFERRED_SERVICE** - Currently used SMS provider.
-* **SMS_PRIVATE_KEY** - Secure key required for sending text messages via the API.
-* **SMS_SMSAPI_USERNAME** - Username required for the SMSAPI service (former HQSMS).
-* **SMS_SMSAPI_PASSWORD** - Password required for the SMSAPI service (former HQSMS).
-* **SMS_SMSAPI_FROM** - Phone number used for outgoing text messages sent via the SMSAPI service (former HQSMS).
+    * SMSAPI service (former HQSMS) - https://www.smsapi.com
 
-.. note:: Text messages are used by *Danube Cloud* for sending user passwords and confirming phone numbers. *Danube Cloud* currently comes with integrated support for the SMS API service (former HQSMS) - https://www.smsapi.com.
+* **SMS_SERVICE_USERNAME** - Username required for the selected SMS provider.
+* **SMS_SERVICE_PASSWORD** - Password required for the selected SMS provider.
+* **SMS_FROM_NUMBER** - Phone number used as sender for outgoing text messages.
+* **SMS_REGISTRATION_ENABLED** - Whether to verify user's phone number during registration and phone number change. Requires the *SMS_ENABLED* module.
 
 
-Global Billing Settings
-=======================
-
-.. image:: img/settings_billing_global.png
-
-* **PAYMENTS_EMAIL** - Email address used as the *From* address for all outgoing emails sent by the payments module.
-* **PAYMENTS_NOTIFICATION_EMAIL** - Email address where payment notifications are sent.
-
+------------
 
 .. note:: Zabbix is a registered trademark of `Zabbix LLC <http://www.zabbix.com>`_.
 
