@@ -121,14 +121,10 @@ Virtual Server Settings
 
 * **VMS_ZONE_ENABLED** - Whether to enable support for SunOS and Linux zones in this virtual data center.
 * **VMS_VM_DEFINE_LIMIT** - Maximum number of virtual servers that can be defined in this virtual data center.
-* **VMS_VM_CPU_CAP_AUTO** - Affects the behaviour of virtual server's virtual CPU count (``vcpus``) and node CPU limit (``cpu_cap``).
+* **VMS_VM_CPU_CAP_REQUIRED** - When disabled, the vCPUs server parameter on SunOS and LX Zones can be set to 0, which removes the compute node CPU limit (cpu_cap) for the virtual server.
 
-    * When enabled, the virtual CPU count (``vcpus``) parameter is always required. The node CPU limit (``cpu_cap``) is read-only and set automatically based on this formula: ``(vcpus * VMS_VM_CPU_BURST_RATIO * 100) + VMS_VM_CPU_BURST_DEFAULT``, where *VMS_VM_CPU_BURST_RATIO* is by default 1.0 and *VMS_VM_CPU_BURST_DEFAULT* is by default 100 when ``vcpus > 1`` and 50 when ``vcpus == 1``.
-    * When disabled, the virtual CPU count (``vcpus``) parameter is required only for KVM virtual servers and ignored for SunOS and Linux zones. The node CPU limit (``cpu_cap``) can be set manually and for a new virtual server it is by default set to *VMS_VM_CPU_CAP_DEFAULT*.
+    .. warning:: Disabling *VMS_VM_CPU_CAP_REQUIRED* affects compute node CPU resource accounting in a virtual data center. When *VMS_VM_CPU_CAP_REQUIRED* is disbled, the CPU node limit (cpu_cap) can be 0, which won't subtract any CPU amount from free compute node resources.
 
-    .. warning:: Disabling *VMS_VM_CPU_CAP_AUTO* affects compute node CPU resource accounting in a virtual data center. When *VMS_VM_CPU_CAP_AUTO* is disbled, the CPU node limit can be 0, which won't substract any CPU amount from free compute node resources.
-
-* **VMS_VM_CPU_CAP_DEFAULT** - Default value for virtual server's node CPU limit (``cpu_cap``) when *VMS_VM_CPU_CAP_AUTO* is disabled. A value of 0 means no CPU limit.
 * **VMS_VM_STOP_TIMEOUT_DEFAULT** - Default time period (in seconds) for a graceful stop or reboot, after which a force stop/reboot is send to the VM (KVM only).
 * **VMS_VM_STOP_WIN_TIMEOUT_DEFAULT** - This is the same setting as *VMS_VM_STOP_TIMEOUT_DEFAULT*, but for a VM with Windows OS type, which usually takes longer to shut down.
 * **VMS_VM_OSTYPE_DEFAULT** - Default operating system type. One of: *Linux VM*, *Windows VM*, *BSD VM*, *SunOS VM*, *SunOS Zone*, *Linux Zone*.
