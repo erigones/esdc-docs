@@ -34,7 +34,8 @@ Virtual Server Parameters
     * *SunOS VM*
     * *SunOS Zone*
     * *Linux Zone*
-* **vCPUs** - Number of virtual CPUs assigned to the virtual server.
+* **vCPUs** - Number of virtual CPUs assigned to the virtual server. The effect of this parameter depends on the :ref:`VMS_VM_CPU_CAP_AUTO DC setting <dc_vm_settings>`.
+* **Node CPU limit** - Also known as *cpu_cap*. Percentage of a single compute node CPU that can be used by the virtual server. Depending on the :ref:`VMS_VM_CPU_CAP_AUTO DC setting <dc_vm_settings>`, the parameter may be set automatically based on the *vCPUs* parameter.
 * **RAM** - The amount of RAM (MB) assigned to the virtual server.
 * **SLA** - Monthly SLA (read-only). Can be enabled/disabled via :ref:`monitoring DC settings <dc_monitoring_settings>`.
 * **Replication status** - Replication status (enabled/disabled) and time of last successful sync (*Danube Cloud Enterprise Edition*).
