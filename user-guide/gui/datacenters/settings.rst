@@ -248,7 +248,7 @@ Monitoring Settings
 * **MON_ZABBIX_VM_SLA** - Whether to fetch and display the SLA value of virtual servers.
 * **MON_ZABBIX_VM_SYNC** - Whether newly created virtual servers can be automatically synchronized with the monitoring server.
 * **MON_ZABBIX_HOSTGROUP_VM** - Existing Zabbix host group, which will be used for all monitored servers in this virtual data center.
-* **MON_ZABBIX_HOSTGROUPS_VM** - List of other existing Zabbix host groups, which will be used for all monitored servers in this virtual data center. Available placeholders are: ``{ostype}``, ``{ostype_text}``, ``{disk_image}``, ``{disk_image_abbr}``, ``{dc_name}``.
+* **MON_ZABBIX_HOSTGROUPS_VM** - List of other Zabbix host groups, which will be used for all monitored servers in this virtual data center. Available placeholders are: ``{ostype}``, ``{ostype_text}``, ``{disk_image}``, ``{disk_image_abbr}``, ``{dc_name}``.
 * **MON_ZABBIX_HOSTGROUPS_VM_RESTRICT** - Whether to restrict Zabbix host group names to the *MON_ZABBIX_HOSTGROUPS_VM_ALLOWED* list.
 * **MON_ZABBIX_HOSTGROUPS_VM_ALLOWED** - List of Zabbix host groups that can be used by servers in this virtual data center. Available placeholders are: ``{ostype}``, ``{ostype_text}``, ``{disk_image}``, ``{disk_image_abbr}``, ``{dc_name}``.
 * **MON_ZABBIX_TEMPLATES_VM** - List of existing Zabbix templates, which will be used for all monitored servers in this virtual data center. Available placeholders are: ``{ostype}``, ``{ostype_text}``, ``{disk_image}``, ``{disk_image_abbr}``, ``{dc_name}``.
@@ -272,7 +272,7 @@ Global Monitoring Settings
 * **MON_ZABBIX_NODE_SYNC** - Whether compute nodes should be automatically synchronized with the monitoring server.
 * **MON_ZABBIX_NODE_SLA** - Whether to fetch and display the SLA value of compute nodes.
 * **MON_ZABBIX_HOSTGROUP_NODE** - Existing Zabbix host group, which will be used for all monitored compute nodes.
-* **MON_ZABBIX_HOSTGROUPS_NODE** - List of other existing Zabbix host groups, which will be used for all monitored compute nodes.
+* **MON_ZABBIX_HOSTGROUPS_NODE** - List of other Zabbix host groups, which will be used for all monitored compute nodes.
 * **MON_ZABBIX_TEMPLATES_NODE** - List of existing Zabbix templates, which will be used for all monitored compute nodes.
 
 

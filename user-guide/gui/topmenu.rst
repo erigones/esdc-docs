@@ -26,6 +26,12 @@ User Profile
 
     .. image:: img/change_password_form.png
 
+* **Alerting media**
+
+    .. image:: img/alerting_media.png
+
+    .. seealso:: The alerting media are automatically set to a user object that is :ref:`reflected to the monitoring system <alerting>`.
+
 * **SSH Keys** - Public SSH keys, which will be automatically added to newly created virtual servers using disk images with support for import of SSH keys.
 
     .. image:: img/ssh_keys.png

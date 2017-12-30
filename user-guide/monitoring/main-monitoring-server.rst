@@ -5,6 +5,11 @@ Central Monitoring Server
 
 The Central (Main) Monitoring Server is a part of *Danube Cloud's* :ref:`first compute node <admin_dc>`.
 
+The *Danube Cloud* management server automatically synchronizes the following objects with the main monitoring server:
+
+    * :ref:`Compute nodes <nodes>` and their Monitoring hostgroups.
+    * :ref:`Virtual servers <vms>` for monitoring from *outside* (from the compute node perspective); Monitoring host names are prefixed with an underscore (``_``).
+
 .. note:: In the default *Danube Cloud* setup, each virtual data center uses the central (main) monitoring server.
 
 .. note:: A newly created :ref:`virtual data center <dcs>` inherits all settings (including monitoring settings) from the default *main* data center.
@@ -20,8 +25,8 @@ Initial Configuration
 First Login into Zabbix
 =======================
 
-The Zabbix web interface is available at http://zabbix_ip.
-The default username is ``Admin`` and the password was auto-generated and displayed upon successful :ref:`installation of the first compute node <installation_cn>`. The *Admin* password may be also visible as a metadata (``zabbix_admin_password``) of the **mon01** virtual server  in the :ref:`Admin virtual data center <admin_dc>`.
+The Zabbix web interface is available at https://zabbix_ip.
+The default username is ``Admin`` and the password was auto-generated and displayed upon successful :ref:`installation of the first compute node <installation_cn>`. The *Admin* password may be also visible as a metadata (``zabbix_admin_password``) of the **mon01** virtual server in the :ref:`Admin virtual data center <admin_dc>`.
 
 
 Default Users
@@ -41,7 +46,7 @@ The monitoring server has two preconfigured Zabbix users and one system user. Th
 Monitoring Server Factory Settings
 ==================================
 
-.. warning:: The change of factory settings can seriously damage the correct functioning of the monitoring and alerting system. It is not recommended to change these settings and also `Erigones <http://www.erigones.com>`__ does not take any responsibility for damage caused by changing these settings.
+.. warning:: The change of factory settings can seriously affect the correct functioning of the monitoring and alerting system. It is not recommended to change these settings.
 
 Hosts
 +++++
@@ -53,8 +58,6 @@ All synchronized servers are created automatically and any manipulation with the
 
     * Virtual servers without monitoring agent (agentless)
     * Virtual servers with monitoring agent
-
-.. note:: Virtual servers can be monitored with and/or without an agent. For this reason, two hosts are created in Zabbix. Host names prefixed with an underscore ``_`` character are monitored from the compute node (agentless monitoring).
 
 Host Groups
 +++++++++++
@@ -125,7 +128,6 @@ The following Zabbix monitoring templates are required for the correct functioni
 * t_role-mon
 * t_role-compute
 
-.. note:: Upon request, `Erigones <http://www.erigones.com>`__ is able to create monitoring templates for monitoring of specific hardware configuration.
 
 IT Services
 +++++++++++

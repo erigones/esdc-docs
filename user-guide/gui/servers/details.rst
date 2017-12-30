@@ -89,7 +89,7 @@ Besides managing the above-mentioned basic :ref:`virtual server parameters <vm>`
 .. image:: img/monitoring_templates_vm.png
 
 * **Monitoring templates** - List of existing Zabbix templates, which will be assigned to this virtual server in the monitoring system.
-* **Monitoring hostgroups** - List of existing Zabbix host groups, which will be used for this virtual server in the monitoring system.
+* **Monitoring hostgroups** - List of Zabbix host groups, which will be used for this virtual server in the monitoring system.
 * **Metadata** - Customer metadata accessible from within the virtual server. Key=value string pairs (32 max), where keys can 128 characters long and values 65536 characters long.
 
     .. seealso:: More information about virtual server's metadata can be found in a :ref:`separate chapter <metadata>`.

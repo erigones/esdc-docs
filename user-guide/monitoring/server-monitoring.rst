@@ -11,6 +11,8 @@ Virtual Server Monitoring Synchronization with the Monitoring Server
 * Disabling monitoring in virtual server details will set the virtual server to an *unmonitored* state and no new data will be collected.
 * Historical monitoring data is preserved even after deleting a virtual server from the compute node with the *destroy* action.
 * Historical monitoring data is deleted after complete removal of a virtual server with *delete* action.
+* Monitoring hostgroups assigned to a virtual server are created automatically. The hostgroup name is prefixed with the name of the virtual data center.
+* Monitoring templates assigned to a virtual server must exist in the monitoring system.
 
 .. note:: Virtual servers created during the time the data center monitoring was completely disabled will not be monitored. Internal monitoring of such virtual servers can be turned on via the API interface.
 
@@ -30,7 +32,7 @@ Advanced Settings of Virtual Data Center Monitoring
 Dynamic Assignment of Monitoring Templates and Host Groups
 ==========================================================
 
-* **MON_ZABBIX_HOSTGROUPS_VM** - List of other existing Zabbix host groups, which will be used for all monitored servers in a virtual data center. Available placeholders are:
+* **MON_ZABBIX_HOSTGROUPS_VM** - List of other Zabbix host groups, which will be used for all monitored servers in a virtual data center. Available placeholders are:
 
     * ``{ostype}`` - ID type of the operating system (1 - *Linux VM*, 2 - *SunOS VM*, 3 - *BSD VM*, 4 - *Windows VM*, 5 - *SunOS Zone*, 6 - *Linux Zone*).
     * ``{ostype_text}`` - The type of the operating system with lowercase letters and spaces replaced with underscores (*linux_vm*, *sunos_vm*, *bsd_vm*, *windows_vm*, *sunos_zone*, *linux_zone*).

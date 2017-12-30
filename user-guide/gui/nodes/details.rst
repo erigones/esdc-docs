@@ -96,7 +96,7 @@ Advanced Compute Node Settings
 
 * **Monitoring templates** - List of existing Zabbix templates that will be attached to the compute node host in the monitoring system.
 
-* **Monitoring hostgroups** - List of existing Zabbix host groups that the compute node host will be assigned to.
+* **Monitoring hostgroups** - List of Zabbix host groups that the compute node host will be assigned to.
 
 
 .. _node_actions:

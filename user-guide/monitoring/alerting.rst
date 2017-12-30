@@ -1,9 +1,33 @@
+.. _alerting:
+
 Alerting Configuration
 **********************
 
 Upon initial configuration of the monitoring system, it is advised to configure alerting (or escalation rules) based on specific needs of your organization or environment.
 
-.. note:: By default, monitored servers will send alerts only if they are members of the *Notification* host group. If alerts from newly created servers should be sent automatically, it is necessary to configure the auto assignment of the *Notification* host group in :ref:`virtual data center monitoring settings <dc_monitoring_settings>` (``Datacenter -> Settings -> MON_ZABBIX_HOSTGROUPS_VM``).
+
+.. _monitornig_actions:
+
+Actions and Escalations
+#######################
+
+The notification sending is configured in the `Configuration -> Actions <https://www.zabbix.com/documentation/3.0/manual/config/notifications/action>`_ section of Zabbix.
+
+Actions can be currently configured via the *Danube Cloud* :ref:`API <api>`, e.g.:
+
+    .. code-block:: bash
+
+        user@laptop:~ $ es create /mon/action/notify-mygroup -usergroups mygroup \
+                                                             -hostgroups linux-servers,windows-servers \
+                                                             -recovery_message_enabled true
+
+
+The *Danube Cloud* monitoring appliance comes preconfigured with following actions:
+
+    * **Notify (with recovery message)** - sends notifications for every host in the **Notification** host group.
+    * **Notify - Custom Alerts (without recovery message)** - sends notifications for every trigger related to items in the *Custom Alerts* application. Used internally by the *Danube Cloud* system (e.g. backup failure).
+
+    For correct notification delivery of the preconfigured actions, it is necessary to configure users in the *Operations* section of preconfigured actions.
 
 
 Notification Delivery Configuration
@@ -11,28 +35,15 @@ Notification Delivery Configuration
 
 Individual notifications are sent to users or group of users. Users and user groups are reflected from *Danube Cloud* to Zabbix by default. It is possible to configure different media for every user or group of users through which the notification shall be delivered. This is configurable in `Administration -> Media types <https://www.zabbix.com/documentation/3.0/manual/web_interface/frontend_sections/administration/mediatypes>`_. *Danube Cloud* comes preconfigured with following media types:
 
-* **Email** media type sends notifications via email. Emails are delivered via local mail server on the monitoring server. The destination email address can be configured in user's media type settings (Send to).
+* **Email** media type sends notifications via email. Emails are delivered via local mail server on the monitoring server. The destination email address can be configured in user's media type settings (Send to). This media type corresponds to the alerting email set in :ref:`user's profile <user_profile>`.
 
-* **SMS** media type sends SMS notifications via an SMS provider. Notifications are sent over HTTP to the SMS gateway. This media type requires :ref:`sms.sh and hqsms.py <advanced_monitoring_media>` scripts. The phone number has to be able to receive text messages and it can be configured in user's media type settings (Send to).
+* **SMS** media type sends SMS notifications via an SMS provider. Notifications are sent over HTTP to the SMS gateway. This media type requires :ref:`sms.sh and hqsms.py <advanced_monitoring_media>` scripts. The phone number has to be able to receive text messages and it can be configured in user's media type settings (Send to). This media type corresponds to the alerting phone set in :ref:`user's profile <user_profile>`.
 
-* **Ludolph** media type sends notifications via the `Ludolph Jabber bot <https://github.com/erigones/Ludolph>`_. It requires the :ref:`ludolph.sh <advanced_monitoring_media>` script. XMMP receiver address needs to be configured in user's media type settings (Send to).
+* **Ludolph** media type sends notifications via the `Ludolph Jabber bot <https://github.com/erigones/Ludolph>`_. It requires the :ref:`ludolph.sh <advanced_monitoring_media>` script. XMMP receiver address needs to be configured in user's media type settings (Send to). This media type corresponds to the alerting jabber set in :ref:`user's profile <user_profile>`.
 
 * **Prowl** media type sends notifications over PUSH notifications to Apple IOS devices. It requires the :ref:`prowl.sh and prowl.pl <advanced_monitoring_media>` scripts. The API user key needs to be configured in user's media type settings (Send to).
 
 * **NMA** media type sends notifications over PUSH notifications to Google Android devices. It requires the :ref:`nma.sh and nma.pl <advanced_monitoring_media>`. The API user key needs to be configured in user's media type settings (Send to).
-
-
-Actions and Escalations
-#######################
-
-The notification sending has to be set in the `Configuration -> Actions <https://www.zabbix.com/documentation/3.0/manual/config/notifications/action>`_ section. Erigones recommends using and modifying the following actions:
-
-* **Notify (with recovery message)** - preconfigured notification action that sends notifications for every host in the **Notification** host group.
-* **Notify - Custom Alerts (without recovery message)** - preconfigured notification action that sends notifications for every trigger related to items in the *Custom Alerts* application. Used internally by the *Danube Cloud* system (e.g. backup failure).
-
-For correct notification delivery, it is necessary to configure users in the *Operations* section of preconfigured actions.
-
-It is also possible to configure `escalations <https://www.zabbix.com/documentation/3.0/manual/config/notifications/action/escalations>`_ for sending notifications according to reaction times or alert acknowledgments.
 
 
 .. _advanced_monitoring_media:

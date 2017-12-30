@@ -27,7 +27,7 @@ sys.path.append(abspath(join(dirname(__file__), "_ext")))
 try:
     from core.version import __version__ as VERSION
 except ImportError:
-    VERSION = '2.6'
+    VERSION = '3.0'
 
 # -- General configuration -----------------------------------------------------
 
@@ -61,7 +61,7 @@ master_doc = 'index'
 
 # General substitutions.
 project = u'Danube Cloud'
-copyright = u'2013-2017, Erigones, s. r. o.'
+copyright = u'2013-2018, Erigones, s. r. o.'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
