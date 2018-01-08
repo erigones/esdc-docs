@@ -22,7 +22,7 @@ After you have successfully installed your first compute node, you should log in
     - *Images* can be found under the *Datacenter* item in the Main menu.
 
 - Virtual servers should be logically grouped into virtual data centers so you should :ref:`create a virtual data center <dcs>` for each project, customer, etc.
-    - Go to *Datacenter* -> *Datacenters* and start creating/managing virtual data centers.
+    - Go to :guilabel:`Datacenter -> Datacenters` and start creating/managing virtual data centers.
 
 
 You, the *Danube Cloud* administrator, should make yourself familiar with the :ref:`command-line client es <API>`, which can be used to perform some administrative tasks, e.g.:

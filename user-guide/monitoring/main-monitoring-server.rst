@@ -38,7 +38,7 @@ The monitoring server has two preconfigured Zabbix users and one system user. Th
 
 * **provisioner** - A Zabbix account, which is used for communication between the *Danube Cloud* and the Zabbix API. This account does not have access to the web frontend.
 
-    .. warning:: Changing *provisioner*'s password in Zabbix also requires changing the *MON_ZABBIX_PASSWORD* in all affected :ref:`virtual data centers <dc_monitoring_settings>` (``Datacenter -> Datacenter -> default -> Edit more settings -> Show advanced settings -> MON_ZABBIX_PASSWORD``).
+    .. warning:: Changing *provisioner*'s password in Zabbix also requires changing the *MON_ZABBIX_PASSWORD* in all affected :ref:`virtual data centers <dc_monitoring_settings>` (:guilabel:`Datacenter -> Datacenter -> default -> Edit more settings -> Show advanced settings -> MON_ZABBIX_PASSWORD`).
 
 * **root** - A system superuser account, which can be used for remote administration over SSH. The password for the **root** user was auto-generated during the build process of the installation image. The **root** account should have the first compute node's public SSH key set and therefore should be accessible from the first compute node via SSH.
 
@@ -132,7 +132,7 @@ The following Zabbix monitoring templates are required for the correct functioni
 IT Services
 +++++++++++
 
-``IT Services -> Compute Nodes`` is used for calculating compute node's SLA.
+:guilabel:`IT Services -> Compute Nodes` is used for calculating compute node's SLA.
 
 
 .. note:: Zabbix is a registered trademark of `Zabbix LLC <http://www.zabbix.com>`_.

@@ -65,8 +65,8 @@ Adding an ISO Image
 
     .. code-block:: bash
 
-        [root@node01 ~]# cd /iso
-        [root@node01 /iso]# wget http://url/ubuntu-14.04.1-server-amd64.iso
+        [root@node01 ~] cd /iso
+        [root@node01 /iso] wget http://url/ubuntu-14.04.1-server-amd64.iso
 
 
 .. image:: img/add_iso_image.png

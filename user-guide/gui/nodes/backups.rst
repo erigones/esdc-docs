@@ -1,3 +1,5 @@
+.. _node_backup:
+
 Virtual Server Backups on Compute Node
 ######################################
 

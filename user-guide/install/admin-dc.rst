@@ -30,4 +30,7 @@ Virtual Servers in the Admin Data Center
 
 .. note:: The **root** accounts in each virtual server have the first compute node's public SSH key set during installation and therefore are accessible from first compute node via SSH.
 
+.. warning:: The :ref:`Danube Cloud internal virtual servers<admin_dc>` cannot be reinstalled or redeployed to an existing *Danube Cloud* infrastructure. Please make sure
+ that you perform regular :ref:`backups<backup>` of all *Danube Cloud* internal servers.
+
 .. note:: Zabbix is a registered trademark of `Zabbix LLC <http://www.zabbix.com>`_.

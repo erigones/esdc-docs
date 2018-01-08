@@ -23,7 +23,7 @@ The *Danube Cloud* management server automatically synchronizes the following ob
 Creation of a Data Center Monitoring Server
 ###########################################
 
-Immediately after creating a new :ref:`virtual data center <dcs>`, create a new :ref:`virtual server <vm>` with the Linux operating system. When :ref:`adding a primary disk <disk_image_add>`, choose the **esdc-mon** disk image. Please make sure that you are working in the correct virtual data center and replace the IP address or hostname of the central monitoring server with the new monitoring server in the :ref:`virtual data center settings page <dc_monitoring_settings>` (``Datacenter -> Settings -> MON_ZABBIX_SERVER``).
+Immediately after creating a new :ref:`virtual data center <dcs>`, create a new :ref:`virtual server <vm>` with the Linux operating system. When :ref:`adding a primary disk <disk_image_add>`, choose the **esdc-mon** disk image. Please make sure that you are working in the correct virtual data center and replace the IP address or hostname of the central monitoring server with the new monitoring server in the :ref:`virtual data center settings page <dc_monitoring_settings>` (:guilabel:`Datacenter -> Settings -> MON_ZABBIX_SERVER`).
 
 .. note:: The minimal requirements for running a monitoring server are 1x vCPU, 1024 MB RAM, and 15 GB HDD.
 

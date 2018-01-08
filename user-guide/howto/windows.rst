@@ -48,11 +48,11 @@ You can download the latest VIRTIO drivers here:
     https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso
 
 Driver locations on the iso image:
-    * Hard disk: ``viostor\<win_version>\amd64``
 
+    * Hard disk: ``viostor\<win_version>\amd64``
     * Ethernet Adapter: ``NetKVM\<win_version>\amd64``
 
-You can click ``Load driver`` multiple times and add also the driver for the ethernet adapter during this Windows install phase.
+You can click :guilabel:`Load driver` multiple times and add also the driver for the ethernet adapter during this Windows install phase.
 
 .. seealso:: For instructions on how to add/manage ISO images see :ref:`Managing an ISO Image <managing_iso_image>`.
 
@@ -63,11 +63,11 @@ The following settings are necessary to properly shut down the Windows operating
 
 * Allowing shutdown without login.
 
-    Run the *Group Policy Object Editor* tool (for example run via ``Run (WIN+R) -> gpedit.msc``) and navigate to ``Computer Configuration -> Windows Settings -> Security Settings -> Local Policies -> Security Options``, where the ``Shutdown`` property must be set to ``Allow system to be shut down without having to log on``.
+    Run the *Group Policy Object Editor* tool (for example run via :guilabel:`Run (WIN+R) -> gpedit.msc`) and navigate to :guilabel:`Computer Configuration -> Windows Settings -> Security Settings -> Local Policies -> Security Options`, where the ``Shutdown`` property must be set to ``Allow system to be shut down without having to log on``.
 
 * Enabling immediate shutdown of a virtual server with logged in users.
 
-    Run the *regedit* tool (for example run via ``Run (WIN+R) -> regedit``) and navigate to ``HKEY_LOCAL_MACHINE -> SOFTWARE -> Microsoft -> Windows NT -> CurrentVersion -> Windows`` where the ``ShutdownWarningDialogTimeout`` property must be changed to ``dword:00000001``.
+    Run the *regedit* tool (for example run via :guilabel:`Run (WIN+R) -> regedit`) and navigate to :guilabel:`HKEY_LOCAL_MACHINE -> SOFTWARE -> Microsoft -> Windows NT -> CurrentVersion -> Windows` where the ``ShutdownWarningDialogTimeout`` property must be changed to ``dword:00000001``.
    
 
 Zabbix Agent Installation
@@ -76,8 +76,8 @@ Zabbix Agent Installation
 * Download the Zabbix Agent installer from http://www.suiviperf.com/zabbix/ (recommended) or directly from the official web page http://www.zabbix.com.
 * Run the installer and go through the configuration wizard, which is part of the installer. The most important setting is *Server* where the hostname or IP address of the Zabbix server must be put in.
 * Add a firewall rule to open the Zabbix Agent port **10050**.
-* The Zabbix Agent can be tested by attaching a Zabbix template *Template OS Windows* to the :ref:`virtual server <vm>` via *Danube Cloud* ``Change Server Settings -> Show advanced settings -> Monitoring templates``. The template must be allowed for use in the current :ref:`virtual data center <dcs>` (``Datacenter -> Settings -> MON_ZABBIX_TEMPLATES_VM_ALLOWED``).
-* Log in into the Zabbix web frontend and check ``Configuration -> Hosts -> Name -> Availability``. The virtual server's Zabbix agent must be connected to the Zabbix server, which is indicated by a green ``Z`` icon.
+* The Zabbix Agent can be tested by attaching a Zabbix template *Template OS Windows* to the :ref:`virtual server <vm>` via *Danube Cloud* :guilabel:`Change Server Settings -> Show advanced settings -> Monitoring templates`. The template must be allowed for use in the current :ref:`virtual data center <dcs>` (:guilabel:`Datacenter -> Settings -> MON_ZABBIX_TEMPLATES_VM_ALLOWED`).
+* Log in into the Zabbix web frontend and check :guilabel:`Configuration -> Hosts -> Name -> Availability`. The virtual server's Zabbix agent must be connected to the Zabbix server, which is indicated by a green :guilabel:`Z` icon.
 
 
 QEMU Guest Agent Installation
@@ -97,7 +97,7 @@ Before creating a snapshot with *Freeze filesystem* attribute enabled, a "file s
 
     .. image:: img/dcomcnfg.png
 
-    Open ``Component Services -> Computers -> My Computer``, right-click on ``My Computer`` and open ``Properties``. Continue to ``COM Security -> Access Permission -> Edit Default``, add a ``Network Service`` system account a set ``Local Access`` to ``allowed``.
+    Open :guilabel:`Component Services -> Computers -> My Computer`, right-click on :guilabel:`My Computer` and open :guilabel:`Properties`. Continue to :guilabel:`COM Security -> Access Permission -> Edit Default`, add a :guilabel:`Network Service` system account a set :guilabel:`Local Access` to ``allowed``.
 
         .. image:: img/dcomcnfg_properties.png
 
@@ -105,7 +105,7 @@ Before creating a snapshot with *Freeze filesystem* attribute enabled, a "file s
 
 * Restart the virtual server.
 
-* Create a snapshot with *Freeze filesystem* attribute enabled in order to test the QEMU Guest Agent. The snapshot status should be *ok* and a flag icon should indicate that the snapshot was created with the *Freeze filesystem* option enabled. In case the creation of an application consistent snapshot should fail, the monitoring will send a warning with the text: "*Snapshot was created, but filesystem freeze failed*". To inspect the problem in the guest operating system, the ``VSS`` source should be examined in the event log (``Event Viewer -> Windows Logs -> Application``).
+* Create a snapshot with *Freeze filesystem* attribute enabled in order to test the QEMU Guest Agent. The snapshot status should be *ok* and a flag icon should indicate that the snapshot was created with the *Freeze filesystem* option enabled. In case the creation of an application consistent snapshot should fail, the monitoring will send a warning with the text: "*Snapshot was created, but filesystem freeze failed*". To inspect the problem in the guest operating system, the :guilabel:`VSS` source should be examined in the event log (:guilabel:`Event Viewer -> Windows Logs -> Application`).
 
 .. note:: After installing and configuring the operating system and software, it is a good practice to disable the virtual server and make a snapshot from which you can create a template for quick creation of identical or similar servers. The virtual server may contain a deploy script, which is executed during the first run after the server is created from a template, in order to achieve full automation.
 
