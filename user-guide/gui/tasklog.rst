@@ -238,7 +238,7 @@ Task Log Messages
     * *Add user SSH key*
     * *Delete user SSH key*
 
-* System
+* :ref:`System <system>`
 
     * *System Update*
     * *Update system settings*
