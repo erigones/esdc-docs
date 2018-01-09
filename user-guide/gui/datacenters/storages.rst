@@ -14,7 +14,7 @@ A :ref:`Compute Node Storage <node_storages>` is a ZFS zpool created by connecti
 *DCAdmin*                       read-only
 =============================== ================
 
-.. note:: In the upper right corner is a button labeled ``Show All``, which can be used to display all node storages, including storages that are not associated with the current working virtual data center.
+.. note:: In the upper right corner is a button labeled :guilabel:`Show All`, which can be used to display all node storages, including storages that are not associated with the current working virtual data center.
 
 
 Node Storage Parameters

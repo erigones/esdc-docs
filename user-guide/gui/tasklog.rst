@@ -101,8 +101,12 @@ Task Log Messages
         * *Update and start server from CD image*
         * *Reboot server*
         * *Force server reboot*
+        * *Update and reboot server*
+        * *Update and force server reboot*
         * *Stop server*
         * *Force server stop*
+        * *Update and stop server*
+        * *Update and force server stop*
 
     * **Snapshots and Backups**
 
@@ -119,6 +123,8 @@ Task Log Messages
         * *Delete snapshot of server's disk*
         * *Restore backup of server's disk*
         * *Delete backup of server's disk*
+        * *Delete backups of server's disk*
+        * *Synchronize snapshots of server's disk*
 
     * **Migration and Replication**
 
@@ -218,6 +224,7 @@ Task Log Messages
     * *Create DNS record*
     * *Update DNS record*
     * *Delete DNS record*
+    * *Delete DNS records*
 
 * :ref:`Users <users>` and :ref:`User Groups <groups>`
 
@@ -236,3 +243,17 @@ Task Log Messages
     * *System Update*
     * *Update system settings*
 
+* :ref:`Monitoring <monitoring>`
+
+    * *Create monitoring user*
+    * *Update monitoring user*
+    * *Delete monitoring user*
+    * *Create monitoring usergroup*
+    * *Update monitoring usergroup*
+    * *Delete monitoring usergroup*
+    * *Create monitoring hostgroup*
+    * *Update monitoring hostgroup*
+    * *Delete monitoring hostgroup*
+    * *Create monitoring action*
+    * *Update monitoring action*
+    * *Delete monitoring action*

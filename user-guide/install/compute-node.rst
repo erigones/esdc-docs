@@ -7,51 +7,54 @@ Compute Node Installation
 
 .. _cn_boot_loader:
 
-* Boot loader.
+0. Boot loader
+--------------
 
-    .. image:: img/install-00-grub.png
+.. image:: img/install-00-grub.png
 
-* Welcome screen.
 
-    .. image:: img/install-01-welcome.png
+1. Welcome screen
+-----------------
 
-* Installation type.
+.. image:: img/install-01-welcome.png
 
-    .. image:: img/install-02-advanced-install.png
 
-    * The following settings can be configured only when the **advanced installation** option is enabled:
+2. Advanced installation?
+-------------------------
 
-        - Admin network VLAN ID.
-        - IP address on other network tags.
-        - Primary and secondary DNS servers.
-        - DNS search domain.
-        - NTP synchronization host
+.. image:: img/install-02-advanced-install.png
 
-    * In the **basic installation**, the above options are configured automatically from their default values.
+The following settings can be configured only when the **advanced installation** option is enabled:
 
-* Setting the name of the physical data center (**first compute node** only).
+    - Admin network VLAN ID.
+    - IP address on other network tags.
+    - Primary and secondary DNS servers.
+    - DNS search domain.
+    - NTP synchronization host
 
-    .. image:: img/install-02hn-dc-info.png
+In the **basic installation**, the above options are configured automatically from their default values.
 
-* Compute node's networking configuration.
 
-    .. image:: img/install-03-networking-info.png
+3. Physical data center
+-----------------------
 
-    |
+.. image:: img/install-02hn-dc-info.png
 
-    .. image:: img/install-04-networking-admin.png
+Setting the name of the physical data center is required on the **first compute node** only.
 
-    |
 
-    .. image:: img/install-04-networking-nictags.png
+4. Networking
+-------------
 
-    |
+.. image:: img/install-03-networking-info.png
 
-    .. image:: img/install-05-networking-dns.png
+.. image:: img/install-04-networking-admin.png
 
-    |
+.. image:: img/install-04-networking-nictags.png
 
-* The above pictures show:
+.. image:: img/install-05-networking-dns.png
+
+The above pictures show:
 
     * Choosing a network card.
     * Admin network IP address.
@@ -68,73 +71,90 @@ Compute Node Installation
     * DNS search domain (*advanced installation*, default: ``local``).
     * NTP server IP address or hostname (*advanced installation*, default: ``0.smartos.pool.ntp.org``).
 
-* Choosing the installation type:
 
-    .. image:: img/install-06-hdd.png
+5. Installation to disk?
+------------------------
 
-    * *Booting from USB (default).* This is the preferred installation method. The hard drives are only used for storing virtual machines and other user data. The hypervisor is loaded into RAM from the USB flash drive. The hypervisor (kernel) can be upgraded by swapping the USB media and rebooting the system. The USB media is required for every boot of the compute node.
+.. image:: img/install-06-hdd.png
 
-    * *Installation to hard drive.* This installation type is required when using advanced storage components connected via fiber channel or iSCSI. The contents of the USB flash drive are copied to the hard drives. The USB media should be removed after the installation is finished and before the first reboot.
+* *Booting from USB (default).* This is the preferred installation method. The hard drives are only used for storing virtual machines and other user data. The hypervisor is loaded into RAM from the USB flash drive. The hypervisor (kernel) can be upgraded by swapping the USB media and rebooting the system. The USB media is required for every boot of the compute node.
 
-* Creating the primary data storage (*zones* pool).
-
-    .. image:: img/install-07-zpool.png
-
-    * An optimal disk array profile is chosen automatically based on the information gathered about available local disks. The storage can be configured manually, however, this method is only recommended for more experienced users.
-
-    |
-
-    .. warning:: Using a SLOG (ZIL) device is not supported when *installing to a hard drive.*
-
-    .. seealso:: A more detailed explanation of :ref:`disk arrays <storage>` and :ref:`disk redundancy <storage_redundancy>` can be found in a separate chapter.
-
-* Compute node OS configuration.
-
-    .. image:: img/install-08-system.png
-
-    * Choosing compute node's root password.
-    * System hostname - fully qualified domain name.
-
-    |
-
-    .. warning:: The Compute Node hostname cannot be changed after install.
-
-* Configuration of Danube Cloud management services:
-
-   - **First compute node**
-
-        .. image:: img/install-09hn-dc-mgmt.png
-
-        * IP address configuration of the central web management server.
-        * Choosing a configuration master password.
+* *Installation to hard drive.* This installation type is required when using advanced storage components connected via fiber channel or iSCSI. The contents of the USB flash drive are copied to the hard drives. The USB media should be removed after the installation is finished and before the first reboot.
 
 
-   - **Any other compute node**
+6. Storage
+----------
 
-        .. image:: img/install-09cn-dc-mgmt.png
+.. image:: img/install-07-zpool.png
 
-        * IP address configuration of the configuration database server (cfgdb).
-        * Entering your configuration master password.
+A primary data storage (the *zones* pool) must be created in this step.
 
-* Configuring Administrator's email address (**first compute node** only).
+An optimal disk array profile is chosen automatically based on the information gathered about available local disks. The storage can be configured manually, however, this method is only recommended for more experienced users.
+
+.. warning:: Using a SLOG (ZIL) device is not supported when *installing to hard drive*.
+
+.. seealso:: A more detailed explanation of :ref:`disk arrays <storage>` and :ref:`disk redundancy <storage_redundancy>` can be found in a separate chapter.
+
+
+7. System configuration
+-----------------------
+
+.. image:: img/install-08-system.png
+
+Choose a compute node's root password and system hostname (fully qualified domain name).
+
+.. warning:: The Compute Node hostname cannot be changed after install.
+
+
+8. Danube Cloud services
+------------------------
+
+- **First compute node**
+
+    .. image:: img/install-09hn-dc-mgmt.png
+
+    * IP address configuration of the central web management server.
+    * Choosing a configuration master password.
+
+- **Any other compute node**
+
+    .. image:: img/install-09cn-dc-mgmt.png
+
+    * IP address configuration of the configuration database server (cfgdb).
+    * Entering your configuration master password.
+
+
+9. Administrator's email address
+--------------------------------
 
     .. image:: img/install-10hn-admin-email.png
 
-* Final overview of all information required for setting up the compute node.
+Configuring Administrator's email address is required on the **first compute node** only.
+
+
+10. Confirmation
+----------------
 
     .. image:: img/install-11-summary.png
 
-* Installation of the *Danube Cloud* compute node and management software.
+Final overview of all information required for setting up the compute node.
 
-    .. note:: During the installation process of *Danube Cloud*, files are being copied from the USB flash drive to the primary data storage which usually takes about 5 to 20 minutes.
 
-* After a successful installation, please log in to the Web Management Server.
+Installation process
+--------------------
 
-   - **First compute node**: Login and password to the web management are **admin** and **changeme**. Please change the password as soon as possible using the *change password* form in the user profile section.
+During the installation process of *Danube Cloud*, files are being copied from the USB flash drive to the primary data storage which usually takes about 5 to 20 minutes.
 
-        .. seealso:: Please have a look at the :ref:`post-installation section in this chapter <first_steps>`.
 
-   - **Any other compute node**: The compute node will appear in the web interface of the central web management server automatically.
+Post-installation tasks
+-----------------------
 
+After a successful installation, please log in to the Web Management Server.
+
+- **First compute node**: Login and password to the web management are ``admin`` and ``changeme``. Please change the password as soon as possible using the :guilabel:`Change Password` form in the :ref:`user profile section<user_profile>`.
+
+    .. seealso:: Please have a look at the :ref:`post-installation section in this chapter <first_steps>`.
+
+- **Any other compute node**: The compute node will appear in the web interface of the central web management server automatically.
 
 .. seealso:: How to change the password used for accessing the Compute Node is described in the :ref:`root password change <root_password_change>` section.

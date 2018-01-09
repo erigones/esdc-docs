@@ -16,7 +16,7 @@ A server Template is a set of pre-defined parameters and settings of a virtual s
 *TemplateAdmin*                 read-write (DC-bound templates only)
 =============================== ================
 
-.. note:: In the upper right corner is a button labeled ``Show All``, which can be used to display all templates, including templates that are not associated with the current working virtual data center.
+.. note:: In the upper right corner is a button labeled :guilabel:`Show All`, which can be used to display all templates, including templates that are not associated with the current working virtual data center.
 
 
 Template Parameters

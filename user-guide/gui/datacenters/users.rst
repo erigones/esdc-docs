@@ -16,7 +16,7 @@ A User represents a person with access to the *Danube Cloud* system.
 *UserAdmin*                     read-write (DC-bound users only)
 =============================== ================
 
-.. note:: In the upper right corner is a button labeled ``Show All``, which can be used to display all users, including users that do not have access to the current working virtual data center.
+.. note:: In the upper right corner is a button labeled :guilabel:`Show All`, which can be used to display all users, including users that do not have access to the current working virtual data center.
 
 .. seealso:: More information about user :ref:`roles and permissions <acl>`.
 

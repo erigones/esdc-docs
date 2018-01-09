@@ -17,7 +17,7 @@ A disk Image is a template used to create virtual disks and quickly bootstrap re
 
 .. image:: img/images.png
 
-.. note:: In the upper right corner is a button labeled ``Show All``, which can be used to display all images, including images that are not associated with the current working virtual data center.
+.. note:: In the upper right corner is a button labeled :guilabel:`Show All`, which can be used to display all images, including images that are not associated with the current working virtual data center.
 
 .. seealso:: When creating virtual servers from disk images, it is possible and often required to :ref:`assign parameters (metadata) to virtual servers <metadata>`, which can be used by a virtual server for its configuration during server's initial start or other purposes.
 

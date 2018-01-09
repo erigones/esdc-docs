@@ -16,7 +16,7 @@ Virtual data centers and the *Danube Cloud* system itself can be configured via 
 
 .. note:: A newly created virtual data center inherits all settings from the default *main* data center.
 
-.. note:: In the upper right corner is a button labeled ``Show All``, which can be used to display all settings, including global options.
+.. note:: In the upper right corner is a button labeled :guilabel:`Show All`, which can be used to display all settings, including global options.
 
 
 .. _dc_modules:
@@ -33,12 +33,11 @@ Danube Cloud Modules
 * **DNS_ENABLED** - :ref:`FAQ <dns>` .
 * **SUPPORT_ENABLED** - :ref:`Support <add_ticket>`.
 * **REGISTRATION_ENABLED** - Registration.
-* **PAYMENTS_ENABLED** - Payments and billing.
 * **FAQ_ENABLED** - :ref:`FAQ <faq>` .
 
 .. note:: The *Registration* module depends on the *SMS* module.
 
-.. note:: The *Payments* and *Replication* modules are available only in the *Danube Cloud Enterprise Edition*.
+.. note:: The *Replication* module is available only in the *Danube Cloud Enterprise Edition*.
 
 
 Global Danube Cloud Modules
@@ -119,9 +118,9 @@ Virtual Server Settings
 
 .. image:: img/settings_server-2.png
 
-* **VMS_ZONE_ENABLED** - Whether to enable support for SunOS and Linux zones in this virtual data center.
+* **VMS_ZONE_ENABLED** - Whether to enable support for *SunOS* and *Linux Zones* in this virtual data center.
 * **VMS_VM_DEFINE_LIMIT** - Maximum number of virtual servers that can be defined in this virtual data center.
-* **VMS_VM_CPU_CAP_REQUIRED** - When disabled, the vCPUs server parameter on SunOS and LX Zones can be set to 0, which removes the compute node CPU limit (cpu_cap) for the virtual server.
+* **VMS_VM_CPU_CAP_REQUIRED** - When disabled, the vCPUs server parameter on *SunOS* and *Linux Zones* can be set to 0, which removes the compute node CPU limit (cpu_cap) for the virtual server.
 
     .. warning:: Disabling *VMS_VM_CPU_CAP_REQUIRED* affects compute node CPU resource accounting in a virtual data center. When *VMS_VM_CPU_CAP_REQUIRED* is disbled, the CPU node limit (cpu_cap) can be 0, which won't subtract any CPU amount from free compute node resources.
 
@@ -142,8 +141,8 @@ Virtual Server Settings
     .. note:: Compression can utilize unused CPU time to increase the speed of reading and writing data, while saving disc space.
 
 * **VMS_DISK_IMAGE_DEFAULT** - Name of the default disk image used for newly created server disks.
-* **VMS_DISK_IMAGE_ZONE_DEFAULT** - Name of the default disk image used for newly created SunOS zone virtual servers.
-* **VMS_DISK_IMAGE_LX_ZONE_DEFAULT** - Name of the default disk image used for newly created Linux zone virtual servers.
+* **VMS_DISK_IMAGE_ZONE_DEFAULT** - Name of the default disk image used for newly created *SunOS Zone* virtual servers.
+* **VMS_DISK_IMAGE_LX_ZONE_DEFAULT** - Name of the default disk image used for newly created *Linux Zone* virtual servers.
 * **VMS_NIC_MODEL_DEFAULT** - Default virtual NIC model of newly created server NICs. One of: *virtio*, *e1000*, *rtl8139*.
 
     .. note:: It is recommended to use the *virtio* driver, which provides the highest performance and reduces consumption of CPU time. Some operating systems require additional installation of the *virtio* driver.

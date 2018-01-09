@@ -16,7 +16,7 @@ An ISO Image is usually used to manually install an operating system and applica
 *IsoAdmin*                      read-write (DC-bound ISO images only, limited by :ref:`DC ISO image settings <dc_iso_image_settings>`)
 =============================== ================
 
-.. note:: In the upper right corner is a button labeled ``Show All``, which can be used to display all ISO images, including ISO images that are not associated with the current working virtual data center.
+.. note:: In the upper right corner is a button labeled :guilabel:`Show All`, which can be used to display all ISO images, including ISO images that are not associated with the current working virtual data center.
 
 
 ISO Image Parameters

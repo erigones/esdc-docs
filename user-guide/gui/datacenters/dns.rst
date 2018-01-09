@@ -16,7 +16,7 @@ The DNS feature included in *Danube Cloud* enables a simple management of DNS do
 *DnsAdmin*                      read-write on DNS records (DC-bound domains only)
 =============================== ================
 
-.. note:: In the upper right corner is a button labeled ``Show All``, which can be used to display all domains, including domains that are not associated with the current working virtual data center.
+.. note:: In the upper right corner is a button labeled :guilabel:`Show All`, which can be used to display all domains, including domains that are not associated with the current working virtual data center.
 
 
 DNS Domain Parameters

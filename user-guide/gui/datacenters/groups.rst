@@ -16,7 +16,7 @@ A User Group represents a set of users with similar roles. A user group essentia
 *UserAdmin*                     read-only (DC-bound groups only)
 =============================== ================
 
-.. note:: In the upper right corner is a button labeled ``Show All``, which can be used to display all groups, including groups that are not associated with the current working virtual data center.
+.. note:: In the upper right corner is a button labeled :guilabel:`Show All`, which can be used to display all groups, including groups that are not associated with the current working virtual data center.
 
 .. seealso:: More information about user :ref:`roles and permissions <acl>`.
 

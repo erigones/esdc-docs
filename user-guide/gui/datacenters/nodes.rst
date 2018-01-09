@@ -15,7 +15,7 @@ A :ref:`Compute Node <nodes>` is a set of computing resources (CPU, RAM, HDD), w
 *DCAdmin*                       read-only
 =============================== ================
 
-.. note:: In the upper right corner is a button labeled ``Show All``, which can be used to display all compute nodes, including compute nodes that are not associated with the current working virtual data center.
+.. note:: In the upper right corner is a button labeled :guilabel:`Show All`, which can be used to display all compute nodes, including compute nodes that are not associated with the current working virtual data center.
 
 
 Compute Node Parameters

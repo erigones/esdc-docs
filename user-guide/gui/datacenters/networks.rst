@@ -16,7 +16,7 @@ A virtual Network is essentially an IPv4 subnet used for physical and logical se
 *NetworkAdmin*                  read-write (DC-bound networks only, limited by :ref:`DC network settings <dc_network_settings>`)
 =============================== ================
 
-.. note:: In the upper right corner is a button labeled ``Show All``, which can be used to display all networks, including networks that are not associated with the current working virtual data center.
+.. note:: In the upper right corner is a button labeled :guilabel:`Show All`, which can be used to display all networks, including networks that are not associated with the current working virtual data center.
 
 .. seealso:: More information about virtual networks and their connection to the physical network can be found in a :ref:`separate chapter about networking <network_virtual>`.
 
