@@ -5,7 +5,6 @@ HOWTOs
 .. toctree::
    :maxdepth: 1
 
-   disaster-recovery
    windows
    import
    access-zone
