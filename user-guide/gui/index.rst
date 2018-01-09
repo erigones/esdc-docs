@@ -14,6 +14,7 @@ Central Web Management Console (GUI)
 
     mainmenu
     topmenu
+    system/index
     datacenters/index
     nodes/index
     servers/index
