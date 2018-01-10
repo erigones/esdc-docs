@@ -108,9 +108,10 @@ How to add a persistent network interface
 
     - ``<nic_tag><index>_ip`` - IP address or ``'dhcp'``
     - ``<nic_tag><index>_netmask`` - network mask or ``'...'``
-    - ``<nic_tag><index>_gateway`` - IP address of the default gateway
+    - ``<nic_tag><index>_gateway`` - IP address of the gateway
     - ``<nic_tag><index>_vlan_id`` - VLAN ID
     - ``<nic_tag><index>_mac`` - MAC address (best used in conjunction with DHCP)
+    - ``<nic_tag><index>_mtu`` - MTU size
 
     .. note:: The **ip** and **netmask** directives are mandatory.
 
