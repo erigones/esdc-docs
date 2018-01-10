@@ -13,11 +13,15 @@ Compute Node Installation
 .. image:: img/install-00-grub.png
 
 
+.. _cn_install_welcome:
+
 1. Welcome screen
 -----------------
 
 .. image:: img/install-01-welcome.png
 
+
+.. _cn_install_advanced:
 
 2. Advanced installation?
 -------------------------
@@ -30,10 +34,13 @@ The following settings can be configured only when the **advanced installation**
     - IP address on other network tags.
     - Primary and secondary DNS servers.
     - DNS search domain.
-    - NTP synchronization host
+    - NTP synchronization host.
+    - Remote compute node.
 
 In the **basic installation**, the above options are configured automatically from their default values.
 
+
+.. _cn_install_datacenter:
 
 3. Physical data center
 -----------------------
@@ -42,6 +49,8 @@ In the **basic installation**, the above options are configured automatically fr
 
 Setting the name of the physical data center is required on the **first compute node** only.
 
+
+.. _cn_install_networking:
 
 4. Networking
 -------------
@@ -72,6 +81,8 @@ The above pictures show:
     * NTP server IP address or hostname (*advanced installation*, default: ``0.smartos.pool.ntp.org``).
 
 
+.. _cn_install_hdd:
+
 5. Installation to disk?
 ------------------------
 
@@ -81,6 +92,8 @@ The above pictures show:
 
 * *Installation to hard drive.* This installation type is required when using advanced storage components connected via fiber channel or iSCSI. The contents of the USB flash drive are copied to the hard drives. The USB media should be removed after the installation is finished and before the first reboot.
 
+
+.. _cn_install_storage:
 
 6. Storage
 ----------
@@ -96,6 +109,8 @@ An optimal disk array profile is chosen automatically based on the information g
 .. seealso:: A more detailed explanation of :ref:`disk arrays <storage>` and :ref:`disk redundancy <storage_redundancy>` can be found in a separate chapter.
 
 
+.. _cn_install_system:
+
 7. System configuration
 -----------------------
 
@@ -105,6 +120,8 @@ Choose a compute node's root password and system hostname (fully qualified domai
 
 .. warning:: The Compute Node hostname cannot be changed after install.
 
+
+.. _cn_install_esdc:
 
 8. Danube Cloud services
 ------------------------
@@ -123,6 +140,7 @@ Choose a compute node's root password and system hostname (fully qualified domai
     * IP address configuration of the configuration database server (cfgdb).
     * Entering your configuration master password.
 
+.. _cn_install_operator:
 
 9. Administrator's email address
 --------------------------------
@@ -131,6 +149,8 @@ Choose a compute node's root password and system hostname (fully qualified domai
 
 Configuring Administrator's email address is required on the **first compute node** only.
 
+
+.. _cn_install_confirm:
 
 10. Confirmation
 ----------------
