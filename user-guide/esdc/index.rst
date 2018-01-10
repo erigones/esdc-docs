@@ -8,7 +8,7 @@ Danube Cloud
     :width: 800px
 
 
-**Danube Cloud is a cloud management software used for deploying, maintaining and automating cloud data centers and their processes.**
+**Danube Cloud is an open source software for deploying, managing and automating cloud data centers and their processes.**
 
 
 - Danube Cloud Enterprise Edition and general information: https://danubecloud.com

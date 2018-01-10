@@ -143,7 +143,7 @@ The following settings should be configured in BIOS configuration of your comput
 
 - Enable legacy boot support.
 
-    .. warning:: UEFI boot is not currently supported.
+    .. warning:: UEFI boot is currently not supported.
 
 
 .. _ipmi_over_lan:

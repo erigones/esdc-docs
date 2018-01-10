@@ -88,7 +88,7 @@ Direct-attached storage is made of local data storage devices (typically hard dr
 Storage Area Network (SAN)
 ==========================
 
-* iSCSI (1Gb/10Gb Ethernet)
+Using a network attached storage either through iSCSI or Fiber Channel is possible but discouraged.
 
 
 .. _raid_types:
