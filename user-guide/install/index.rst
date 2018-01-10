@@ -8,6 +8,7 @@ Installation
     requirements
     before
     compute-node
+    unattended
     licenses
     first-steps
     admin-dc
