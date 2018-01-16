@@ -20,7 +20,7 @@ Starting with *Danube Cloud* 3.0 the update functionality was completely reimple
 
 In the examples below the parameters have following meaning:
 
-* ``<version>`` - version of the *Danube Cloud* software to which system should be updated. This can be either git tag or SHA1 of the git commit.
+* ``<version>`` - version of the *Danube Cloud* software to which system should be updated. This can be either a git tag or SHA1 of a git commit. A version tag is prefixed with a ``v`` character (e.g, ``v3.0.1-rc1``). All available version tags are visible here: https://github.com/erigones/esdc-ce/tags
 * ``update.key`` - X509 private key file in PEM format used for authentication against EE git server.
 * ``update.crt`` - X509 private cert file in PEM format used for authentication against EE git server.
 
@@ -69,9 +69,15 @@ Updating Danube Cloud Software Manually
 =======================================
 
 In case something goes wrong with the software update it is always possible to manually update *Danube Cloud* on the :ref:`mgmt01 server<admin_dc>` or compute nodes.
-The update procedure is essentially the same as performed from the GUI or API. In both cases, the ``esdc-git-update`` [1]_ script is run on the mgmt01 virtual server or compute node and if successful, the *Danube Cloud* services should be restarted.
+The update procedure is essentially the same as performed from the GUI or API. In both cases, the ``esdc-git-update`` [1]_ script is run on the mgmt01 virtual server or compute node and if successful, the *Danube Cloud* services should be restarted. It requires one parameter - ``<version>``, which is the version of the *Danube Cloud* software. This can be either a git tag or SHA1 of a git commit. A version tag is prefixed with a ``v`` character (e.g, ``v3.0.1-rc1``). All available version tags are visible here: https://github.com/erigones/esdc-ce/tags
+
+
+.. note:: When updating *Danube Cloud*, the software on the :ref:`management server<admin_dc>` must be updated first and then the procedure should be repeated on all compute nodes.
+
+.. note:: Please, always read the release notes before performing an update: https://github.com/erigones/esdc-ce/wiki/Release-Notes
 
 .. note:: Please make sure that users have only read access to *Danube Cloud* during manual update.
+
 
 * First, log in as root to the mgmt01 server (should be update first) or compute node:
 
@@ -136,7 +142,8 @@ A Platform Image contains a modified version of the SmartOS hypervisor. Each ver
 
 .. note:: Please, always read the release notes before performing an update: https://github.com/erigones/esdc-ce/wiki/Release-Notes
 
-The platform update should be carried out manually by running the ``esdc-platform-upgrade`` script on a compute node. It requires one parameter - the *Danube Cloud* ``<version>``.
+The platform update should be carried out manually by running the ``esdc-platform-upgrade`` script on a compute node. It requires one parameter - the *Danube Cloud* ``<version>``, which is the same as the `git tag version identifier for the Danube Cloud software <https://github.com/erigones/esdc-ce/tags>`__.
+
 Depending on the node installation type, the script does one of the following:
 
     * *USB-booted* compute node: downloads a compute node USB image and overwrites the contents of the existing USB image with it.
@@ -148,7 +155,7 @@ A successful platform update should be followed by a reboot of the compute node.
 
     user@laptop:~ $ ssh root@node01
 
-    [root@node01 ~] /opt/erigones/bin/esdc-platform-upgrade v3.0.1
+    [root@node01 ~] /opt/erigones/bin/esdc-platform-upgrade v3.0.0
 
         ...
         *** Upgrade completed successfully ***
