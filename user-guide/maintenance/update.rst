@@ -117,13 +117,13 @@ The update procedure is essentially the same as performed from the GUI or API. I
         - Downloads (``git fetch``) and switches the repository (``git checkout <version>``) to the requested version;
         - Updates other internal software components by running:
 
-            - on mgmt01 server: ``bin/esdc-appliance-update``,
-            - on compute node: ``bin/esdc-node-update``;
+            - on mgmt01 server: ``bin/esdc-appliance-update``
+            - on compute node: ``bin/esdc-node-update``
 
         - Runs a post-deploy script:
 
-            - on mgmt01 server: ``bin/ctl.sh deploy --update``,
-            - on compute node: ``bin/cth.sh deploy --update --node``.
+            - on mgmt01 server: ``bin/ctl.sh deploy --update``
+            - on compute node: ``bin/cth.sh deploy --update --node``
 
 * If everything goes well, restart the *Danube Cloud* system services:
 
