@@ -22,7 +22,7 @@ Management and Que (Task Queue) Python Software Components
 
 * `esdc-ce <https://github.com/erigones/esdc-ce>`__ - `Apache License 2.0 <https://raw.githubusercontent.come/erigones/esdc-ce/master/LICENSE>`__
 
-* `amqp <https://pypi.python.org/pypi/amqp/>`__ - `LGPL 2.1 <https://raw.githubusercontent.com/celery/py-amqp/master/LICENSE>`__
+* `amqp <https://pypi.python.org/pypi/amqp/>`__ - `BSD 3-Clause License <https://raw.githubusercontent.com/celery/py-amqp/master/LICENSE>`__
 * `anyjson <https://pypi.python.org/pypi/anyjson>`__ - `BSD 3-Clause License <https://bitbucket.org/runeh/anyjson/raw/0026a68c035696bdc8db8628e364139eba9a8ba8/LICENSE>`__
 * `billiard <https://pypi.python.org/pypi/billiard>`__ - `BSD 3-Clause License <https://raw.githubusercontent.com/celery/billiard/master/LICENSE.txt>`__
 * `blinker <https://pypi.python.org/pypi/blinker>`__ - `MIT License <https://raw.githubusercontent.com/jek/blinker/master/LICENSE>`__
