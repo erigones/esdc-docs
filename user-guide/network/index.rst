@@ -12,4 +12,6 @@ Network Configuration
    nictag
    interface
    aggregation
+   overlays
+   esdc-overlay-cmd
 
