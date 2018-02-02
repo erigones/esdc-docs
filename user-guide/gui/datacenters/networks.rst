@@ -86,11 +86,12 @@ Detaching a Network
 In order to remove an association of a network with a virtual data center, the network must not be used by any virtual machine within the virtual data center. Can be performed only by a *SuperAdmin*.
 
 
+.. _network_ips:
+
 Network IP Addresses
 ====================
 
     .. image:: img/ip_list.png
-
 
 IP Address Parameters
 =====================

@@ -23,6 +23,7 @@ Creating a Zone with Two NICs
 
     .. note:: The internal and external NICs must have :ref:`IP and MAC spoofing enabled <vm_nics>`. These settings can be enabled only by a :ref:`SuperAdmin <roles>`.
 
+.. _access_zone_ipfilter:
 
 Basic Firewall Configuration
 ############################
@@ -270,4 +271,4 @@ Creating a VPN Client Certificate and Configuring a VPN Client
 Enable Remote Node Access to Danube Cloud Services
 ##################################################
 
-For remote node to be able to connect to services, you need to add port forward rules into XXXref `ipfilter` configuration.
+For remote node to be able to connect to *Danube Cloud* services, you need to add port forward rules into :ref:`ipfilter<create_more_nat_rules>` configuration.

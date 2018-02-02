@@ -1,4 +1,4 @@
-.. _network_nictag:
+.. _overlays:
 
 Overlay networking
 ******************
@@ -128,6 +128,8 @@ A sample ``/usbkey/config`` entry:
         adminoverlay_0_mac="00:e5:dc:d5:d4:cf"
 
 .. note:: Detailed instructions on how to create `adminoverlay` overlay rule can be found in XXXX Overlays Automation section.
+
+.. _overlays_adminoverlay_requirements:
 
 Requirements for overlays
 =========================
