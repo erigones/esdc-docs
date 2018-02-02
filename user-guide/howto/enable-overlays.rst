@@ -9,11 +9,13 @@ Overlay networks are not enabled by default after *Danube Cloud* installation. Y
 
 If you want to change overlays configuration later (e.g. add/modify/delete overlays, modify firewall configuration, etc.), all you need to use is the :ref:`esdc-overlay<esdc_overlay_cmd>` command, which will perform the appropriate changes on all/selected compute nodes.
 
-**After adding one or more new compute nodes, you have to run :ref:`esdc-overlay update<esdc_overlay_cmd_update>` to enable overlays also on these new nodes.**
+**NOTE:** After adding one or more new compute nodes, you have to run :ref:`esdc-overlay update<esdc_overlay_cmd_update>` to enable overlays also on these new nodes.
 
 .. note:: The ``esdc-overlay`` command must be run from the first compute node (the one that was installed first). Running it from any other node is also possible but before that you have to add that compute node's SSH key into the ``root_authorized_keys`` metadata of the `mgmt01.local` virtual server in the :ref:`admin virtual data center<admin_dc>`.
 
 If you don't know whether to enable also remote compute nodes support, read more about remote compute nodes :ref:`here<overlays_extend_dc_over_inet>`.
+
+.. contents:: Table of Contents
 
 .. _enable_overlays_no_rcn:
 
@@ -119,7 +121,7 @@ Add public IP address to `mgmt01.local`
     * Click :guilabel:`Add Network` and create an external public :ref:`network<networks>` (over external :ref:`NIC tag<network_nictag>`); add some unused :ref:`IP addresses<network_ips>` (at least one).
     * Attach the new network to **admin** virtual data center.
     * Go to :guilabel:`Servers -> mgmt01 -> Add NIC` and add a :ref:`virtual NIC<vm_nics>` with the newly created external network.
-    * Set this new virtual NIC as default network interface (uncheck *Primary NIC* on the first VM NIC and check it on newly added VM NIC in :guilabel:`Advanced settings`)).
+    * Set this new virtual NIC as default network interface (uncheck *Primary NIC* on the first VM NIC and check it on newly added VM NIC in :guilabel:`Advanced settings`).
     * :ref:`Reboot<vm_actions>` the `mgmt01.local` virtual server with applying the configuration changes.
     * Wait for the GUI to become reachable again.
 
@@ -128,7 +130,7 @@ Optionally, it is recommended to restrict the allowed sources only to known IP a
 
     .. code-block:: bash
 
-        [user@laptop ~] ssh root@node01                  # ssh to the first compute node
+        [user@laptop ~] ssh root@node01               # ssh to the first compute node
         [root@node01 (myDC) ~] source /usbkey/config
         [root@node01 (myDC) ~] ssh $mgmt_admin_ip     # ssh to the mgmt01
         [root@mgmt01 ~] systemctl status iptables
@@ -225,14 +227,14 @@ There are several guidelines to follow during the installation of a compute node
     - Configure external interface with IP address.
     - Set default gateway to external interface's gateway.
     - When asked for :ref:`Configuration database IP address<cn_install_esdc>`:
-      - if it is a local node: fill in the local admin IP address of `cfgdb01.local`,
-      - if it is a remote node: fill in the public IP address of `mgmt01.local` or the IP of installed `access zone`.
+        - if it is a local node: fill in the local admin IP address of `cfgdb01.local`,
+        - if it is a remote node: fill in the public IP address of `mgmt01.local` or the IP of installed `access zone`.
 
 After the new compute node is discovered by the *Danube Cloud* system, log into to first compute node and issue the following command to update all overlays on all compute nodes, including the new one:
 
     .. code-block:: bash
 
-        esdc-overlay update
+        [root@node01 (myDC) ~] esdc-overlay update
 
 Final steps:
     * Go to GUI.

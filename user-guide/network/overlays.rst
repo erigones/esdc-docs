@@ -11,6 +11,10 @@ In other words, *Danube Cloud* can create geographically spread transparent L2 n
 
 .. seealso:: This page explains concepts of overlay networking in *Danube Cloud*. Setting up all parts of overlay networks manually is possible but quite time consuming. That's why we have created an :ref:`esdc-overlay<esdc_overlay_cmd>` command that automates creating and managing of overlay rules, admin overlays and firewalls. See the :ref:`overlays automation guide<enable_overlays>`.
 
+
+.. contents:: Table of Contents
+
+
 Extending number of virtual networks
 ====================================
 In a single physical data center, you can use overlays to extend the number of virtual networks. In this case you don't need IPSec because all communication occurs only in your own network backend.
@@ -60,7 +64,7 @@ In short: *overlay rule > overlay > vNIC*
 - the virtual ARP table is managed by *Danube Cloud*
 
 How overlays are created
-------------------------
+========================
 .. note:: For more info about creating the overlays, please see the *Danube Cloud* wiki https://github.com/erigones/esdc-ce/wiki/SmartOS-Overlays
 
 An overlay can be created manually using the ``dladm`` command. The following command creates overlay with VXLAN number *123* listening on UDP port *4789*:
@@ -82,7 +86,7 @@ After making changes to overlay rules in ``/usbkey/config``, you must either reb
 The file ``files/config`` parameter points to a file containing an ARP routing table for all virtual machines created over the respective overlay rule. Danube Cloud takes care of updating this file automatically after the overlay rule is discovered on a compute node (after node restart or after refreshing node info in GUI/API).
 
 About vxlan/listen_ip setting
------------------------------
+=============================
 When defining an overlay rule, the ``vxlan/listen_ip`` is mandatory. It defines a local IP address and consequently interface, which will be used by the kernel itself to listen for incoming VXLAN (= overlay) packets. It is possible to set it to a special value of ``0.0.0.0``, which tells the kernel to listen on all available interfaces on a defined UDP port. This is very useful to allow overlays to reach local compute nodes over the **admin** network and in the same time also over the internet to remote compute nodes.
 
 But setting ``0.0.0.0`` has its drawbacks that you should be aware of. VXLAN packets are not signed or protected in any way so the receiver side cannot safely recognize the true sender of the VXLAN packet. If you don't protect your public interface, you are prone to a packet forgery.
