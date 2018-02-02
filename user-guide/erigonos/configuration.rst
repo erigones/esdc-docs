@@ -94,13 +94,16 @@ NIC tag and VNIC configuration
         ham_eggs_0_mac=...
         ham_eggs_0_mtu=...
 
-
 System configuration
 --------------------
 
 - **datacenter_name** - Physical data center name.
 - **hostname** - Compute node hostname. The hostname **cannot** be changed after the compute node was already registered in *Danube Cloud*.
 
+Virtual machines
+----------------
+
+- **vnc_listen_address** - IP address that will be used as the listen address of the VNC console of a KVM virtual machine.
 
 Danube Cloud services
 ---------------------

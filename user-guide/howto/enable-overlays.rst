@@ -13,7 +13,7 @@ If you want to change overlays configuration later (e.g. add/modify/delete overl
 
 .. note:: The ``esdc-overlay`` command must be run from the first compute node (the one that was installed first). Running it from any other node is also possible but before that you have to add that compute node's SSH key into the ``root_authorized_keys`` metadata of the `mgmt01.local` virtual server in the :ref:`admin virtual data center<admin_dc>`.
 
-If you don't know whether to enable also remote compute nodes support, read more about remote compute nodes :ref:`here<overlays_stretching_dc_over_inet>`.
+If you don't know whether to enable also remote compute nodes support, read more about remote compute nodes :ref:`here<overlays_extend_dc_over_inet>`.
 
 .. _enable_overlays_no_rcn:
 
@@ -96,7 +96,7 @@ On already installed *Danube Cloud*, you have to check the following setup on **
 1. Make Admin Services Accessible From Internet
 -----------------------------------------------
 
-.. seealso:: More information about extending *Danube Cloud* to other physical datacenters can be found in a :ref:`separate chapter<overlays_stretching_dc_over_inet>`.
+.. seealso:: More information about extending *Danube Cloud* to other physical data centers can be found in a :ref:`separate chapter<overlays_extend_dc_over_inet>`.
 
 You have two options here:
     * :ref:`(A)<enable_overlays_install_access_zone>` Install access zone or any custom router virtual machine to forward traffic to *Danube Cloud* *admin services* (recommended).

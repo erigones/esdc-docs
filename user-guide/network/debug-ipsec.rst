@@ -1,24 +1,22 @@
 .. _debug_ipsec:
 
-
 Debugging overlays and IPSec
 ****************************
 One disadvantage of overlay networking is that it considerably increases the complexity of whole system. This consequently increases the number of places where things can go wrong. 
 
-If an overlay network does not work, the best way to start is to use `ssh` to connect to nodes that host virtual machines that refuse to communicate. Then you can use several tools to find out what's going on.
+If an overlay network does not work, the best way to start is to use SSH to connect to nodes that host virtual machines that refuse to communicate. Then you can use several tools to find out what's going on.
 
-    **ipadm show-addr** - this command will list you all configured IP addresses and respective NICs on a compute node (hypervisor). You need to find out which interface is used for overlay communication. The decision is simple - if the compute nodes are in the same :ref:`physical datacenter <cn_install_datacenter>`, they use admin interface. Otherwise they use external interface. Find appropriate interface name by looking at configured IP addresses.
+    - **ipadm show-addr** - this command will list all configured IP addresses and respective NICs on a compute node (hypervisor). You need to find out which interface is used for overlay communication. The decision is simple: if the compute nodes are in the same :ref:`physical datacenter <cn_install_datacenter>`, they use the admin interface. Otherwise they use the external interface. Find appropriate interface name by looking at configured IP addresses.
 
-    **snoop** - a network sniffer. Your swiss army knife to find out what packets are (not) flowing between the compute nodes in question.
-Example: for sniffing packets on external interface between two nodes, run this (80.90.100.110 is a public address of the compute node on the other side):
+    - **snoop** - a network sniffer. Your swiss army knife to find out what packets are (not) flowing between the compute nodes in question. Example: for sniffing packets on external interface between two nodes, run this (80.90.100.110 is a public address of the compute node on the other side):
 
-    .. code-block:: bash
+        .. code-block:: bash
 
-        [root@cn2 (MYDC-remote1) ~]# snoop -rd external0 host 80.90.100.110
+            [root@node02 (MYDC-remote1) ~] snoop -rd external0 host 80.90.100.110
 
-    **ping** inside the virtual machines - try to generate some traffic inside overlay network to see some movement by *snoop*
+    - **ping** inside the virtual machines - try to generate some traffic inside overlay network to see some packets by *snoop*.
 
-    ``/opt/erigones/bin/debug/ipsec_*`` directory - contains various IPSec debug scripts (see XXX)
+    - ``/opt/erigones/bin/debug/ipsec_*`` directory - contains various IPSec debug scripts (see :ref:`here<debug_ipsec_scripts>`).
 
 How things look like when using *snoop*:
 
@@ -84,20 +82,22 @@ How things look like when using *snoop*:
 When IPSec things are working correctly, you should see an XXXlink IPSec negotiation packets when virtual machines start to communicate for the first time (or a key renegotiation is needed). Immediately after that, you can see a normal XXXlink IPSec communication.
 
 What can go wrong:
-    * `you don't see any IPSec packets` - verify the snoop interface and parameters or verify that ipsec services are online (``svcs ipsecalgs ike policy``)
-    * `you see only the negotiation phase packets from one IP but no packets from the other IP` - verify firewall, verify ipsec config (XXXlink ``esdc-overlay update``), try to flush association database on both hosts (see XXX)
-    * `you see only the negotiation phase packets from both IPs but no normal IPSec ESP packets` - verify ipsec config (XXXlink ``esdc-overlay update``), try to flush association database on both hosts (see XXX)
+    * `you don't see any IPSec packets` - verify the snoop interface and parameters or verify that IPsec services are online (``svcs ipsecalgs ike policy``)
+    * `you see only the negotiation phase packets from one IP but no packets from the other IP` - verify firewall, verify IPsec config (XXXlink ``esdc-overlay update``), try to flush association database on both hosts (see XXX)
+    * `you see only the negotiation phase packets from both IPs but no normal IPSec ESP packets` - verify IPsec config (XXXlink ``esdc-overlay update``), try to flush association database on both hosts (see XXX)
     * `you see normal IPSec ESP packets but only from one host` - see print dropped packets, flush SADB
     * `you see normal IPSec ESP packets from both hosts` but the VMs don't communicate anyway - try to use network sniffer inside virtual machines on both nodes. There's a suspicion that one node is accepting packets but the other node is dropping them. If the suspicion is true, you should see the incoming and outgoing packets inside the one virtual machine but only outgoing packets inside the second virtual machine. Also XXXlink printing dropped packets will show some output. To solve the problem try to XXX flush association database or verify the XXX IPSec policy.
 
 The following IPSec debug scripts can save you a lot of debugging time. They are ordered by priority in which you should go when searching for the answer.
+
+.. _debug_ipsec_scripts:
 
 IPSec debug scripts
 ===================
 
 Print packets dropped by IPSec
 ------------------------------
-To discover if IPSec is dropping any packets, you can use very handy `dtrace` script ``/opt/erigones/bin/debug/ipsec_print_dropped_packets.d``. It will tell you detailed info about the dropped packet including the reason why it was dropped.
+To discover if IPSec is dropping any packets, you can use very handy dtrace script ``/opt/erigones/bin/debug/ipsec_print_dropped_packets.d``. It will tell you detailed info about the dropped packet including the reason why it was dropped.
 
 A sample output:
     .. code-block:: bash
@@ -114,7 +114,7 @@ A sample output:
 There are several reasons for packet to drop (Dropped by):
     * **IPsec ESP** - the receiving host knows nothing about the sender. The most probable reason is that the receiver was restarted or has flushed its security association database and the sending host did not reach the key renew timeout. You can wait a few minutes or XXX clear the association database on the sender (to start renegotiation).
     * **IPsec SPD** - no matching IPSec security policy was found. Either the packet is forged or the security policy rules are incorrect.
-    * **IPsec SADB** - no corresponding entry was found for the received packet. There are multiple reasons for this, e.g. corupted packet or misconfigured policy.
+    * **IPsec SADB** - no corresponding entry was found for the received packet. There are multiple reasons for this, e.g. corrupted packet or misconfigured policy.
 
 
 Turn on IPSec debug
@@ -123,15 +123,15 @@ To make the things simpler, you can enable IPSec debug by running ``ipsec_loggin
 
     .. code-block:: bash
 
-        [root@cn01 (myDC) ~]# /opt/erigones/bin/debug/ipsec_logging_enable.sh
-        [root@cn01 (myDC) ~]# tail -f /var/adm/messages /var/log/in.iked.log
+        [root@node01 (myDC) ~] /opt/erigones/bin/debug/ipsec_logging_enable.sh
+        [root@node01 (myDC) ~] tail -f /var/adm/messages /var/log/in.iked.log
 
 To turn the logging off, run ``/opt/erigones/bin/debug/ipsec_logging_disable.sh``.
 
 
 Run esdc-overlay update
 -----------------------
-To verify and (if needed) re-apply the configuration of IPSec (and overlays) on all compute nodes, you can run ``esdc-overlay update`` on the first compute node. For more info see XXX here.
+To verify and (if needed) re-apply the configuration of IPSec (and overlays) on all compute nodes, you can run ``esdc-overlay update`` on the first compute node. For more info see :ref:`here<esdc_overlay_cmd_update>`.
 
 
 Inspect/Flush IPSec SADB
@@ -142,28 +142,25 @@ If you want to force a full renegotiation of IPSec connection, run
 
     .. code-block:: bash
 
-        /opt/erigones/bin/debug/ipsec_associations_flush.sh
+        [root@node01 (myDC) ~] /opt/erigones/bin/debug/ipsec_associations_flush.sh
 
-To flush all SADBs on all compute nodes, you can use ansible to make the things simpler. 
+To flush all SADBs on all compute nodes, you can use Ansible to make the things simpler. 
     .. code-block:: bash
 
-        esdc-overlay update-ans-hosts
-        cd /opt/erigones/ans
-        # test ansible connect
-        ansible all -a date
-        # flush all SADBs everywhere
-        ansible all -a /opt/erigones/bin/debug/ipsec_associations_flush.sh
+        [root@node01 (myDC) ~] esdc-overlay update-ans-hosts
+        [root@node01 (myDC) ~] cd /opt/erigones/ans
+        [root@node01 (myDC) ~] # test ansible connect
+        [root@node01 (myDC) ~] ansible all -a date
+        [root@node01 (myDC) ~] # flush all SADBs everywhere
+        [root@node01 (myDC) ~] ansible all -a /opt/erigones/bin/debug/ipsec_associations_flush.sh
 
 IPSec services and config files
 -------------------------------
 There are 3 system services and 3 configuration files. To see status of IPSec services, run ``svcs ipsecalgs ike policy``.
 Effective config files are located here:
 
-    - /etc/inet/ike/config
-    - /etc/inet/secret/ike.preshared
-    - /etc/inet/ipsecinit.conf
+    - ``/etc/inet/ike/config``
+    - ``/etc/inet/secret/ike.preshared``
+    - ``/etc/inet/ipsecinit.conf``
 
-But because the SmartOS does not persist the configuration by default (when booted from an USB stick), you can find the persistent configuration files here: ``/opt/custom/etc/ipsec/``. After changing the persistent configuration, reload IPSec by running ``/opt/custom/etc/rc-pre-network.d/020-ipsec-restore.sh refresh``.
-
-
-
+But because SmartOS does not persist the configuration by default (when booted from an USB stick), you can find the persistent configuration files here: ``/opt/custom/etc/ipsec/``. After changing the persistent configuration, reload IPSec by running ``/opt/custom/etc/rc-pre-network.d/020-ipsec-restore.sh refresh``.
