@@ -14,4 +14,5 @@ Network Configuration
    aggregation
    overlays
    esdc-overlay-cmd
+   debug-ipsec
 

@@ -95,6 +95,7 @@ Sample output:
         svc          4790      all
 
 .. _esdc_overlay_create_adminoverlay:
+
 Create adminoverlay
 -------------------
 Usage of ``adminoverlay-init`` subcommand + example:
@@ -110,6 +111,8 @@ This subcommand will
     * Generate static MAC addresses for vNICs
     * Write the configuration into ``/usbkey/config`` on all compute nodes
     * Reload ``network/virtual`` system service to apply new overlay config
+    * Add `ipfilter` rules to drop unencrypted VXLAN packets to/from internet
+    * Reload ``network/ipfilter`` service
 
 Parameters:
     * `adminoverlay_subnet/netmask` - a network subnet with netmask that will be used for `adminoverlay` vNICs. It is actually an overlay equivalent of `admin` network (but the admin network is still needed)
@@ -144,6 +147,8 @@ Sample output:
         10.10.10.11  00:e5:dc:dc:26:c3    cn01.local
         10.10.10.12  00:e5:dc:0f:c0:25    cn02.local
         10.10.10.13  00:e5:dc:0f:c0:42    cn03.local
+
+.. _esdc_overlay_cmd_enable_fw:
 
 Enable firewall on all compute nodes
 ------------------------------------
