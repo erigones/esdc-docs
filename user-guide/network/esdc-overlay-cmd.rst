@@ -99,6 +99,7 @@ Sample output:
         svc          4790      all
 
 .. _esdc_overlay_create_adminoverlay:
+
 Create adminoverlay
 -------------------
 Usage of the ``adminoverlay-init`` subcommand + example:
@@ -107,13 +108,16 @@ Usage of the ``adminoverlay-init`` subcommand + example:
         esdc-overlay adminoverlay-init <adminoverlay_subnet/netmask> [nodename1=ip1,nodename=ip2,...]
         esdc-overlay adminoverlay-init 10.10.10.0/255.255.255.0 node01.local=10.10.10.11,node02.local=10.10.10.12
 
+
 This subcommand will:
     * Verify specified IP addresses.
     * Create the `adminoverlay` overlay rule.
     * Generate/assign IP addresses for vNICs on all compute nodes.
     * Generate static MAC addresses for vNICs.
     * Write the configuration into ``/usbkey/config`` on all compute nodes.
-    * Reload ``network/virtual`` system service to apply new overlay configuration.
+    * Reload the ``network/virtual`` system service to apply new overlay configuration.
+    * Add `ipfilter` rules to drop unencrypted VXLAN packets to/from internet.
+    * Reload the ``network/ipfilter`` service.
 
 Parameters:
     * ``adminoverlay_subnet/netmask`` - a network subnet with a netmask that will be used for `adminoverlay` vNICs. The network is roughly equivalent the :ref:`admin<network_nictag>` network (the `admin` network is still needed).
@@ -149,6 +153,8 @@ Sample output:
         10.10.10.12  00:e5:dc:0f:c0:25    node02.local
         10.10.10.13  00:e5:dc:0f:c0:42    node03.local
 
+.. _esdc_overlay_cmd_enable_fw:
+
 Enable firewall on all compute nodes
 ------------------------------------
 Usage of the ``globally-enable-firewall`` subcommand + example:
@@ -180,4 +186,3 @@ Usage of the ``globally-disable-firewall`` subcommand + example:
 This subcommand will revert the effect of ``globally-enable-firewall`` on all compute nodes. All nodes are switched to blacklist `ipfilter` mode (allow all except explicitly forbidden).
 
 The `ipfilter` itself is still active and you can add your own custom rules manually to any compute node by creating/editing a file in ``/opt/custom/etc/ipf.d/`` directory and running ``/opt/custom/etc/rc-pre-network.d/010-ipf-restore.sh refresh``.
-
