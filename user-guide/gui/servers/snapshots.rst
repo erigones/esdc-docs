@@ -95,7 +95,7 @@ Snapshot Definition Parameters
 
 * **Name** - Snapshot definition name.
 * **Disk ID** - Virtual server disk ID.
-* **Schedule** - Automatic scheduler configuration in Cron format.
+* **Schedule** - Automatic scheduler configuration in Cron format. Use your local time for the hour field (it will be internally converted into UTC).
 * **Retention** - Maximum number of snapshots to keep. After exceeding this number of snapshots, the oldest snapshot associated with the snapshot definition will be automatically removed.
 * **Active** - Whether the snapshot definition is active.
 * **Description**

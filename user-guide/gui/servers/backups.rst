@@ -98,7 +98,7 @@ Backup Definition Parameters
     * *File* - Backups are created by storing full ZFS datasets into files (can be used to store backups onto remote data storages connected via NFS or Samba).
 * **Backup node** - Compute node with backup capabilities enabled.
 * **Storage** - Name of the :ref:`node storage on the chosen backup node <storage_backup>`.
-* **Schedule** - Automatic scheduler configuration in Cron format.
+* **Schedule** - Automatic scheduler configuration in Cron format. Use your local time for the hour field (it will be internally converted into UTC).
 * **Retention** - Maximum number of backups to keep. After exceeding this number of backups the oldest backup associated with the backup definition will be automatically removed.
 * **Active** - Whether the backup definition is active.
 * **Description**
