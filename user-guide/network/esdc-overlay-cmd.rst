@@ -1,6 +1,6 @@
 .. _esdc_overlay_cmd:
 
-Overlays administration
+Overlays Administration
 =======================
 To simplify deployment of overlay networking as much as possible, there is a ``esdc-overlay`` command that will do for you all operations described in this page. Moreover, it permanently stores the data in *Danube Cloud*'s :ref:`configuration database<admin_dc>` so the compute node configuration can be easily re-applied at any time.
 

@@ -1,6 +1,6 @@
 .. _debug_ipsec:
 
-Troubleshooting overlays and IPSec
+Overlays and IPSec Troubleshooting
 **********************************
 
 One disadvantage of overlay networking is that it considerably increases the complexity of whole system. This consequently increases the number of places where things can go wrong. 

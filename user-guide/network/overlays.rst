@@ -1,6 +1,6 @@
 .. _overlays:
 
-Overlay networking
+Overlay Networking
 ******************
 
 Network overlays in *SmartOS* and *Danube Cloud* are a concept of encapsulating network traffic between virtual machines using the VXLAN technology. In *SmartOS*, overlays are a way of extending usable number of separate :ref:`virtual networks <network_virtual>` (e.g. one overlay per customer).
