@@ -38,7 +38,7 @@ Usually, the compute nodes in one physical datacenter/rack are interconnected us
 
 Instead of communicating over the **admin** network, the remote nodes use:
 
-    * secure TCP connection for command channel,
+    * secure TCP connection in *erigonesd*,
     * overlay networking with IPSec to create :ref:`virtual networks <network_virtual>` that are stretched across the globe.
       
 From the virtual machines' perspective, the network based on overlays is fully transparent and it appears as if the virtual servers were connected into a single local switch regardless of their real physical location.
