@@ -10,6 +10,8 @@ To apply all configuration to all/selected compute nodes, ``esdc-overlay`` runs 
 
 .. seealso:: You need to enable overlays prior to administering them. See :ref:`How to enable overlays in Danube Cloud<enable_overlays>`.
 
+.. seealso:: To better understand to concepts of overlay networking in *Danube Cloud* have a look at the general :ref:`overlay documentation<overlays>`. 
+
 What ``esdc-overlay`` can do:
     * Create/modify overlay rules.
     * Create/modify firewall configuration.
@@ -19,39 +21,49 @@ What ``esdc-overlay`` can do:
     * Restart appropriate system services if needed.
     * Check overlay requirements.
 
+.. contents:: Table of Contents
+
 .. _esdc_overlay_cmd_create:
 
 Creating an overlay rule
 ------------------------
+
 Usage of the ``create`` subcommand:
+
     .. code-block:: bash
 
         esdc-overlay create <overlay_rule_name> [node_list|all] [raw_overlay_rule_string]
 
-Creating an overlay rule on all compute nodes in the *Danube Cloud* installation can be as simple as running
+Creating an overlay rule on all compute nodes in the *Danube Cloud* installation can be as simple as running:
+
     .. code-block:: bash
 
         esdc-overlay create mynewoverlay
 
 More complex usage can define subset of compute nodes that will host the new overlay rule:
+
     .. code-block:: bash
 
         esdc-overlay create localoverlay node01.local,node02.local,node03.local
 
 Or you can create a completely custom overlay rule (all nodes, port 4790, MTU 1300):
+
     .. code-block:: bash
 
         esdc-overlay create customers all "-e vxlan -p vxlan/listen_ip=0.0.0.0,vxlan/listen_port=4790 -s files -p files/config=/opt/custom/networking/customers_overlay.json -p mtu=1300"
 
-**Notes**:
+Notes:
     * If you provide a node list to ``esdc-overlay`` (anything other than ``all``), only these compute nodes will be touched by Ansible.
     * In the node list, you can provide also non-existent node names. This way you can configure future nodes in advance.
+
 
 .. _esdc_overlay_cmd_update:
 
 Updating an overlay rule
 ------------------------
+
 Usage of the ``update`` subcommand:
+
     .. code-block:: bash
 
         esdc-overlay update [overlay_rule_name] [node_list|all] [raw_overlay_rule_string]
@@ -60,35 +72,42 @@ Usage of the ``update`` subcommand:
 
 The ``update`` subcommand can also be run without any parameters. In this mode it will (re)apply the configuration for all overlay rules on all compute nodes. It is very useful either to verify that the configuration is correct or to configure overlays on a newly added compute nodes.
 
-.. note:: After adding a new compute node, just run ``esdc-overlay update`` command. It will fully configure overlay networking on the new compute node(s).
+.. note:: After adding a new compute node, just run the ``esdc-overlay update`` command. It will fully configure overlay networking on the new compute node(s).
 
 Modify a list of nodes that the specified overlay should be configured on:
+
     .. code-block:: bash
 
         esdc-overlay update localoverlay node03.local,node04.local,node04.local
 
 Re-apply configuration for ``myrule`` overlay rule (Ansible will touch only nodes that the ``myrule`` should be on - it will retrieve the correct node list from the :ref:`configuration database<admin_dc>`):
+
     .. code-block:: bash
 
         esdc-overlay update myrule
 
 Delete an overlay rule
 ----------------------
+
 Usage of the ``delete`` subcommand:
+
     .. code-block:: bash
 
         esdc-overlay delete <overlay_rule_name>
 
-Overlay rule will be first deleted on all compute nodes and then (if successful) removed from the :ref:`configuration database<admin_dc>`.
+The overlay rule will be first deleted on all compute nodes and then (if successful) removed from the :ref:`configuration database<admin_dc>`.
 
 List all configured overlay rules
 ---------------------------------
+
 Usage of the ``list`` subcommand:
+
     .. code-block:: bash
 
         esdc-overlay list
 
 Sample output:
+
     .. code-block:: bash
 
         [root@node01 ~] esdc-overlay list
@@ -102,7 +121,9 @@ Sample output:
 
 Create adminoverlay
 -------------------
+
 Usage of the ``adminoverlay-init`` subcommand + example:
+
     .. code-block:: bash
 
         esdc-overlay adminoverlay-init <adminoverlay_subnet/netmask> [nodename1=ip1,nodename=ip2,...]
@@ -110,6 +131,7 @@ Usage of the ``adminoverlay-init`` subcommand + example:
 
 
 This subcommand will:
+
     * Verify specified IP addresses.
     * Create the `adminoverlay` overlay rule.
     * Generate/assign IP addresses for vNICs on all compute nodes.
@@ -120,12 +142,15 @@ This subcommand will:
     * Reload the ``network/ipfilter`` service.
 
 Parameters:
-    * ``adminoverlay_subnet/netmask`` - a network subnet with a netmask that will be used for `adminoverlay` vNICs. The network is roughly equivalent the :ref:`admin<network_nictag>` network (the `admin` network is still needed).
+
+    * ``adminoverlay_subnet/netmask`` - a network subnet with a netmask that will be used for `adminoverlay` vNICs. The network is roughly equivalent the :ref:`admin<network_nictag>` network (the **admin** network is still needed).
     * ``nodename1=ip1,...`` - if you want to set specific IP addresses for some/all compute nodes, you can do it here. Unspecified nodes will have the IP address assigned automatically. All IP addresses must be from the ``adminoverlay_subnet``.
 
 Modify adminoverlay
 -------------------
+
 Usage of the ``adminoverlay-update`` subcommand:
+
     .. code-block:: bash
 
         esdc-overlay adminoverlay-update [nodename1=ip1,nodename=ip2,...]
@@ -134,12 +159,15 @@ This subcommand can modify assigned IP addresses. It will (as all commands excep
 
 List adminoverlay info
 ----------------------
+
 Usage of the ``adminoverlay-list`` subcommand:
+
     .. code-block:: bash
 
         esdc-overlay adminoverlay-list
 
 Sample output:
+
     .. code-block:: bash
 
         [root@node01 ~] esdc-overlay adminoverlay-list
@@ -157,7 +185,9 @@ Sample output:
 
 Enable firewall on all compute nodes
 ------------------------------------
+
 Usage of the ``globally-enable-firewall`` subcommand + example:
+
     .. code-block:: bash
 
         esdc-overlay globally-enable-firewall [allowed_IP_list]
@@ -169,6 +199,7 @@ By default, running ``esdc-overlay`` with ``create`` or ``update`` subcommands w
 The ``globally-enable-firewall`` subcommand will configure `ipfilter` on ``external0`` interfaces of all compute nodes to whitelist mode. That means that it will permit connections only from allowed destinations. Note that network interfaces other that ``external0`` will NOT be affected by this change. Virtual servers are also not affected by this operation. This is solely supposed to protect the hypervisors from internet threats.
 
 Allowed destinations are:
+
     * all compute nodes
     * sources specified in ``allowed_IP_list``
 
@@ -178,7 +209,9 @@ The subcommand requires confirmation before applying changes on compute nodes. R
 
 Disable firewall on all compute nodes
 -------------------------------------
-Usage of the ``globally-disable-firewall`` subcommand + example:
+
+Usage of the ``globally-disable-firewall`` subcommand:
+
     .. code-block:: bash
 
         esdc-overlay globally-disable-firewall
