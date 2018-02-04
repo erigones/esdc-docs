@@ -111,8 +111,8 @@ To discover if IPSec is dropping any packets, you can use very handy dtrace scri
 
         IPsec dropped an inbound IPv4 packet.
         IPPROTO: 17    (1=ICMP, 6=TCP, 17=UDP; 50=ESP, see netinet/in.h)
-        Src IP address: 80.1.65.242
-        Dst IP address: 80.1.65.241
+        Src IP address: 203.0.113.242
+        Dst IP address: 203.0.113.241
         Src port: 52678
         Dst port: 4789
         Packet len: 156

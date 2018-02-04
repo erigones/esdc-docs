@@ -74,7 +74,7 @@ On already installed *Danube Cloud*, you have to check the following setup on **
             :caption: Example
 
             external_nic=00:0c:29:d1:b9:dd
-            external0_ip=80.1.65.141
+            external0_ip=203.0.113.141
             external0_netmask=255.255.255.192
 
     * Set default route to external interface.
@@ -88,7 +88,7 @@ On already installed *Danube Cloud*, you have to check the following setup on **
         .. code-block:: bash
             :caption: Example
 
-            headnode_default_gateway=80.1.65.129
+            headnode_default_gateway=203.0.113.129
             admin_gateway=10.0.66.1
 
 
