@@ -6,7 +6,7 @@ To simplify deployment of overlay networking as much as possible, there is a ``e
 
 To apply all configuration to all/selected compute nodes, ``esdc-overlay`` runs an `Ansible` playbook that does all the hard work.
 
-.. note:: Command ``esdc-overlay`` should be run in the shell on the first compute node (the one that hosts the :ref:`mgmt01<admin_dc>` virtual server).
+.. note:: The ``esdc-overlay`` command should be run in the shell on the first compute node (the one that hosts the :ref:`mgmt01<admin_dc>` virtual server).
 
 .. seealso:: You need to enable overlays prior to administering them. See :ref:`How to enable overlays in Danube Cloud<enable_overlays>`.
 
@@ -70,7 +70,7 @@ Usage of the ``update`` subcommand:
 
 ``update`` has the same parameters as ``create``. It can alter any overlay rule parameters and the change is immediately pushed to all or selected compute nodes.
 
-The ``update`` subcommand can also be run without any parameters. In this mode it will (re)apply the configuration for all overlay rules on all compute nodes. It is very useful either to verify that the configuration is correct or to configure overlays on a newly added compute nodes.
+The ``update`` subcommand can be also run without any parameters. In this mode it will (re)apply the configuration for all overlay rules on all compute nodes. It is very useful either to verify that the configuration is correct or to configure overlays on a newly added compute nodes.
 
 .. note:: After adding a new compute node, just run the ``esdc-overlay update`` command. It will fully configure overlay networking on the new compute node(s).
 
@@ -80,7 +80,7 @@ Modify a list of nodes that the specified overlay should be configured on:
 
         esdc-overlay update localoverlay node03.local,node04.local,node04.local
 
-Re-apply configuration for ``myrule`` overlay rule (Ansible will touch only nodes that the ``myrule`` should be on - it will retrieve the correct node list from the :ref:`configuration database<admin_dc>`):
+Re-apply configuration for *myrule* overlay rule (Ansible will touch only nodes that the *myrule* should be on - it will retrieve the correct node list from the :ref:`configuration database<admin_dc>`):
 
     .. code-block:: bash
 
@@ -106,9 +106,8 @@ Usage of the ``list`` subcommand:
 
         esdc-overlay list
 
-Sample output:
-
     .. code-block:: bash
+        :caption: Sample output
 
         [root@node01 ~] esdc-overlay list
         NAME         PORT      NODELIST
@@ -143,8 +142,8 @@ This subcommand will:
 
 Parameters:
 
-    * ``adminoverlay_subnet/netmask`` - a network subnet with a netmask that will be used for `adminoverlay` vNICs. The network is roughly equivalent the :ref:`admin<network_nictag>` network (the **admin** network is still needed).
-    * ``nodename1=ip1,...`` - if you want to set specific IP addresses for some/all compute nodes, you can do it here. Unspecified nodes will have the IP address assigned automatically. All IP addresses must be from the ``adminoverlay_subnet``.
+    * ``adminoverlay_subnet/netmask`` - a network subnet with a netmask that will be used for the `adminoverlay` vNICs. The network is roughly equivalent the :ref:`admin<network_nictag>` network (the **admin** network is still needed).
+    * ``nodename1=ip1,...`` - if you want to set specific IP addresses for some/all compute nodes, you can do it here. Unspecified nodes will have an IP address assigned automatically. All IP addresses must be from the ``adminoverlay_subnet``.
 
 Modify adminoverlay
 -------------------
@@ -166,9 +165,8 @@ Usage of the ``adminoverlay-list`` subcommand:
 
         esdc-overlay adminoverlay-list
 
-Sample output:
-
     .. code-block:: bash
+        :caption: Sample output
 
         [root@node01 ~] esdc-overlay adminoverlay-list
         Adminoverlay subnet:  10.10.10.0
@@ -194,9 +192,9 @@ Usage of the ``globally-enable-firewall`` subcommand + example:
         esdc-overlay globally-enable-firewall admin_IP1,allowed_IP2,good_subnet/24
         esdc-overlay globally-enable-firewall 12.13.14.0/26,100.150.200.128/25,1.2.3.4
 
-By default, running ``esdc-overlay`` with ``create`` or ``update`` subcommands will create firewall rules that prevent sending unencrypted overlay packets over the ``external0`` interface.
+By default, running ``esdc-overlay`` with ``create`` or ``update`` subcommands will create firewall rules that prevent sending unencrypted overlay packets over the **external0** interface.
 
-The ``globally-enable-firewall`` subcommand will configure `ipfilter` on ``external0`` interfaces of all compute nodes to whitelist mode. That means that it will permit connections only from allowed destinations. Note that network interfaces other that ``external0`` will NOT be affected by this change. Virtual servers are also not affected by this operation. This is solely supposed to protect the hypervisors from internet threats.
+The ``globally-enable-firewall`` subcommand will configure `ipfilter` on **external0** interfaces of all compute nodes to whitelist mode. That means that it will permit connections only from allowed destinations. Note that network interfaces other that **external0** will NOT be affected by this change. Virtual servers are also not affected by this operation. This is solely supposed to protect the hypervisors from internet threats.
 
 Allowed destinations are:
 

@@ -1,8 +1,8 @@
 .. _network:
 
-=====================
-Network Configuration
-=====================
+==========
+Networking
+==========
 
 
 .. toctree::
@@ -14,5 +14,6 @@ Network Configuration
    aggregation
    overlays
    esdc-overlay-cmd
+   ../erigonos/network-diagnostic
    debug-ipsec
 

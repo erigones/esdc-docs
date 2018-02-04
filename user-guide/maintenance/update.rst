@@ -138,7 +138,7 @@ The update procedure is essentially the same as performed from the GUI or API. I
 Updating Platform Image on Compute Nodes
 ########################################
 
-A Platform Image contains a modified version of the SmartOS hypervisor. Each version of *Danube Cloud* is tested and released with a specific version of the Platform Image. The Platform Image is usually upgraded with each major release of *Danube Cloud* or when there is some security issue in the kernel.
+A Platform Image contains a modified version of the *SmartOS* hypervisor. Each version of *Danube Cloud* is tested and released with a specific version of the Platform Image. The Platform Image is usually upgraded with each major release of *Danube Cloud* or when there is some security issue in the kernel.
 
 .. note:: Please, always read the release notes before performing an update: https://github.com/erigones/esdc-ce/wiki/Release-Notes
 

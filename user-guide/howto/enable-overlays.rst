@@ -5,7 +5,7 @@ Enable Overlay Networking in Danube Cloud
 
 Overlay networks are not enabled by default after *Danube Cloud* installation. You have to perform steps described in this page to make them work.
 
-.. seealso:: Before proceeding, it is recommended to read the overview of *Danube Cloud* :ref:`overlay networking<overlays>` and overview of the :ref:`esdc-overlay<esdc_overlay_cmd>` command.
+.. seealso:: Before proceeding, it is recommended to read the overview of *Danube Cloud* :ref:`overlay networking<overlays>`.
 
 If you want to change overlays configuration later (e.g. add/modify/delete overlays, modify firewall configuration, etc.), all you need to use is the :ref:`esdc-overlay<esdc_overlay_cmd>` command, which will perform the appropriate changes on all/selected compute nodes.
 
@@ -119,14 +119,14 @@ Add public IP address to `mgmt01.local`
     * :ref:`Switch<switch_dc>` to the **admin** virtual data center.
     * Go to :guilabel:`Datacenter -> Networks`.
     * Click on :guilabel:`Add Network` and create an external public :ref:`network<networks>` (over external :ref:`NIC tag<network_nictag>`); add some unused :ref:`IP addresses<network_ips>` (at least one).
-    * Attach the new network to **admin** virtual data center.
+    * Attach the new network to the **admin** virtual data center.
     * Go to :guilabel:`Servers -> mgmt01`, click on :guilabel:`Add NIC` and add a :ref:`virtual NIC<vm_nics>` with the newly created external network.
     * Set this new virtual NIC as default network interface (uncheck *Primary NIC* on the first virtual NIC and check it on the newly added virtual NIC in :guilabel:`Advanced settings`).
     * :ref:`Reboot<vm_actions>` the `mgmt01.local` virtual server with applying the configuration changes.
     * Wait for the GUI to become reachable again.
 
 Now, you have the services accessible from the internet.
-Optionally, it is recommended to restrict access to the allowed services only to known IP addresses/subnets. You can do it directly in the `mgmt01.local` virtual server:
+Optionally, it is recommended to restrict access to the allowed services only from known IP addresses/subnets. You can do it directly in the `mgmt01.local` virtual server:
 
     .. code-block:: bash
 
@@ -163,7 +163,7 @@ Now, go to the GUI, create the appropriate `adminoverlay` virtual network and ad
     * Now go to :guilabel:`Servers` and add additional virtual NICs that use the `adminoverlay` network to these :ref:`admin virtual servers<admin_dc>`: `mgmt01`, `mon01`, `img01` (as an additional NIC, not primary).
     * Remember or write down the assigned IP addresses for `mgmt01` and `mon01` as you will need them later.
     * Apply the changes and :ref:`reboot<vms_actions>` all edited virtual servers.
-    * Wait for GUI to become reachable again.
+    * Wait for the GUI to become reachable again.
     * :ref:`Switch<switch_dc>` to the **main** virtual data center.
     * Go to :guilabel:`Datacenter -> Settings` and click on :guilabel:`Show global settings`. Search for the **VMS_IMAGE_VM_NIC** setting and set it to ``2``. It tells the *Danube Cloud* system that compute nodes should contact the internal image server (`img01.local`) on the second virtual NIC (the overlay one). Click :guilabel:`Update Settings` on the bottom (or hit enter when typing ``2``).
 
@@ -191,7 +191,7 @@ After this command, you need to refresh the compute node information in the GUI:
 ----------------------------------------
 The last step is to reconfigure monitoring to work over `adminoverlay`. We want to do two things:
 
-    - Add new `adminoverlay` IP of `mon01.local` to the configuration database, so that new compute nodes will use this IP.
+    - Add the new `adminoverlay` IP of `mon01.local` to the configuration database, so that new compute nodes will use this IP.
     - Reconfigure existing compute nodes and change the Zabbix agent configuration.
 
 Ssh into the first compute node and run:
@@ -204,7 +204,7 @@ Ssh into the first compute node and run:
         [root@node01 (myDC) ~] sed -i '' -e 's/^Server=.*$/Server=${MON_IP}/' -e 's/^ServerActive=.*$/ServerActive=${MON_IP}/' /opt/zabbix/etc/zabbix_agentd.conf
         [root@node01 (myDC) ~] svcadm restart zabbix/agent
 
-Then for each installed compute node run this remote command:
+Then, for each installed compute node run this remote command:
 
     .. code-block:: bash
 
@@ -212,7 +212,7 @@ Then for each installed compute node run this remote command:
         [root@node01 (myDC) ~] ssh <compute_node_ip> svcadm restart zabbix/agent
 
 
-Now you should be all set for the *Danube Cloud* overlays.
+Now, you should be all set for the *Danube Cloud* overlays.
 
 
 .. _enable_overlays_add_cn:
@@ -227,9 +227,9 @@ A remote node must use overlays.
 There are several guidelines to follow during the installation of a compute node when using overlays:
 
     - Select :ref:`Advanced installation<cn_install_advanced>`.
-    - Configure external interface with IP address.
+    - Configure external interface with an IP address.
     - Set default gateway to external interface's gateway.
-    - When asked for :ref:`Configuration database IP address<cn_install_esdc>`:
+    - When asked for the :ref:`Configuration database IP address<cn_install_esdc>`:
 
         - if it is a local node: fill in the local admin IP address of `cfgdb01.local`,
         - if it is a remote node: fill in the public IP address of `mgmt01.local` or the IP of installed `access zone`.
@@ -242,7 +242,7 @@ After the new compute node is discovered by the *Danube Cloud* system, log into 
 
 Final steps:
 
-    * Go to GUI.
+    * Go to the GUI.
     * Go to :guilabel:`Nodes -> (new compute node)` and click on the :guilabel:`Refresh` button to pull the network configuration from the compute node.
     * Go to :guilabel:`Nodes -> (new compute node) -> Edit -> Show advanced settings` and change the **IP address** to the new overlay IP, click :guilabel:`Update`.
 
