@@ -9,7 +9,7 @@ Network overlays in *SmartOS* and *Danube Cloud* are a concept of encapsulating 
 
 In other words, *Danube Cloud* can create geographically spread transparent L2 networks, which can be used by virtual servers to communicate as if they all were connected into a single local switch.
 
-.. seealso:: This page explains concepts of overlay networking in *Danube Cloud*. Setting up all parts of overlay networks manually is possible but quite time consuming. That's why we have created an :ref:`esdc-overlay<esdc_overlay_cmd>` command that automates creating and managing of overlay rules, overlays and firewalls. See the :ref:`overlays automation guide<enable_overlays>`.
+.. seealso:: This page explains concepts of overlay networking in *Danube Cloud*. Setting up all parts of overlay networks manually is possible but quite time consuming. That's why we have created an :ref:`esdc-overlay<esdc_overlay_cmd>` command that automates creating and managing of overlay rules, overlays and firewalls. See the :ref:`enable overlay networking guide<enable_overlays>`.
 
 
 .. contents:: Table of Contents
@@ -38,7 +38,7 @@ Usually, the compute nodes in one physical datacenter/rack are interconnected us
 
 Instead of communicating over the **admin** network, the remote nodes use:
 
-    * secure TCP connection in *erigonesd*,
+    * secure TCP connection from *erigonesd* to the management server,
     * overlay networking with IPSec to create :ref:`virtual networks <network_virtual>` that are stretched across the globe.
       
 From the virtual machines' perspective, the network based on overlays is fully transparent and it appears as if the virtual servers were connected into a single local switch regardless of their real physical location.
@@ -152,7 +152,7 @@ Recommended naming and parameters:
     adminoverlay_0_netmask="255.255.255.0"
     adminoverlay_0_mac="00:e5:dc:d5:d4:cf"
 
-.. seealso:: Detailed instructions on how to create the `adminoverlay` overlay rule can be found in the :ref:`overlays automation guide<enable_overlays>`.
+.. seealso:: Detailed instructions on how to create the `adminoverlay` overlay rule can be found in the :ref:`enable overlay networking guide<enable_overlays>`.
 
 .. _overlays_adminoverlay_requirements:
 

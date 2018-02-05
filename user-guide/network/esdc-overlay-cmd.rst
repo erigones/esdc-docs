@@ -2,7 +2,7 @@
 
 Overlays Administration
 =======================
-To simplify deployment of overlay networking as much as possible, there is a ``esdc-overlay`` command that will do for you all operations described in this page. Moreover, it permanently stores the data in *Danube Cloud*'s :ref:`configuration database<admin_dc>` so the compute node configuration can be easily re-applied at any time.
+To simplify deployment of overlay networking as much as possible, there is an ``esdc-overlay`` command that will automate for you most of the required operations. Moreover, it permanently stores the data in *Danube Cloud*'s :ref:`configuration database<admin_dc>` so the compute node configuration can be easily re-applied at any time.
 
 To apply all configuration to all/selected compute nodes, ``esdc-overlay`` runs an `Ansible` playbook that does all the hard work.
 
@@ -80,7 +80,7 @@ Modify a list of nodes that the specified overlay should be configured on:
 
         esdc-overlay update localoverlay node03.local,node04.local,node04.local
 
-Re-apply configuration for *myrule* overlay rule (Ansible will touch only nodes that the *myrule* should be on - it will retrieve the correct node list from the :ref:`configuration database<admin_dc>`):
+Re-apply configuration for *myrule* overlay rule (Ansible will touch only nodes that the *myrule* should be on - it will retrieve the actual node list from the :ref:`configuration database<admin_dc>`):
 
     .. code-block:: bash
 
@@ -131,7 +131,7 @@ Usage of the ``adminoverlay-init`` subcommand + example:
 
 This subcommand will:
 
-    * Verify specified IP addresses.
+    * Validate the specified IP subnet.
     * Create the `adminoverlay` overlay rule.
     * Generate/assign IP addresses for vNICs on all compute nodes.
     * Generate static MAC addresses for vNICs.
@@ -142,7 +142,7 @@ This subcommand will:
 
 Parameters:
 
-    * ``adminoverlay_subnet/netmask`` - a network subnet with a netmask that will be used for the `adminoverlay` vNICs. The network is roughly equivalent the :ref:`admin<network_nictag>` network (the **admin** network is still needed).
+    * ``adminoverlay_subnet/netmask`` - a network subnet with a netmask that will be used for the `adminoverlay` vNICs. The network is roughly equivalent to the :ref:`admin<network_nictag>` network (the **admin** network is still needed).
     * ``nodename1=ip1,...`` - if you want to set specific IP addresses for some/all compute nodes, you can do it here. Unspecified nodes will have an IP address assigned automatically. All IP addresses must be from the ``adminoverlay_subnet``.
 
 Modify adminoverlay
@@ -194,7 +194,7 @@ Usage of the ``globally-enable-firewall`` subcommand + example:
 
 By default, running ``esdc-overlay`` with ``create`` or ``update`` subcommands will create firewall rules that prevent sending unencrypted overlay packets over the **external0** interface.
 
-The ``globally-enable-firewall`` subcommand will configure `ipfilter` on **external0** interfaces of all compute nodes to whitelist mode. That means that it will permit connections only from allowed destinations. Note that network interfaces other that **external0** will NOT be affected by this change. Virtual servers are also not affected by this operation. This is solely supposed to protect the hypervisors from internet threats.
+The ``globally-enable-firewall`` subcommand will further configure `ipfilter` on **external0** interfaces of all compute nodes to whitelist mode. That means that it will permit connections only from allowed destinations. Note that network interfaces other that **external0** will NOT be affected by this change. Virtual servers are also not affected by this operation. This is solely supposed to protect the hypervisors from internet threats.
 
 Allowed destinations are:
 
