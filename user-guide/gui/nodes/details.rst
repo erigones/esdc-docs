@@ -31,7 +31,7 @@ Compute Node Parameters
 =======================
 
 * **Hostname** - Unique compute node identifier (read-only).
-* **IP address** - Primary IP address (read-only).
+* **IP address** - Primary IP address.
 * **Owner** - Compute node owner.
 * **Capabilities** - Combination of:
 
@@ -81,6 +81,8 @@ Managing a Compute Node
 
 Advanced Compute Node Settings
 ------------------------------
+
+* **IP address** -  Compute node's IP address used for communication between compute nodes, in particular for: VM VNC console, VM backups, VM migration, VM replication, VM snapshot restore and image creation, internal VM and compute node monitoring. **WARNING**: Changing this IP address may lead to unexpected behaviour.
 
 * **CPUs coefficient** - Coefficient used to calculate the total number of compute node's virtual CPUs usable for virtual servers by multiplying with the number of physical CPU cores.
 

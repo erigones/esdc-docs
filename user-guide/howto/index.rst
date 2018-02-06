@@ -6,6 +6,7 @@ HOWTOs
    :maxdepth: 1
 
    disaster-recovery
+   enable-overlays
    windows
    import
    access-zone

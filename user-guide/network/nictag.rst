@@ -80,6 +80,8 @@ Etherstubs are created with the command shown below. Please make sure that ether
     stub0          -                  -              etherstub
 
 
+.. _add_overlay_nictag:
+
 Adding overlay NIC tag
 ----------------------
 

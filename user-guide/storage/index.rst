@@ -14,4 +14,5 @@ Storage Pools
    zfs-best-practices
    newpool
    backup
+   ../erigonos/storage-diagnostic
 

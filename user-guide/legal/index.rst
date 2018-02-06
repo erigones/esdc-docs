@@ -146,8 +146,9 @@ Trademarks
 * NGINX is a registered trademark of `Nginx Inc. <https://www.nginx.com>`__.
 * Oracle, Sun, Solaris and ZFS are trademarks or registered trademarks of `Oracle and/or its affiliates <http://www.oracle.com>`__.
 * QEMU is a trademark of `Fabrice Bellard <http://qemu.org>`__.
-* VMware is a registered trademark of `VMware, Inc <http://www.vmware.com>`__.
+* VMware is a registered trademark of `VMware, Inc. <http://www.vmware.com>`__.
 * Zabbix is a registered trademark of `Zabbix LLC <http://www.zabbix.com>`__.
+* Ansible is a registered trademark of `Ansible, Inc. <https://www.ansible.com/>`__.
 
 
 Other Third-party Components

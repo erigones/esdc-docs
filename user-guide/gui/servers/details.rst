@@ -94,6 +94,7 @@ Besides managing the above-mentioned basic :ref:`virtual server parameters <vm>`
 
     .. seealso:: More information about virtual server's metadata can be found in a :ref:`separate chapter <metadata>`.
 
+.. _vm_actions:
 
 Virtual Server Actions
 ======================

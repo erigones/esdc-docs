@@ -23,6 +23,7 @@ Creating a Zone with Two NICs
 
     .. note:: The internal and external NICs must have :ref:`IP and MAC spoofing enabled <vm_nics>`. These settings can be enabled only by a :ref:`SuperAdmin <roles>`.
 
+.. _access_zone_ipfilter:
 
 Basic Firewall Configuration
 ############################
@@ -43,7 +44,9 @@ Basic Firewall Configuration
             lo0: flags=2002000849<UP,LOOPBACK,RUNNING,MULTICAST,IPv6,VIRTUAL> mtu 8252 index 1
             inet6 ::1/128 
 
-* Adjust basic firewall rules.
+.. _create_fw_rules:
+
+* Adjust basic firewall rules (111.222.222.234 in this case is an IP address of external interface).
 
     .. code-block:: bash
 
@@ -61,17 +64,21 @@ Basic Firewall Configuration
         pass in quick on net1
         pass out quick on net1
 
-        # Default block rule.
-        block in on net0 
-
-        # Allow ssh and openvpn service.
-        pass in quick proto udp from any to  111.222.222.234/32 port=1194 keep state
-        pass in quick proto tcp from any to  111.222.222.234/32 port=22 keep state
-
-        pass in quick proto icmp from any to  111.222.222.234/32 keep state
-
         # Allow everything out to the internet.
         pass out quick on net0 keep state
+
+        # Allow ssh and openvpn service.
+        pass in quick on net0 proto udp from any to 111.222.222.234/32 port=1194 keep state
+        pass in quick on net0 proto tcp from any to 111.222.222.234/32 port=22 keep state
+        pass in quick on net0 proto icmp from any to 111.222.222.234/32 keep state
+
+        # Allow remote nodes access to Danube Cloud services (optional)
+        pass in quick on net0 proto udp from any to 111.222.222.234/32 port=12181 keep state
+        pass in quick on net0 proto tcp from any to 111.222.222.234/32 port=15672 keep state
+        pass in quick on net0 proto tcp from any to 111.222.222.234/32 port=16379 keep state
+
+        # Default block rule.
+        block in quick on net0 
 
 * Validate the syntax of basic firewall configuration.
 
@@ -98,6 +105,30 @@ Basic Firewall Configuration
         [root@demo-access ~] vim /etc/ipf/ipnat.conf
 
         map net0 10.0.0.0/24 -> 111.222.222.234/32 portmap tcp/udp auto
+
+.. _create_more_nat_rules:
+
+* More NAT rules (optional). Please fill in the actual IP addresses of virtual machines `mgmt01.local`, `dns01.local`, `mon01.local` and `cfgdb01.local` instead of the placeholders like ``%%MGMT_IP%%``.
+
+    .. code-block:: bash
+
+        [root@demo-access ~] vim /etc/ipf/ipnat.conf
+
+        # Access to GUI/API from internet (mgmt01.local)
+        rdr net0 from any to 111.222.222.234/32 port = 80 -> %%MGMT_IP%% port 80 tcp
+        rdr net0 from any to 111.222.222.234/32 port = 443 -> %%MGMT_IP%% port 443 tcp
+
+        # Access to integrated DNS from internet (dns01.local)
+        rdr net0 from any to 111.222.222.234/32 port = 53 -> %%DNS_IP%% port 53 tcp/udp
+
+        # Access to integrated zabbix monitoring from internet (mon01.local)
+        rdr net0 from any to any port = 444 -> %%MON_IP%% port 443 tcp
+
+        # Allow remote nodes (it is recommended to restrict also source IPs here)
+        rdr net0 from any to 111.222.222.234/32 port = 15672 -> %%MGMT_IP%% port 443 tcp
+        rdr net0 from any to 111.222.222.234/32 port = 16379 -> %%MGMT_IP%% port 443 tcp
+        # Needed only during installation of remote nodes (should point to cfgdb01.local)
+        rdr net0 from any to 111.222.222.234/32 port = 12181 -> %%CFGDB_IP%% port 443 tcp
 
 * Validate the syntax of NAT configuration.
 
@@ -236,3 +267,8 @@ Creating a VPN Client Certificate and Configuring a VPN Client
 
 .. note:: OpenVPN client applications may require to be run with administrator privileges, since they need to modify the operating system's routing table.
 
+
+Enable Remote Node Access to Danube Cloud Services
+##################################################
+
+For remote node to be able to connect to *Danube Cloud* services, you need to add port forward rules into :ref:`ipfilter<create_more_nat_rules>` configuration.

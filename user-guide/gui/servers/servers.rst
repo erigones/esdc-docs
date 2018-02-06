@@ -46,6 +46,7 @@ Virtual Server List Item Parameters
 * **RAM** - The amount of RAM (MB) assigned to the virtual server.
 * **HDD** - Cumulative disk size (GB) assigned to the virtual server.
 
+.. _vms_actions:
 
 Virtual Server Actions
 ======================
