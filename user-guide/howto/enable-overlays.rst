@@ -125,7 +125,7 @@ Add public IP address to `mgmt01.local`
     * :ref:`Reboot<vm_actions>` the `mgmt01.local` virtual server with applying the configuration changes.
     * Wait for the GUI to become reachable again.
 
-Now, you have the services accessible from the internet.
+Now you have the services accessible from the internet.
 Optionally, it is recommended to restrict access to the allowed services only from known IP addresses/subnets. You can do it directly in the `mgmt01.local` virtual server:
 
     .. code-block:: bash
@@ -141,7 +141,7 @@ Optionally, it is recommended to restrict access to the allowed services only fr
 2. Create Admin Overlay
 -----------------------
 
-Now, we have to create an admin overlay network called **adminoverlay** that serves the same purpose as a normal **admin** network but `adminoverlay` can spread geographically over the whole internet. For more info see :ref:`here<overlays_adminoverlay>`.
+Now we have to create an admin overlay network called **adminoverlay** that serves the same purpose as a normal **admin** network but `adminoverlay` can spread geographically over the whole internet. For more info see :ref:`here<overlays_adminoverlay>`.
 
 Log in to the first compute node and run ``esdc-overlay adminoverlay-init``. For more information and available options of this command see :ref:`here<esdc_overlay_create_adminoverlay>`.
 
@@ -152,7 +152,7 @@ Log in to the first compute node and run ``esdc-overlay adminoverlay-init``. For
 
 This command will create `adminoverlay` on all compute nodes. You can verify it by running ``ipadm show-addr``.
 
-Now, go to the GUI, create the appropriate `adminoverlay` virtual network and add IP addresses to :ref:`admin virtual servers<admin_dc>`:
+Now go to the GUI, create the appropriate `adminoverlay` virtual network and add IP addresses to :ref:`admin virtual servers<admin_dc>`:
 
     * :ref:`Switch<switch_dc>` to the **admin** virtual data center.
     * Go to :guilabel:`Nodes -> (your CN)` and click on the :guilabel:`Refresh` button to reload network configuration (do this on all compute nodes that are already installed).
@@ -167,7 +167,7 @@ Now, go to the GUI, create the appropriate `adminoverlay` virtual network and ad
     * :ref:`Switch<switch_dc>` to the **main** virtual data center.
     * Go to :guilabel:`Datacenter -> Settings` and click on :guilabel:`Show global settings`. Search for the **VMS_IMAGE_VM_NIC** setting and set it to ``2``. It tells the *Danube Cloud* system that compute nodes should contact the internal image server (`img01.local`) on the second virtual NIC (the overlay one). Click :guilabel:`Update Settings` on the bottom (or hit enter when typing ``2``).
 
-Now, you have a working overlay configuration. You can add your own overlays and :ref:`overlay rules<enable_overlays_create_orules>`.
+Now you have a working overlay configuration. You can add your own overlays and :ref:`overlay rules<enable_overlays_create_orules>`.
 
 
 .. _enable_overlays_create_orules:
@@ -194,7 +194,7 @@ The last step is to reconfigure monitoring to work over `adminoverlay`. We want 
     - Add the new `adminoverlay` IP of `mon01.local` to the configuration database, so that new compute nodes will use this IP.
     - Reconfigure existing compute nodes and change the Zabbix agent configuration.
 
-Ssh into the first compute node and run:
+SSH into the first compute node and run:
 
     .. code-block:: bash
 
@@ -212,7 +212,7 @@ Then, for each installed compute node run this remote command:
         [root@node01 (myDC) ~] ssh <compute_node_ip> svcadm restart zabbix/agent
 
 
-Now, you should be all set for the *Danube Cloud* overlays.
+Now you should be all set for the *Danube Cloud* overlays.
 
 
 .. _enable_overlays_add_cn:
@@ -246,7 +246,7 @@ Final steps:
     * Go to :guilabel:`Nodes -> (new compute node)` and click on the :guilabel:`Refresh` button to pull the network configuration from the compute node.
     * Go to :guilabel:`Nodes -> (new compute node) -> Edit -> Show advanced settings` and change the **IP address** to the new overlay IP, click :guilabel:`Update`.
 
-Now, the new compute is ready for use.
+Now the new compute is ready for use.
 
 
 How can I delegate overlays (and VLANs) administration?

@@ -3,11 +3,13 @@
 Overlays and IPSec Troubleshooting
 **********************************
 
-One disadvantage of overlay networking is that it considerably increases the complexity of whole system. This consequently increases the number of places where things can go wrong. 
+One disadvantage of overlay networking is that it considerably increases the complexity of the whole system. This consequently increases the number of places where things can go wrong.
 
-If an overlay network does not work, the best way to start is to use SSH to connect to nodes that host virtual machines that refuse to communicate. Then you can use several tools to find out what's going on.
+If an overlay network does not work, the best way to start debugging is to to connect using SSH to compute nodes that host virtual machines that refuse to communicate. Then you can use several tools to find out what's going on.
 
     - ``ipadm show-addr`` - this command will list all configured IP addresses and respective NICs on a compute node (hypervisor). You need to find out which interface is used for overlay communication. The decision is simple: if the compute nodes are in the same :ref:`physical datacenter <cn_install_datacenter>`, they use the admin interface. Otherwise they use the external interface. Find the appropriate interface name by looking at configured IP addresses.
+
+    - ``ping`` of overlay IPs - try to ping the other compute node's `adminoverlay_0` IP address
 
     - ``snoop`` - a network sniffer. Your swiss army knife to find out what packets are (not) flowing between the compute nodes in question. Example: for sniffing packets on the external interface between two nodes, run this (203.0.113.110 is a public address of the compute node on the other side):
 
@@ -19,7 +21,7 @@ If an overlay network does not work, the best way to start is to use SSH to conn
 
     - ``/opt/erigones/bin/debug/ipsec_*`` directory - contains various IPSec debug scripts (see :ref:`here<debug_ipsec_scripts>`).
 
-How things look like when using *snoop*:
+How things should look like when using *snoop*:
 
 * Overlay communication without IPSec, using UDP port 4790:
 
@@ -34,7 +36,7 @@ How things look like when using *snoop*:
 
 .. _ipsec_negotiation_example:
 
-* Initial IPSec negotiation:
+* Initial IPSec negotiation (UDP port 500):
 
     .. code-block:: bash
 
@@ -47,7 +49,7 @@ How things look like when using *snoop*:
 
 .. _ipsec_communication_example:
 
-* Normal IPSec communication:
+* Normal IPSec communication (ESP protocol):
 
     .. code-block:: bash
 
@@ -83,7 +85,7 @@ How things look like when using *snoop*:
          xx.yy.zz.10 -> xx.yy.zz.20  ESP IP fragment ID=12394 Offset=1480 MF=0 TOS=0x0 TTL=60
 
 
-When IPSec things are working correctly, you should see an :ref:`IPSec negotiation packets<ipsec_negotiation_example>` when virtual machines start to communicate for the first time (or a key renegotiation is needed). Immediately after that, you can see a normal :ref:`IPSec communication<ipsec_communication_example>`.
+When IPSec things are working correctly, you should see an :ref:`IPSec negotiation packets<ipsec_negotiation_example>` when virtual machines start to communicate for the first time (or a key renegotiation is needed). Immediately after that, you should see a normal :ref:`IPSec communication<ipsec_communication_example>`.
 
 What can go wrong:
     * `You don't see any IPSec packets` - verify the snoop interface and parameters or verify that IPsec services are online (``svcs ipsecalgs ike policy``).
@@ -164,9 +166,9 @@ To flush all SADBs on all compute nodes, you can use Ansible to make the things 
 
         [root@node01 (myDC) ~] esdc-overlay update-ans-hosts
         [root@node01 (myDC) ~] cd /opt/erigones/ans
-        [root@node01 (myDC) ~] # test ansible connect
+        # test ansible connect
         [root@node01 (myDC) ~] ansible all -a date
-        [root@node01 (myDC) ~] # flush all SADBs everywhere
+        # flush all SADBs everywhere
         [root@node01 (myDC) ~] ansible all -a /opt/erigones/bin/debug/ipsec_associations_flush.sh
 
 .. _ipsec_services:
