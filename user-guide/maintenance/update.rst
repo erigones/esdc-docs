@@ -123,7 +123,7 @@ The update procedure is essentially the same as performed from the GUI or API. I
         - Runs a post-deploy script:
 
             - on mgmt01 server: ``bin/ctl.sh deploy --update``
-            - on compute node: ``bin/cth.sh deploy --update --node``
+            - on compute node: ``bin/ctl.sh deploy --update --node``
 
 * If everything goes well, restart the *Danube Cloud* system services:
 
