@@ -12,9 +12,14 @@ The *Danube Cloud* software can be updated via the :ref:`system maintenance GUI 
 
 Starting with *Danube Cloud* 3.0 the update functionality was completely reimplemented and a maintenance GUI view was added. Before version 3.0, the update feature was considered experimental and updating was usually performed :ref:`manually<update_manual>`.
 
-.. note:: When updating *Danube Cloud*, the software on the :ref:`management server<admin_dc>` must be updated first.
+The main *Danube Cloud* components should be updated in the following order:
+   1. The software on the :ref:`management server<admin_dc>` must be updated first (via :ref:`GUI<system_maintenance>` or :ref:`API<update_dc_mgmt>`).
+   2. Then, the software on all compute nodes should be updated to the same version as on the management server (via :ref:`GUI<system_maintenance>` or :ref:`API<update_dc_node>`).
+   3. An optional update of the platform image should be performed last (by :ref:`running a script<update_platform>` on the compute node).
 
 .. note:: Please, always read the release notes before performing an update: https://github.com/erigones/esdc-ce/wiki/Release-Notes
+
+.. note:: The update functionality is not bound to a specific virtual data center, which means that the update tasks are logged into the :ref:`task log<tasklog>` of the *main* virtual data center.
 
 .. seealso:: Some features may require a new version of the :ref:`Platform Image<update_platform>`.
 
@@ -26,6 +31,8 @@ In the examples below the parameters have following meaning:
 
 .. note:: If you are using Danube Cloud Enterprise Edition, you should have received the update.key/update.crt files with your :ref:`compute node license <node_license>`. In case you haven't received the update key and certificate please contact ``license@erigones.com``. If you are using Danube Cloud Community Edition, ``-key`` and ``-cert`` parameters can be omitted from the command line.
 
+
+.. _update_dc_mgmt:
 
 Updating Danube Cloud Software on Management Server
 ===================================================
@@ -43,6 +50,8 @@ When updating *Danube Cloud*, the management server must be updated first.
     user@laptop:~ $ es set /system/update -version <version> -key file::/full/path/to/update.key -cert file::/full/path/to/update.crt
     user@laptop:~ $ es get /system/version
 
+
+.. _update_dc_node:
 
 Updating Danube Cloud Software on Compute Nodes
 ===============================================
