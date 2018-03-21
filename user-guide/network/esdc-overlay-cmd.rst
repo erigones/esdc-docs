@@ -129,12 +129,13 @@ Usage of the ``adminoverlay-init`` subcommand + example:
         esdc-overlay adminoverlay-init 10.10.10.0/255.255.255.0 node01.local=10.10.10.11,node02.local=10.10.10.12
 
 
-This subcommand will:
+This subcommand does the following operations:
 
     * Validate the specified IP subnet.
     * Create the `adminoverlay` overlay rule.
     * Generate/assign IP addresses for vNICs on all compute nodes.
     * Generate static MAC addresses for vNICs.
+    * Set the :ref:`vnc_listen_address <overlays_adminoverlay_vnc>` if needed.
     * Write the configuration into ``/usbkey/config`` on all compute nodes.
     * Reload the ``network/virtual`` system service to apply new overlay configuration.
     * Add `ipfilter` rules to drop unencrypted VXLAN packets to/from internet.
@@ -142,7 +143,7 @@ This subcommand will:
 
 Parameters:
 
-    * ``adminoverlay_subnet/netmask`` - a network subnet with a netmask that will be used for the `adminoverlay` vNICs. The network is roughly equivalent to the :ref:`admin<network_nictag>` network (the **admin** network is still needed).
+    * ``adminoverlay_subnet/netmask`` - a network subnet with a netmask that will be used for the `adminoverlay` vNICs. The network is more or less equivalent to the :ref:`admin<network_nictag>` network (but the **admin** network is still needed).
     * ``nodename1=ip1,...`` - if you want to set specific IP addresses for some/all compute nodes, you can do it here. Unspecified nodes will have an IP address assigned automatically. All IP addresses must be from the ``adminoverlay_subnet``.
 
 Modify adminoverlay

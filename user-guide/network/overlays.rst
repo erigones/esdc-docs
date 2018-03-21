@@ -154,6 +154,20 @@ Recommended naming and parameters:
 
 .. seealso:: Detailed instructions on how to create the `adminoverlay` overlay rule can be found in the :ref:`enable overlay networking guide<enable_overlays>`.
 
+.. _overlays_adminoverlay_vnc:
+
+VNC over adminoverlay
+---------------------
+
+All KVM virtual servers have the `Console` tab in the GUI that allows displaying the virtual server's console. This console internally works over the VNC protocol and it is routed over the **admin** network. On a remote compute node the **admin** network is not available and therefore the VNC connection must be made using the `adminoverlay` network. However for this to work, you must set the ``vnc_listen_address`` variable to the overlay IP address.
+
+.. code-block:: bash
+    :caption: A sample ``/usbkey/config`` entry
+
+    vnc_listen_address="10.44.44.13"
+
+.. note:: The :ref:`esdc-overlay<esdc_overlay_cmd>` command will take care of setting this for you automatically.
+
 .. _overlays_adminoverlay_requirements:
 
 Requirements for overlays
@@ -168,7 +182,7 @@ If you use one or more remote compute nodes, you must have the following on ALL 
 
 The reason for mandatory public IP addresses is because compute nodes are interconnected to a mesh network, sending overlay packets directly to the compute node that hosts the destination virtual machine (according to a virtual ARP routing table in ``files/config`` file).
 
-.. warning:: Setting :ref:`physical datacenter <cn_install_datacenter>` name correctly during compute node installation is very important for overlay routing to work correctly. If your compute nodes can reach each other using the **admin** network, they need to have the same physical datacenter name (so they don't need to use `IPSec` and they will communicate using the **admin** network). If the compute nodes cannot reach each other using the **admin** network, they **must** have a different physical datacenter name.
+.. warning:: Setting :ref:`physical datacenter <cn_install_datacenter>` name correctly during a compute node installation is very important for overlay routing to work. If your compute nodes can reach each other using the **admin** network, they need to have the same physical datacenter name (so they don't need to use `IPSec` and they can communicate using the **admin** network). If the compute nodes cannot reach each other using the **admin** network, they **must** have a different physical datacenter name.
 
 In other words:
 
