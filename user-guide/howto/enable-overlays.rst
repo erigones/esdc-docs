@@ -150,13 +150,13 @@ Log in to the first compute node and run ``esdc-overlay adminoverlay-init``. For
         [user@laptop ~] ssh root@node01  # ssh to the first compute node
         [root@node01 (myDC) ~] adminoverlay-init <adminoverlay_subnet/netmask>
 
-This command will create `adminoverlay` on all compute nodes. You can verify it by running ``ipadm show-addr``.
+This command creates `adminoverlay` on all compute nodes. After that, you can see it by running ``ipadm show-addr`` on the compute node.
 
 Now go to the GUI, create the appropriate `adminoverlay` virtual network and add IP addresses to :ref:`admin virtual servers<admin_dc>`:
 
     * :ref:`Switch<switch_dc>` to the **admin** virtual data center.
     * Go to :guilabel:`Nodes -> (your CN)` and click on the :guilabel:`Refresh` button to reload network configuration (do this on all compute nodes that are already installed).
-    * Go to :guilabel:`Datacenter -> Networks`, click on :guilabel:`Add Network` and create a new :ref:`network<networks>` `adminoverlay` (or any name), VLAN ID = **2**, NIC tag = **adminoverlay**, VXLAN tag = **2**, fill in network and netmask, no need for gateway.
+    * Go to :guilabel:`Datacenter -> Networks`, click on :guilabel:`Add Network` and create a new :ref:`network<networks>` `adminoverlay` (or any name), VLAN ID = **2**, NIC tag = **adminoverlay**, VXLAN tag = **2**, fill in network and netmask, no need for gateway. Then click :guilabel:`Show advanced settings` and set MTU = 1300 (needed only for the `adminoverlay` network). Finish by clicking on :guilabel:`Add Network` button.
     * Add some usable :ref:`IP addresses<network_ips>` into this new virtual network.
     * Attach the virtual network to the **admin** virtual data center.
     * On each compute node click on :guilabel:`Edit -> Show advanced settings` and change the **IP address** to the new overlay IP, click :guilabel:`Update`.
@@ -201,14 +201,14 @@ SSH into the first compute node and run:
         [root@node01 (myDC) ~] MON_IP="${overlay IP of the mon01 VM}"          # example: MON_IP="1.2.3.4"
         [root@node01 (myDC) ~] query_cfgdb set /esdc/settings/zabbix/host "${MON_IP}"
         [root@node01 (myDC) ~] query_cfgdb creater /esdc/settings/remote/zabbix/host "${MON_IP}"
-        [root@node01 (myDC) ~] sed -i '' -e 's/^Server=.*$/Server=${MON_IP}/' -e 's/^ServerActive=.*$/ServerActive=${MON_IP}/' /opt/zabbix/etc/zabbix_agentd.conf
+        [root@node01 (myDC) ~] sed -i '' -e "s/^Server=.*$/Server=${MON_IP}/" -e "s/^ServerActive=.*$/ServerActive=${MON_IP}/" /opt/zabbix/etc/zabbix_agentd.conf
         [root@node01 (myDC) ~] svcadm restart zabbix/agent
 
 Then, for each installed compute node run this remote command:
 
     .. code-block:: bash
 
-        [root@node01 (myDC) ~] ssh <compute_node_ip> sed -i '' -e 's/^Server=.*$/Server=${MON_IP}/' -e 's/^ServerActive=.*$/ServerActive=${MON_IP}/' /opt/zabbix/etc/zabbix_agentd.conf
+        [root@node01 (myDC) ~] ssh <compute_node_ip> sed -i '' -e "s/^Server=.*$/Server=${MON_IP}/" -e "s/^ServerActive=.*$/ServerActive=${MON_IP}/" /opt/zabbix/etc/zabbix_agentd.conf
         [root@node01 (myDC) ~] ssh <compute_node_ip> svcadm restart zabbix/agent
 
 
@@ -233,6 +233,7 @@ There are several guidelines to follow during the installation of a compute node
 
         - if it is a local node: fill in the local admin IP address of `cfgdb01.local`,
         - if it is a remote node: fill in the public IP address of `mgmt01.local` or the IP of installed `access zone`.
+    - A remote compute node MUST have a diferrent :ref:`datacenter name<cn_install_datacenter>` (You can set it after entering the configuration database IP. Please set it according to it's real physical location - see :ref:`here<overlays_adminoverlay_requirements>` for more info).
 
 After the new compute node is discovered by the *Danube Cloud* system, log into to first compute node and issue the following command to update all overlays on all compute nodes, including the new one:
 
