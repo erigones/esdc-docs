@@ -34,7 +34,7 @@ echo "=> Preparing ${USBMOUNT}"
 mkdir -p "${USBMOUNT}"
 
 echo "=> Downloading compute node USB image into ${USBIMAGE}"
-if ! curl -m 30 -f -k -L --progress-bar -o "${USBIMAGE}" "${USB_URL}"; then
+if ! curl -f -k -L --progress-bar --connect-timeout 10 -o "${USBIMAGE}" "${USB_URL}"; then
 	echo "ERROR: Failed to download \"${USB_URL}\"" >&2
 	exit 1
 fi
