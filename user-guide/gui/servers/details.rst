@@ -37,7 +37,7 @@ Virtual Server Parameters
 * **vCPUs** - Number of virtual CPUs assigned to the virtual server. This number is also used to calculate an internal compute node CPU limit for the VM (**cpu_cap**).
 * **RAM** - The amount of RAM (MB) assigned to the virtual server.
 * **SLA** - Monthly SLA (read-only). Can be enabled/disabled via :ref:`monitoring DC settings <dc_monitoring_settings>`.
-* **Replication status** - Replication status (enabled/disabled) and time of last successful sync (*Danube Cloud Enterprise Edition*).
+* **Replication status** - Replication status (enabled/disabled) and time of last successful sync.
 * **Status** - One of:
 
     * *running*
@@ -121,7 +121,7 @@ Virtual Server Actions
     .. image:: img/vm_migrate.png
 
     .. note:: It is possible to perform the migration only between node storages (zpools) with the same name. Migration between node storages with different names can be performed via the :ref:`API <api>`.
-* **Replication** - :ref:`Create or manage replicas of this virtual server <vm_replication>`. The virtual server must be in a *running* or *stopped* state (*Danube Cloud Enterprise Edition*).
+* **Replication** - :ref:`Create or manage replicas of this virtual server <vm_replication>`. The virtual server must be in a *running* or *stopped* state.
 * **Boot CD** - Start the virtual server from an ISO image (KVM only). The virtual server must be in a *stopped* state. For instructions on how to add/manage ISO images see :ref:`Managing an ISO Image <managing_iso_image>`.
 
     .. image:: img/vm_boot_cd.png
@@ -144,8 +144,6 @@ Virtual Server Actions
 
 Virtual Server Replication
 --------------------------
-
-.. note:: This section describes functionality available only in the *Danube Cloud Enterprise Edition*.
 
 Replication is a process by which all disks of a virtual server are periodically sent to another remote compute node. Replication allows for having two nearly identical copies of a virtual server in two different locations and dramatically increases the availability of services provided by the virtual server.
 

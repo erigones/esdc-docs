@@ -23,8 +23,6 @@ A Compute Node is a set of computing resources (CPU, RAM, HDD), which are tied t
 
 .. seealso:: A compute node can be only used when :ref:`attached to a virtual data center <dc_attach_node>`.
 
-.. seealso:: Working with virtual servers is possible only on a compute node with a :ref:`valid Compute Node License <node_license>` (*Danube Cloud Enterprise Edition*).
-
 
 
 Compute Node Parameters
