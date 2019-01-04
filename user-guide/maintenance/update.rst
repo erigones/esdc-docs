@@ -29,8 +29,6 @@ In the examples below the parameters have following meaning:
 * ``update.key`` - X509 private key file in PEM format used for authentication against EE git server.
 * ``update.crt`` - X509 private cert file in PEM format used for authentication against EE git server.
 
-.. note:: If you are using Danube Cloud Enterprise Edition, you should have received the update.key/update.crt files with your :ref:`compute node license <node_license>`. In case you haven't received the update key and certificate please contact ``license@erigones.com``. If you are using Danube Cloud Community Edition, ``-key`` and ``-cert`` parameters can be omitted from the command line.
-
 
 .. _update_dc_mgmt:
 

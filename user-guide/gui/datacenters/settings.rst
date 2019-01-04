@@ -37,8 +37,6 @@ Danube Cloud Modules
 
 .. note:: The *Registration* module depends on the *SMS* module.
 
-.. note:: The *Replication* module is available only in the *Danube Cloud Enterprise Edition*.
-
 
 Global Danube Cloud Modules
 ===========================
