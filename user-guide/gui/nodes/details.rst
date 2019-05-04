@@ -59,9 +59,7 @@ Compute Node Parameters
     * *online*
     * *maintenance*
     * *unreachable*
-    * *unlicensed*
 * **Note** - Custom text information about compute node, with `markdown <https://daringfireball.net/projects/markdown/syntax>`_ support.
-* **License** - License ID and expiration time (read-only).
 
 .. _compute_node_settings:
 
@@ -103,10 +101,6 @@ Advanced Compute Node Settings
 
 Compute Node Actions
 ====================
-
-* **Add or request License** - Used for creating requests for compute node licenses and for adding issued licenses to compute nodes. 
-
-    .. seealso:: More information about licenses can be found in chapter :ref:`Compute Node Licenses <node_license>`
 
 * **Refresh** - Detects changes and updates compute node's information if there were any changes, e.g. changes in disk pools or network interfaces.
 
