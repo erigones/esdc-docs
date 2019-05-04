@@ -24,7 +24,6 @@ Compute Node List Item Parameters
     * *online*
     * *maintenance*
     * *unreachable*
-    * *unlicensed*
 * **CPUs** - Total number of compute node's virtual CPUs usable for virtual servers.
 * **RAM** - Total amount (MB) of compute node's RAM usable for virtual servers.
 * **Free CPUs** - Number of compute node's free virtual CPUs available for virtual servers (read-only).

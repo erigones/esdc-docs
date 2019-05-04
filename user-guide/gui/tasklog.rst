@@ -151,9 +151,6 @@ Task Log Messages
     * *Delete node definition*
     * *Import image on node storage*
     * *Remove image from node storage*
-    * *Create node license request*
-    * *Add node license*
-    * *Invalid node license*
     * *Create node storage*
     * *Update node storage*
     * *Delete node storage*
