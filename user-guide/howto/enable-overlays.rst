@@ -5,7 +5,9 @@ Enable Overlay Networking in Danube Cloud
 
 Overlay networks are not enabled by default after *Danube Cloud* installation. You have to perform steps described in this page to make them work.
 
-.. seealso:: Before proceeding, it is recommended to read the overview of *Danube Cloud* :ref:`overlay networking<overlays>`.
+.. note:: Before enabling overlay networking, update the Danube Cloud to the latest version to have the latest fixes.
+
+.. seealso:: It is recommended to read the overview of *Danube Cloud*'s :ref:`overlay networking<overlays>`.
 
 If you want to change overlays configuration later (e.g. add/modify/delete overlays, modify firewall configuration, etc.), all you need to use is the :ref:`esdc-overlay<esdc_overlay_cmd>` command, which will perform the appropriate changes on all/selected compute nodes.
 
@@ -156,7 +158,7 @@ Now go to the GUI, create the appropriate `adminoverlay` virtual network and add
 
     * :ref:`Switch<switch_dc>` to the **admin** virtual data center.
     * Go to :guilabel:`Nodes -> (your CN)` and click on the :guilabel:`Refresh` button to reload network configuration (do this on all compute nodes that are already installed).
-    * Go to :guilabel:`Datacenter -> Networks`, click on :guilabel:`Add Network` and create a new :ref:`network<networks>` `adminoverlay` (or any name), VLAN ID = **2**, NIC tag = **adminoverlay**, VXLAN tag = **2**, fill in network and netmask, no need for gateway. Then click :guilabel:`Show advanced settings` and set MTU = 1300 (needed only for the `adminoverlay` network). Finish by clicking on :guilabel:`Add Network` button.
+    * Go to :guilabel:`Datacenter -> Networks`, click on :guilabel:`Add Network` and create a new :ref:`network<networks>` `adminoverlay` (or any name), VLAN ID = **2**, NIC tag = **adminoverlay**, VXLAN tag = **2**, fill in network and netmask, no need for gateway. Then click :guilabel:`Show advanced settings` and set MTU = 1300 (set 1300 only for the `adminoverlay`; for networks created on top of other overlays, fill MTU 1400 or leave empty). Finish by clicking on :guilabel:`Add Network` button.
     * Add some usable :ref:`IP addresses<network_ips>` into this new virtual network.
     * Attach the virtual network to the **admin** virtual data center.
     * On each compute node click on :guilabel:`Edit -> Show advanced settings` and change the **IP address** to the new overlay IP, click :guilabel:`Update`.
@@ -201,7 +203,7 @@ SSH into the first compute node and run:
         [root@node01 (myDC) ~] MON_IP="${overlay IP of the mon01 VM}"          # example: MON_IP="1.2.3.4"
         [root@node01 (myDC) ~] query_cfgdb set /esdc/settings/zabbix/host "${MON_IP}"
         [root@node01 (myDC) ~] query_cfgdb creater /esdc/settings/remote/zabbix/host "${MON_IP}"
-        [root@node01 (myDC) ~] sed -i '' -e "s/^Server=.*$/Server=${MON_IP}/" -e "s/^ServerActive=.*$/ServerActive=${MON_IP}/" /opt/zabbix/etc/zabbix_agentd.conf
+        [root@node01 (myDC) ~] sed -i \'\' -e "s/^Server=.*$/Server=${MON_IP}/" -e "s/^ServerActive=.*$/ServerActive=${MON_IP}/" /opt/zabbix/etc/zabbix_agentd.conf
         [root@node01 (myDC) ~] svcadm restart zabbix/agent
 
 Then, for each installed compute node run this remote command:
@@ -259,3 +261,16 @@ There are two related parameters in each :ref:`virtual data center's <dc_network
     * **VMS_NET_VLAN_ALLOWED** - list of allowed VLAN IDs that can be created by a :ref:`DCAdmin<roles>`.
 
 Note that VLANs can be created on top of the overlays.
+
+
+MTU settings in KVM and integrated DHCP
+=======================================
+
+This applies only if you want to install your own OS and you don't want to use the Danube Cloud pre-installed CentOS images.
+
+SmartOS KVM hypervisor allows setting the network IP configuration using the integrated DHCP server. It works good but it doesn't send the MTU settings into the VM. As a consequence (especially in combination with overlay networking), the VM network will always use MTU to 1500 regardless the settings. This may prevent proper functioning of the network.
+
+Solution for this is either to use a static network configuration in the installed VM's or use DHCP MTU settings override as described here: https://github.com/erigones/esdc-ce/issues/430#issuecomment-484700378 
+
+You can also use the script (working on CentOS) that automates the MTU override: https://github.com/erigones/esdc-factory/blob/master/ansible/roles/rc-scripts/files/04-mtu-set.sh
+

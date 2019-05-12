@@ -49,6 +49,32 @@ A virtual server template can be created, updated or deleted by a *SuperAdmin* o
 
 .. note:: Management of server templates is not yet implemented in the :ref:`GUI <gui>`. Please use the proper :ref:`API <api>` function to add, update or delete a server template.
 
+**Example 1:**
+Create a VM template with:
+    * 4 CPUs
+    * 1 GB of RAM
+    * 20 GB boot disk using the *centos-7-es-2018* image
+    * 25 GB second disk with compression disabled
+
+.. code::
+
+    ./es create /template/mytemplate -vm_define 'json::{"vcpus": 4, "ram": 1024}' -vm_define_disk 'json::[{"image": "centos-7-es-2018", "boot": true, "size": 20240, "compression": "lz4"},{"image": "", "boot": false, "size": 25600, "compression": "off"}]'
+
+**Example 2:**
+Create a VM template with:
+    * 4 CPUs
+    * 20 GB of RAM
+    * 10 GB boot disk using the *ubuntu-certified-16.04* image
+    * 512 GB second disk with compression disabled
+    * network interface attached to *mynet* network
+    * backup definitions for both disks to backup node *backup02.example.com* with fsfreeze enabled (consistent backup)
+    * creates a pretty-name alias for this template as *Kafka-standard*
+    * attaches the created template to virtual datacenter *MYDC*
+
+.. code::
+
+    ./es create /template/kafka-std -ostype 1 -vm_define 'json::{"vcpus": 4, "ram": 20480}' -vm_define_nic 'json::[{"net": "mynet"}]' -vm_define_disk 'json::[{"image": "ubuntu-certified-16.04", "boot": true, "size": 10240, "compression": "lz4"},{"image": "", "boot": false, "size": 524288, "compression": "off"}]' -vm_define_backup 'json::[{"node": "backup02.example.com", "name": "os", "schedule": "0 4 * * *", "zpool": "zones", "retention": 30, "fsfreeze": true, "disk_id": 1},{"node": "backup02.example.com", "name": "data", "schedule": "10 4 * * *", "zpool": "zones", "retention": 30, "fsfreeze": true, "disk_id": 2}]' -dc MYDC -alias Kafka-standard
+
 
 Attaching a Template
 ====================

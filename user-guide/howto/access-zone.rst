@@ -158,9 +158,9 @@ OpenVPN Installation and Configuration
 
         [root@demo-access ~] cd /opt/local/etc/openvpn
         [root@demo-access openvpn] curl -OL \
-        https://github.com/OpenVPN/easy-rsa/releases/download/3.0.1/EasyRSA-3.0.1.tgz
-        [root@demo-access openvpn] gtar xf EasyRSA-3.0.1.tgz
-        [root@demo-access openvpn] mv EasyRSA-3.0.1 easy-rsa
+        https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.6/EasyRSA-unix-v3.0.6.tgz
+        [root@demo-access openvpn] gtar xf EasyRSA-unix-v3.0.6.tgz
+        [root@demo-access openvpn] mv EasyRSA-v3.0.6 easy-rsa
 
 * Optional ``EasyRSA`` configuration.
 

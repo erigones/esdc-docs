@@ -157,19 +157,19 @@ Usage of the ``adminoverlay-update`` subcommand:
 
 This subcommand can modify assigned IP addresses. It will (as all commands except ``*-list``) immediately run Ansible to apply the configuration.
 
-List adminoverlay info
+Show adminoverlay info
 ----------------------
 
-Usage of the ``adminoverlay-list`` subcommand:
+Usage of the ``adminoverlay-info`` subcommand:
 
     .. code-block:: bash
 
-        esdc-overlay adminoverlay-list
+        esdc-overlay adminoverlay-info
 
     .. code-block:: bash
         :caption: Sample output
 
-        [root@node01 ~] esdc-overlay adminoverlay-list
+        [root@node01 ~] esdc-overlay adminoverlay-info
         Adminoverlay subnet:  10.10.10.0
         Adminoverlay netmask: 255.255.255.0
         Adminoverlay vxlan_id: 2

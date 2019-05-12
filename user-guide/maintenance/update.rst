@@ -25,7 +25,7 @@ The main *Danube Cloud* components should be updated in the following order:
 
 In the examples below the parameters have following meaning:
 
-* ``<version>`` - version of the *Danube Cloud* software to which system should be updated. This can be either a git tag or SHA1 of a git commit. A version tag is prefixed with a ``v`` character (e.g, ``v3.0.1-rc1``). All available version tags are visible here: https://github.com/erigones/esdc-ce/tags
+* ``<version>`` - version of the *Danube Cloud* software to which system should be updated. This can be either a git tag or SHA1 of a git commit. A version tag is prefixed with a ``v`` character (e.g, ``v4.0-rc1``). All available version tags are visible here: https://github.com/erigones/esdc-ce/tags
 * ``update.key`` - X509 private key file in PEM format used for authentication against EE git server.
 * ``update.crt`` - X509 private cert file in PEM format used for authentication against EE git server.
 
@@ -76,7 +76,7 @@ Updating Danube Cloud Software Manually
 =======================================
 
 In case something goes wrong with the software update it is always possible to manually update *Danube Cloud* on the :ref:`mgmt01 server<admin_dc>` or compute nodes.
-The update procedure is essentially the same as performed from the GUI or API. In both cases, the ``esdc-git-update`` [1]_ script is run on the mgmt01 virtual server or compute node and if successful, the *Danube Cloud* services should be restarted. It requires one parameter - ``<version>``, which is the version of the *Danube Cloud* software. This can be either a git tag or SHA1 of a git commit. A version tag is prefixed with a ``v`` character (e.g, ``v3.0.1-rc1``). All available version tags are visible here: https://github.com/erigones/esdc-ce/tags
+The update procedure is essentially the same as performed from the GUI or API. In both cases, the ``esdc-git-update`` [1]_ script is run on the mgmt01 virtual server or compute node and if successful, the *Danube Cloud* services should be restarted. It requires one parameter - ``<version>``, which is the version of the *Danube Cloud* software. This can be either a git tag or SHA1 of a git commit. A version tag is prefixed with a ``v`` character (e.g, ``v4.0-rc1``). All available version tags are visible here: https://github.com/erigones/esdc-ce/tags
 
 
 .. note:: When updating *Danube Cloud*, the software on the :ref:`management server<admin_dc>` must be updated first and then the procedure should be repeated on all compute nodes.
@@ -100,12 +100,12 @@ The update procedure is essentially the same as performed from the GUI or API. I
         [root@mgmt-or-node ~] cd /opt/erigones
         [root@mgmt-or-node erigones] cat core/version.py
 
-            __version__ = '3.0.0'
+            __version__ = '4.0'
             __edition__ = 'ce'
 
         [root@mgmt-or-node erigones] git status
 
-            # HEAD detached at v3.0.0
+            # HEAD detached at v4.0
             nothing to commit, working directory clean
 
 * Run the ``esdc-git-update`` [1]_ upgrade script:
@@ -162,7 +162,7 @@ A successful platform update should be followed by a reboot of the compute node.
 
     user@laptop:~ $ ssh root@node01
 
-    [root@node01 ~] /opt/erigones/bin/esdc-platform-upgrade v3.0.0
+    [root@node01 ~] /opt/erigones/bin/esdc-platform-upgrade v4.0
 
         ...
         *** Upgrade completed successfully ***
