@@ -16,6 +16,7 @@ Common Virtual Server Metadata
 * **root_authorized_keys** - List of public SSH keys separated by newlines (``\n``) that are automatically added to a virtual server from the virtual server's owner profile.
 * **cloud-init:user-data** - `Cloud-init <https://cloudinit.readthedocs.io>`__ configuration directive used to change the root password for KVM virtual servers.
 * **user-script** - A post-configuration script used to update the root's authorized_keys on SunOS zones.
+* **hostname** - A full VM OS hostname that can be picked up and set by `cloud-init <https://cloudinit.readthedocs.io>`__'s default scripts.
 
 .. warning:: Following virtual server metadata is reserved by *Danube Cloud*:
 
