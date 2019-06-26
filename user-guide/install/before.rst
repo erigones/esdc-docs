@@ -90,6 +90,7 @@ A reinstall requires the *zones* zpool to be removed from local disks before pro
 
 * Manually formatting the hard drives which are used for the *zones* zpool. This can be done directly through the embedded RAID management of the server which is available when the server boots up.
 
+.. warning:: Boot parameter `destroy_zpools=true` destroys all zpools on a machine so make sure you don't need any data before proceeding.
 
 .. _portmap:
 
