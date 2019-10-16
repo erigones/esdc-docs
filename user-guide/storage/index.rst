@@ -15,4 +15,5 @@ Storage Pools
    newpool
    backup
    ../erigonos/storage-diagnostic
+   uefi-boot
 
