@@ -86,11 +86,15 @@ Compute Node Factory Reset
 
 A reinstall requires the *zones* zpool to be removed from local disks before proceeding. This can be done in one of the following ways:
 
-* Add a boot parameter ``,destroy_zpools=true`` into the Grub boot loader. You can edit boot parameters in Grub menu by selecting an appropriate boot option and pressing ``e`` two times on your keyboard. Confirm your changes by pressing ``Enter`` and ``b``. The compute node will continue to boot up and the *zones* zpool will be destroyed before new clean install.
+* Set **Destroy zpools -> On** in the boot loader options. You can see boot options in menu by pressing ``4`` or ``O`` when the boot loader appears. Confirm your changes by going back pressing ``1`` and boot by pressing ``1`` or ``Enter``. The compute node will continue to boot up and the *zones* zpool will be destroyed before new clean install.
 
 * Manually formatting the hard drives which are used for the *zones* zpool. This can be done directly through the embedded RAID management of the server which is available when the server boots up.
 
-.. warning:: Boot parameter `destroy_zpools=true` destroys all zpools on a machine so make sure you don't need any data before proceeding.
+.. image:: img/destroy_zpools.png
+
+.. warning:: Boot option `Destroy zpools` destroys all zpools on a machine so make sure you don't need any data before proceeding.
+
+.. note:: To see `Destroy zpools` boot option, you have to boot from an USB stick, not from a hard disk (even if you have selected install to disk). You cannot destroy zpool you are booting from.
 
 .. _portmap:
 

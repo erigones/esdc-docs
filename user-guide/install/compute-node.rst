@@ -10,7 +10,7 @@ Compute Node Installation
 0. Boot loader
 --------------
 
-.. image:: img/install-00-grub.png
+.. image:: img/install-00-forth-usbboot.png
 
 
 .. _cn_install_welcome:
