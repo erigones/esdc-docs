@@ -153,10 +153,10 @@ The compute node installation can be automated by placing an ``answers.json`` fi
       - default: no
     * - :ref:`opnsense_external_ip<cn_install_opnsense>`
       - ``dhcp`` or `IP address`
-    * - :ref:`headnode_default_network<cn_install_opnsense>`
-      - ``admin`` or ``external``
     * - :ref:`opnsense_external_mac<cn_install_opnsense>`
       - ``auto`` or `MAC address` or ``node`` (take node's MAC from external NIC)
+    * - :ref:`headnode_default_network<cn_install_opnsense>`
+      - ``admin`` or ``external``, related to OPNSense VM
 
     * - :ref:`headnode_default_gateway<cn_install_networking>`
       - default: first IP address in the admin subnet
