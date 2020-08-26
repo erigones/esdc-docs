@@ -16,4 +16,6 @@ Networking
    esdc-overlay-cmd
    ../erigonos/network-diagnostic
    debug-ipsec
+   dns
+   opnsense
 

@@ -6,9 +6,7 @@ Compute Node (CN)
 
 For using the *Danube Cloud* software in a production environment, we recommend using servers from IBM, Dell, HP, Cisco or Oracle server manufactures in order to achieve 100% hardware compatibility.
 
-:download:`Complete list of supported hardware. <hcl.html>`
-
-If you didn't find your hardware in the list above, send an email with complete hardware configuration to ``hcl@erigones.com`` for hardware compatibility verification.
+For list of supported hardware see `SmartOS <https://wiki.smartos.org/hardware-requirements/>`_ and `illumos <https://illumos.org/hcl/>`_ hardware compatibility lists.
 
 
 Processor (CPU)
@@ -115,5 +113,5 @@ Unsupported Hardware
 
 This section lists some of the currently unsupported hardware.
 
-.. seealso:: Some hardware compatibility issues may be overcomed by adjusting the :ref:`BIOS configuration settings<bios>` of the server.
+.. seealso:: Some hardware compatibility issues may be solved by adjusting the :ref:`BIOS configuration settings<bios>` of the server.
 

@@ -19,6 +19,12 @@ The DNS feature included in *Danube Cloud* enables a simple management of DNS do
 .. note:: In the upper right corner is a button labeled :guilabel:`Show All`, which can be used to display all domains, including domains that are not associated with the current working virtual data center.
 
 
+Recursion
+=========
+
+DNS service has recursion enabled for all network subnets that are defined within :ref:`networks list <dc_network>` in *Danube Cloud* installation. All other (=external) IP addresses will receive only authoritative responses (domain must be present locally in the domain list).
+
+
 DNS Domain Parameters
 =====================
 
@@ -35,7 +41,6 @@ DNS Domain Parameters
 * **DC-bound?** - Whether a DNS domain is bound to a specific virtual data center.
 * **Records** - Number of DNS records within a DNS domain and a link to DNS record management (read-only).
 * **Description**
-
 
 Managing a DNS Domain
 =====================

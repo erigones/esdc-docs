@@ -61,6 +61,14 @@ Setting the name of the physical data center is required on the **first compute 
 
 .. image:: img/install-04-networking-nictags.png
 
+.. _cn_install_opnsense:
+
+.. image:: img/install-05-networking-opnsense.png
+
+*Option to deploy* `OPNSense <https://opnsense.org/>`_ *appliance.*
+
+If you don't have an external router that can route packets from **admin** network to the internet, you can choose to deploy pre-configured OPNSense VM to handle the routing. **Please note that you must define external network tag in previous step to see this option.**
+
 .. image:: img/install-05-networking-dns.png
 
 The above pictures show:
