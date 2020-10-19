@@ -11,7 +11,7 @@ The installation and boot media is a USB flash drive. There are two types of USB
 ======================================    ============   ================
 **Image name**                            **USB size**   **Description**
 --------------------------------------    ------------   ----------------
-``esdc-<edition>-hn-<version>.img.gz``    4 GB           Used for installation of the first compute node.
+``esdc-<edition>-hn-<version>.img.gz``    6 GB           Used for installation of the first compute node.
 ``esdc-<edition>-cn-<version>.img.gz``    2 GB           Used for installation of any other compute node.
 ======================================    ============   ================
 
@@ -86,7 +86,7 @@ Compute Node Factory Reset
 
 A reinstall requires the *zones* zpool to be removed from local disks before proceeding. This can be done in one of the following ways:
 
-* Set **Destroy zpools -> On** in the boot loader options. You can see boot options in menu by pressing ``4`` or ``O`` when the boot loader appears. Confirm your changes by going back pressing ``1`` and boot by pressing ``1`` or ``Enter``. The compute node will continue to boot up and the *zones* zpool will be destroyed before new clean install.
+* Set **Destroy zpools -> On** in the boot loader options. You can see boot options in menu by pressing ``4`` and then ``7`` when the boot loader appears. After the change, confirm settings by pressing ``1`` (go back) and boot by pressing ``1`` or ``Enter``. The compute node will continue to boot up and the *zones* zpool will be destroyed before new clean install.
 
 * Manually formatting the hard drives which are used for the *zones* zpool. This can be done directly through the embedded RAID management of the server which is available when the server boots up.
 
@@ -94,7 +94,7 @@ A reinstall requires the *zones* zpool to be removed from local disks before pro
 
 .. warning:: Boot option `Destroy zpools` destroys all zpools on a machine so make sure you don't need any data before proceeding.
 
-.. note:: To see `Destroy zpools` boot option, you have to boot from an USB stick, not from a hard disk (even if you have selected install to disk). You cannot destroy zpool you are booting from.
+.. note:: To see `Destroy zpools` boot option, you have to boot from an USB stick. It is not available from hard disk boot menu (you simply cannot destroy the zpool you are booting from).
 
 .. _portmap:
 
@@ -125,9 +125,9 @@ BIOS Configuration
 
 The following settings should be configured in BIOS configuration of your compute node (if available):
 
-- Enable hardware virtualization (KVM) support.
+- Enable hardware virtualization (VT-x) support.
 
-    .. warning:: Hardware virtualization (KVM) support must enabled at least on the first compute node.
+    .. warning:: Hardware virtualization support must enabled at least on the first compute node.
 
 - Enable ACPI SRAT. If ACPI SRAT is not available in your BIOS configuration, disable NUMA/Node interleaving. Otherwise the following message may appear during boot time:
 
@@ -142,10 +142,6 @@ The following settings should be configured in BIOS configuration of your comput
 - Disable USB 3 support if you cannot boot from the USB stick.
 
     .. warning:: USB version 3 is supported but on some hardware it may cause the operating system initialization to fail.
-
-- Enable legacy boot support.
-
-    .. warning:: UEFI boot is currently not supported.
 
 
 .. _ipmi_over_lan:
