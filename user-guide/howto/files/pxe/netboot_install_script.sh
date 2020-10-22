@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/bash -e
 #
 # The logic is simple:
 #  1. Download and extract USB image into /tmp/usbkey
@@ -7,7 +7,8 @@
 #####
 
 # Adjust this: download URL of the compute node USB image
-USB_URL="http://10.10.0.33/esdc-ce-cn-latest.img"
+USB_URL="http://176.9.34.252/pxe/images/esdc-ce-cn-latest.img"
+DOWNLOAD_TIMEOUT=1800	# 30 min
 ###########################################################
 
 export PATH="/usr/sbin:/sbin:/usr/bin:/bin"
@@ -19,7 +20,7 @@ USB_PATH="/$(svcprop -p "joyentfs/usb_copy_path" svc:/system/filesystem/smartdc:
 # /mnt/usbkey
 USBMOUNT="/mnt/$(svcprop -p "joyentfs/usb_mountpoint" svc:/system/filesystem/smartdc:default)"
 # Download USB image into /tmp
-USBIMAGE="/tmp/usbkey.iso"
+USBIMAGE="/tmp/usbkey.img"
 # Danube Cloud prompt-config.sh
 PROMPT_CONFIG="${USBMOUNT}/scripts/prompt-config.sh"
 
@@ -34,14 +35,14 @@ echo "=> Preparing ${USBMOUNT}"
 mkdir -p "${USBMOUNT}"
 
 echo "=> Downloading compute node USB image into ${USBIMAGE}"
-if ! curl -f -k -L --progress-bar --connect-timeout 10 -o "${USBIMAGE}" "${USB_URL}"; then
+if ! curl -m "${DOWNLOAD_TIMEOUT}" -f -k -L --progress-bar -o "${USBIMAGE}" "${USB_URL}"; then
 	echo "ERROR: Failed to download \"${USB_URL}\"" >&2
 	exit 1
 fi
 
 echo "=> Mounting USB image"
-LOFIDEV=$(lofiadm -a "${USBIMAGE}")
-mount -F pcfs -o noclamptime,noatime "${LOFIDEV}:c" "${USBMOUNT}"
+LOFIDEV=$(lofiadm -la "${USBIMAGE}")
+mount -F pcfs -o noclamptime,noatime "${LOFIDEV%%p0}s2" "${USBMOUNT}"
 
 if [[ ! -f "${USBMOUNT}/scripts/prompt-config.sh" ]]; then
 	echo "ERROR: \"${USBMOUNT}/scripts/prompt-config.sh\" does not exist" >&2
@@ -54,9 +55,11 @@ echo "=> Shutting down network (${NIC_UP})"
 echo "=> Running prompt-config.sh"
 /smartdc/lib/sdc-on-tty -d /dev/console "${PROMPT_CONFIG}" "${USBMOUNT}"
 
-echo "=> Copying files from USB image onto disk storage"
-echo "=> Please wait..."
-rsync -a --exclude private --exclude os "${USBMOUNT}/" "${USB_PATH}/"
+if grep -q '^install_to_hdd=0$' /usbkey/config; then
+	echo "=> Copying files from USB image onto disk storage"
+	echo "=> Please wait..."
+	rsync -a --exclude private --exclude os "${USBMOUNT}/" "${USB_PATH}/"
+fi
 
 echo "=> The system will now reboot"
 reboot 2> /dev/null
