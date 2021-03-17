@@ -1,4 +1,5 @@
 ### doc
 pip
 Sphinx
+sphinxcontrib-httpdomain
 rst2pdf
