@@ -1,3 +1,5 @@
+.. _reset_admin_pass:
+
 Reset Admin Password for GUI
 ****************************
 

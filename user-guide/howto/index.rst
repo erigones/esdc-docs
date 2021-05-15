@@ -6,6 +6,7 @@ HOWTOs
    :maxdepth: 1
 
    disaster-recovery
+   reset-admin-pass
    enable-overlays
    windows
    import
