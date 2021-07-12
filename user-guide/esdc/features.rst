@@ -159,7 +159,7 @@ Using our bundled and tailored Zabbix-based monitoring software, you can easily 
 
 Extensive Documentation
 =======================
-The documentation consists of a `user guide <https://docs.danubecloud.org>`__ and `API documentation <https://docs.danubecloud.org/api-reference/>`__. The user guide also contains several `HOW-TOs <https://docs.danubecloud.org/user-guide/howto/index.html>`__ for best practice service configuration.
+The documentation consists of a `user guide <https://docs.danube.cloud>`__ and `API documentation <https://docs.danube.cloud/api-reference/>`__. The user guide also contains several `HOW-TOs <https://docs.danube.cloud/user-guide/howto/index.html>`__ for best practice service configuration.
 
 
 Support

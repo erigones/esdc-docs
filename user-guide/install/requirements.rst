@@ -18,7 +18,7 @@ Processor (CPU)
 Memory (RAM)
 ############
 
-A compute node requires a minimum of **4 GB of RAM**. The system memory can be used not only to create virtual servers, but also for operating ZFS file system. This dramatically increases the speed of read operations from hard drives (ARC).
+A compute node requires a minimum of **8 GB of RAM**. The system memory can be used not only to create virtual servers, but also for operating ZFS file system. This dramatically increases the speed of read operations from hard drives (ARC).
 
 PCI Devices (PCI)
 #################

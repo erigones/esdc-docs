@@ -27,7 +27,7 @@ sys.path.append(abspath(join(dirname(__file__), "_ext")))
 try:
     from core.version import __version__ as VERSION
 except ImportError:
-    VERSION = '4.4'
+    VERSION = '4.5'
 
 # -- General configuration -----------------------------------------------------
 
@@ -61,7 +61,7 @@ master_doc = 'index'
 
 # General substitutions.
 project = u'Danube Cloud'
-copyright = u'2013-2018, Erigones, s. r. o.'
+copyright = u'2013-2021, Danube Cloud'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -202,7 +202,7 @@ html_show_sphinx = False
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Erigones'
+htmlhelp_basename = 'DanubeCloud'
 
 modindex_common_prefix = ['erigones.']
 

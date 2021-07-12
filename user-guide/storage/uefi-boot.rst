@@ -10,7 +10,7 @@ If you are installing a new compute node using ``v4.2`` or higher, you don't hav
 Disk UEFI Boot And Replacing Disks
 ==================================
 
-UEFI boot requires at least one EFI partition. Installer creates EFI partitions on every disk in zones pool. This ensures that you will be able to boot from disk (when disk install is selected) even after disk(s) failure/replacement. Furthermore, ``esdc-platform-upgrade`` always checks the EFI partitions and reinstalls them as needed (even if the platform is not neccesary).
+UEFI boot requires at least one EFI partition. Installer creates EFI partitions on every disk in zones pool. This ensures that you will be able to boot from disk (when disk install is selected) even after disk(s) failure/replacement. Furthermore, ``esdc-platform-upgrade`` always checks the EFI partitions and reinstalls them as needed (even if the platform upgrade is not neccesary).
 
 If you replace any disk, the appropriate EFI partitions will be reinstalled on next run of ``esdc-platform-upgrade``.
 

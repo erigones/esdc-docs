@@ -9,7 +9,7 @@ Virtual servers in Admin Virtual Data Center are essential for proper functionin
 
 .. warning:: Manipulating Compute Nodes, virtual servers, or other objects in the Admin Virtual Data Center can break *Danube Cloud*.
 
-.. warning:: The *mgmt01* VM MUST NOT be restarted or shut down during the operation of the *Danube Cloud*.
+.. warning:: The *mgmt01* VM MUST NOT be shut down during the operation of the *Danube Cloud*.
 
 .. image:: img/admin_dc.png
 
@@ -27,6 +27,7 @@ Virtual Servers in the Admin Data Center
 * **cfgdb01** - configuration database server running `Apache ZooKeeper <https://zookeeper.apache.org/>`_.
 * **dns01** - primary DNS server running `PowerDNS <http://www.powerdns.com>`_. 
 * **img01** - central image server used for storing virtual server disk images.
+* **opnsense01** - (optional) central router between *admin* and *external* network.
 
 .. note:: The **root** accounts in each virtual server have the first compute node's public SSH key set during installation and therefore are accessible from first compute node via SSH.
 

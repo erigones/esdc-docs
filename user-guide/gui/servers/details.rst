@@ -78,6 +78,7 @@ Besides managing the above-mentioned basic :ref:`virtual server parameters <vm>`
 
 * **Monitored** - Enable virtual server synchronization with the monitoring system.
 * **Installed** - Mark the virtual server as installed. Will always be enabled when a disk image is used.
+* **Hypervisor Type** - You can select hypervisor type (currently: KVM or BHYVE).
 * **Snapshot count limit** - Maximum number of manual snapshots for this virtual server.
 * **Snapshot size limit** - Maximum size (MB) of all snapshots for this virtual server.
 * **CPU Shares** - The virtual server's CPU shares value, relative to other servers. A higher value indicates a higher priority for allocation of CPU time. The default value for all virtual servers is 100, unless changed in the :ref:`virtual server DC settings <dc_vm_settings>`.

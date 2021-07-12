@@ -1,7 +1,7 @@
 Danube Cloud :: Documentation
 #############################
 
-Danube Cloud user guide available at https://docs.danubecloud.org
+Danube Cloud user guide available at https://docs.danube.cloud
 
 
 More info
@@ -12,13 +12,12 @@ Information regarding generation of the documentation may be found `here <user-g
 Links
 =====
 
-- Homepage: https://danubecloud.org
-- User guide: https://docs.danubecloud.org
+- Homepage: https://danube.cloud
+- User guide: https://docs.danube.cloud
 - Wiki: https://github.com/erigones/esdc-ce/wiki
 - Bug Tracker: https://github.com/erigones/esdc-docs/issues
 - Twitter: https://twitter.com/danubecloud
 - Gitter: https://gitter.im/erigones/DanubeCloud
-- IRC: `irc.freenode.net#danubecloud <https://webchat.freenode.net/#danubecloud>`__
 
 License
 =======

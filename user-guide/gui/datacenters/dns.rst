@@ -40,6 +40,7 @@ DNS Domain Parameters
 * **Owner** - DNS domain owner.
 * **DC-bound?** - Whether a DNS domain is bound to a specific virtual data center.
 * **Records** - Number of DNS records within a DNS domain and a link to DNS record management (read-only).
+* **TSIG Key(s)** - Comma separated list of TSIG keys that will be allowed to do zone transfer query for this domain.
 * **Description**
 
 Managing a DNS Domain
@@ -87,4 +88,70 @@ Managing DNS Records
 ====================
 
 Custom DNS records can be created, updated or removed by a *SuperAdmin* or by a *DnsAdmin* (DC-bound domain only).
+
+
+External Zone Transfers
+=======================
+
+Danube Cloud DNS service allows zone transfers to external DNS slaves using TSIG keys. TSIG keys can be specified separately for each domain configuration (:guilabel:`Datacenter -> DNS -> Edit domain`).
+
+.. note:: Notifications of zone changes are sent only to servers that are specified in NS record for given domain.
+
+Format of TSIG keys is following:
+
+    .. code-block:: bash
+
+		key_algorithm:key_name:secret,key_algorithm:second_key_name:secret,...
+
+It is comma separated list of keys where each key consists of three parts:
+
+* **key_algorithm** - Can be one of: *hmac-md5, hmac-sha1, hmac-sha224, hmac-sha256, hmac-sha384, hmac-sha512*.
+* **key_name** - Main key identifier.
+* **secret** - The shared secret.
+
+Example of generating a TSIG trasfer key:
+
+    .. code-block:: bash
+
+        [root@dns-slave ~] apt install bind9-utils      # "bind" package on redhat-like systems
+        [root@dns-slave ~] dnssec-keygen -a HMAC-SHA256 -b 256 -r /dev/urandom -n HOST mykeyname.example.com
+        Kmykeyname.example.com.+157+48197
+        [root@dns-slave ~] grep ^Key: Kmykeyname.example.com.+157+48197.private
+        Key: wI6XiocuMR8X/DySzKVbp2SdzZZeXCsQLjEs6HRlnkY=
+
+The final TSIG key is:
+
+    .. code-block:: bash
+
+		hmac-sha256:mykeyname.example.com:wI6XiocuMR8X/DySzKVbp2SdzZZeXCsQLjEs6HRlnkY=
+
+You can add it into domain settings in Danube Cloud and configure it in DNS slave server.
+Example confguration for BIND server:
+
+    .. code-block:: bash
+
+		key "mykeyname.example.com" {
+			algorithm hmac-sha256;
+			secret "iuSO1JFqF2fhNmgfSJHn0tsudtiW2odyYixOBpc/yuA=";
+		};
+
+		server 50.100.150.200 {
+			keys { mykeyname.example.com; };
+		};
+
+		zone "example.com" {
+			type slave;
+			file "slave/example.com.zone";
+			masters {
+				50.100.150.200;  // ns01.example.com
+			};
+			allow-transfer { };
+			notify no;
+		};
+
+Verify zone transfer using *dig* command:
+
+    .. code-block:: bash
+
+		dig axfr -y "hmac-sha256:mykeyname.example.com:wI6XiocuMR8X/DySzKVbp2SdzZZeXCsQLjEs6HRlnkY=" example.com @50.100.150.200
 

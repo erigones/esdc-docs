@@ -25,7 +25,7 @@ After you have successfully installed your first compute node, you should log in
     - Go to :guilabel:`Datacenter -> Datacenters` and start creating/managing virtual data centers.
 
 
-You, the *Danube Cloud* administrator, should make yourself familiar with the `command-line client es <https://docs.danubecloud.org/api-reference/es.html>`__, which can be used to perform some administrative tasks, e.g.:
+You, the *Danube Cloud* administrator, should make yourself familiar with the `command-line client es <https://docs.danube.cloud/api-reference/es.html>`__, which can be used to perform some administrative tasks, e.g.:
 
     - :ref:`Updating Danube Cloud <update_esdc>`.
     - :ref:`Changing SSL certificate <change_ssl>` for the *Danube Cloud* web management console.

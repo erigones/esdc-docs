@@ -37,7 +37,7 @@ Install and Configure Required Services
 
         .. code-block:: bash
 
-            [root@pxe-boot ~] curl https://docs.danubecloud.org/user-guide/_downloads/dnsmasq.conf > /opt/local/etc/dnsmasq.conf
+            [root@pxe-boot ~] curl https://docs.danube.cloud/user-guide/_downloads/dnsmasq.conf > /opt/local/etc/dnsmasq.conf
 
     - Change at least the following configure options in ``/opt/local/etc/dnsmasq.conf`` according to your *admin* network:
 
@@ -99,8 +99,8 @@ The iPXE client, iPXE scripts and ErigonOS (SmartOS) platform archive files must
     .. code-block:: bash
 
         [root@pxe-boot ~] cd /data/tftpboot
-        [root@pxe-boot tftpboot] curl -o undionly.kpxe https://docs.danubecloud.org/user-guide/_downloads/IPXE-100612_undionly.kpxe
-        [root@pxe-boot tftpboot] curl -O https://docs.danubecloud.org/user-guide/_downloads/menu.ipxe
+        [root@pxe-boot tftpboot] curl -o undionly.kpxe https://docs.danube.cloud/user-guide/_downloads/IPXE-100612_undionly.kpxe
+        [root@pxe-boot tftpboot] curl -O https://docs.danube.cloud/user-guide/_downloads/menu.ipxe
 
 * Download and unpack a *Danube Cloud* ErigonOS (SmartOS) platform archive.
 
@@ -150,7 +150,7 @@ This section describes additional steps required for installation of new compute
 
     .. code-block:: bash
 
-        [root@pxe-boot install] curl -O https://docs.danubecloud.org/user-guide/_downloads/netboot_install_script.sh
+        [root@pxe-boot install] curl -O https://docs.danube.cloud/user-guide/_downloads/netboot_install_script.sh
 
 * Change the USB image download URL in the ``netboot_install_script.sh`` to the desired *Danube Cloud* compute node image.
 

@@ -17,7 +17,7 @@ The installation and boot media is a USB flash drive. There are two types of USB
 
 .. note:: The first compute node image is just a reqular compute node that includes *Danube Cloud* :ref:`service virtual machines <admin_dc>`.
 
-The current version of both media can be downloaded from: https://danubecloud.org/download
+The current version of both media can be downloaded from: https://github.com/erigones/esdc-ce/wiki/Download
 
 In the file ``notes-x.y.z.txt``, you can find SHA1 checksums of both images and an automatically generated **root** password needed for recovery purposes and single user mode, respectively.
 
