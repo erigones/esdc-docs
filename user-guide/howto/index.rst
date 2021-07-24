@@ -13,3 +13,4 @@ HOWTOs
    access-zone
    pxe-zone
    mdata
+   convert-kvm-to-bhyve

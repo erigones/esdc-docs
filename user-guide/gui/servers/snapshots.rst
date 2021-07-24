@@ -52,6 +52,8 @@ Advanced Snapshot Parameters
 * **Freeze filesystem?** - Whether to create an application-consistent snapshot (KVM only). Requires QEMU Guest Agent to be running inside the virtual server.
 
 
+.. _snapshot-actions:
+
 Snapshot Actions
 ================
 
@@ -67,9 +69,12 @@ Snapshot Actions
 
     .. warning:: A snapshot rollback will lead to deletion of all data including every newer snapshot created after the restored snapshot.
 
-    .. note:: It is also possible to restore a snapshot into another virtual server. This functionality is currently available only in the :ref:`API <api>` (``PUT /vm/(hostname_or_uuid)/snapshot/(snapname)``) . 
-  
+* **To other server...** - Restore server disk data from the snapshot to a different virtual server's disk. The destination disk must have the same size.
 
+    .. note:: The destination disk will be completely erased including all snapshots. Snapshots from the source disk (that are older than the restored snapshot) will be present in the destination disk.
+
+    .. note:: This functionality is available in the :ref:`API <api>` as ``PUT /vm/(hostname_or_uuid)/snapshot/(snapname)`` . 
+  
 .. _snapshot_definition:
 
 Snapshot Definitions
