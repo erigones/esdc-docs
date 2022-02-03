@@ -27,7 +27,7 @@ sys.path.append(abspath(join(dirname(__file__), "_ext")))
 try:
     from core.version import __version__ as VERSION
 except ImportError:
-    VERSION = '4.5'
+    VERSION = '4.6'
 
 # -- General configuration -----------------------------------------------------
 
